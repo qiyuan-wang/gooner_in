@@ -8,7 +8,16 @@ body {
 #upper-wrapper {
 	width: 100%;
 	height: 360px;
-  padding: 50px 0px;
+}
+
+.divider {
+  height: 5px;
+  width: 100%;
+  background-color: red;
+  -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+}
+#lower-wrapper {
+  margin: 0 auto;
 }
 
 #intro-img {
@@ -26,7 +35,7 @@ body {
 }
 
 #intro-txt {
-  margin-left: 50px;
+  margin: 50px 0 50px 50px;
   padding: 10px 0;
 }
 
@@ -35,7 +44,7 @@ body {
   border: none;
   width: 280px;
   -webkit-border-radius: 20px;
-  margin-right: 50px;
+  margin: 50px 50px 50px 0;
   padding: 30px 30px;
   
   #login-btn {

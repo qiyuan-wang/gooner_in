@@ -1,3 +1,144 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//位置
+#upper-wrapper {
+	width: 100%;
+	height: 360px;
+}
+
+#lower-wrapper {
+  
+}
+.h-divider {
+  height: 5px;
+  width: 100%;
+  background-color: red;
+  -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.v-divider {
+  width: 12px;
+  height: 80%;
+  color: black;
+  z-index: 999;
+}
+
+.box {
+  margin: 10px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  
+  h2 {
+    margin-bottom: 5px;
+  }
+  
+  p {
+    padding: 0 10px;
+  }
+}
+
+
+#intro {
+  width: 100%;
+  height: 360px;
+}
+@mixin image-setting {
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 360px;
+  position: absolute;
+  z-index: -2;
+}
+
+#img1 {
+  @include image-setting;
+  background-image: url('gooner-large-1.jpg');
+}
+  
+#img2 {
+  @include image-setting;
+  background-image: url('gooner-large-2.jpg');
+}
+
+#img3 {
+  @include image-setting;
+  background-image: url('gooner-large-3.jpg');
+}
+
+#intro-txt {
+  margin: 50px 0 50px 50px;
+  padding: 10px 0;
+}
+
+#login-box {
+  background-color: rgba(255, 0, 0, 0.6);
+  border: none;
+  width: 280px;
+  -webkit-border-radius: 20px;
+  margin: 50px 50px 50px 0;
+  padding: 30px 30px;
+  
+  #login-btn {
+    margin-top: 20px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  span {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+//字体、颜色、样式
+#intro-txt {
+  h2 {
+    font-size: 55px;
+    color: white;
+    line-height: 60px;
+  }
+}
+
+#login-box {
+  font-family: 'Trocchi', sans-serif;
+  #login-btn {
+    text-align: center;
+  }
+  
+  span {
+    color: white;
+  }
+  
+  #slogan {
+    font-size: 20px;
+    color: white;
+    text-align: right;
+  }
+  
+  h1 {
+    font-weight: bold;
+    font-size: 55px;
+    color: white;
+    text-align: center;
+    }
+}
+
+.box {
+  background-color: white;
+  h2 {
+    font-size: 26px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

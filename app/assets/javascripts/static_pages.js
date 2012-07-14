@@ -3,6 +3,7 @@ $().ready(function() {
     var img1 = $('#img1');
     var img2 = $('#img2');
     var img3 = $('#img3');
+    
     function slideTo(number) {
         index = parseInt(number);
         if (index === 1) {
@@ -23,5 +24,5 @@ $().ready(function() {
       if (index >= 3) index = 0;
       index++;
       slideTo(index);
-    }, 10000);
+    }, 8000);
 })

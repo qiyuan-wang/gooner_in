@@ -28,4 +28,7 @@ GoonerIn::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  #guard-livereload
+  config.middleware.insert_before(Rack::Lock, Rack::LiveReload)
 end

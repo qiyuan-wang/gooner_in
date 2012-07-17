@@ -1,0 +1,29 @@
+#main
+  .container
+    %h1 Listing players
+
+    %table
+      %tr
+        %th Name
+        %th E name
+        %th Nationality
+        %th Day of birth
+        %th Position
+        %th
+        %th
+        %th
+    
+    - @players.each do |player|
+      %tr
+      %td= player.name
+      %td= player.e_name
+      %td= player.nationality
+      %td= player.day_of_birth
+      %td= player.position
+      %td= link_to 'Show', player
+      %td= link_to 'Edit', edit_player_path(player)
+      %td= link_to 'Destroy', player, :confirm => 'Are you sure?', :method => :delete
+      
+      %br
+    
+    = link_to 'New Player', new_player_path

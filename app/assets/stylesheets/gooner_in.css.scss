@@ -4,3 +4,65 @@ body {
   min-width: 960px;
   background-color: OldLace;
 }
+//样式
+
+
+.topbar {
+  margin-bottom: 10px;
+  
+  .logo-box {
+    background-color: red;
+    @include border-radius(20px);
+    //width: 60%;
+    margin: 10px 0;
+    padding: 10px;
+    display: inline-block;
+    
+    .logo {
+      margin-top: 16px;
+      display: inline-block;
+    }
+    
+    .slogan {
+      text-align: left;
+      margin: 0 3px 5px;
+    }
+    
+  }
+}
+
+.slogan {
+  text-align: right;
+  display: inline-block;
+}
+
+
+//字体
+@mixin web-font {
+  font-family: 'Trocchi', sans-serif;
+}
+
+.logo {
+  font-weight: bold;
+  color: white;
+    
+  a {
+    @include web-font;
+    font-size: 55px;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.slogan {
+  @include web-font;
+  font-size: 18px;
+  color: white;
+}
+
+
+.topbar {
+    
+  
+}
+

@@ -8,4 +8,6 @@ class Player
   field :nationality, type: String
   field :day_of_birth, type: Date
   field :position, type: String
+  field :_id, type: String, default: ->{ e_name }
+  
 end

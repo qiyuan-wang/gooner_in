@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.6'
 gem 'bootstrap-sass', '2.0.0'
@@ -18,6 +18,8 @@ group :development do
   gem 'rspec-rails', '2.9.0'
   gem 'guard-rspec', '0.5.5'
   gem 'annotate', '~> 2.4.1.beta'
+  gem 'guard-livereload'
+  gem 'rack-livereload'
 end
 
 

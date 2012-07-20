@@ -2,9 +2,18 @@
   .container
     .row
       .mainbar.span9.box
+        %ul.breadcrumbs
+          %li
+            = link_to 'Gooner.in', root_path
+            %span.divider -
+          %li
+            = link_to '球员', players_path
+            %span.divider -
+          %li.active
+            #{@player.name}
         %section#profile
           .player-info
-            .avatar.pull-left
+            .avatar-large.pull-left
               = image_tag "players/#{@player.e_name}.jpg"
             .info-wrapper
               .info-txt
@@ -22,6 +31,7 @@
                       %td #{@player.day_of_birth}
       %aside.span3.box
         .control
+          %h3 管理
           %ul.unstyled
             %li
               = link_to '编辑', edit_player_path(@player)

@@ -10,7 +10,7 @@
 body {
   min-width: 960px;
   background-color: OldLace;
-  }z
+}
 //样式
 
 
@@ -32,8 +32,7 @@ body {
     .slogan {
       text-align: left;
       margin: 0 3px 5px;
-    }
-    
+    }    
   }
 }
 
@@ -42,6 +41,14 @@ body {
   display: inline-block;
 }
 
+.breadcrumbs {
+  padding: 7px 14px;
+  margin: 0 0 10px;
+
+  li {
+    display: inline;
+  }
+}
 
 //字体
 @mixin web-font {
@@ -66,9 +73,4 @@ body {
   color: white;
 }
 
-
-.topbar {
-    
-  
-}
 

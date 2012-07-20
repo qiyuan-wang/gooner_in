@@ -35,14 +35,6 @@
 
 .box {
   @include border-radius(10px);
-  
-  h2 {
-    margin-bottom: 5px;
-  }
-  
-  p {
-    padding: 0 10px;
-  }
 }
 
 
@@ -105,6 +97,11 @@
   }
 }
 
+#lower-wrapper {
+  .span4 {
+    padding: 15px;
+  }
+}
 //字体、颜色、样式
 #intro-txt {
   h2 {

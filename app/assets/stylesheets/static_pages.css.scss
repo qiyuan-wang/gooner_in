@@ -4,17 +4,19 @@
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius:    $radius;
-  -border-radius:        $radius;
+   -border-radius:        $radius;
 }
 
+
 //位置
+
 #upper-wrapper {
 	width: 100%;
 	height: 360px;
 }
 
 #lower-wrapper {
-  
+  margin: 10px;
 }
 .h-divider {
   height: 5px;
@@ -32,8 +34,6 @@
 }
 
 .box {
-  margin: 10px;
-  padding: 15px 20px;
   @include border-radius(10px);
   
   h2 {
@@ -128,11 +128,4 @@
 
 .box {
   background-color: white;
-  h2 {
-    font-size: 26px;
-  }
-  p {
-    font-size: 14px;
-    line-height: 22px;
-  }
 }

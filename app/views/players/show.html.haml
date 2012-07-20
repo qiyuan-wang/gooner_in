@@ -1,24 +1,32 @@
-%p#notice= notice
-
-%p
-  %b Photo:
-  %img(src="assets/players/#{@player.e_name}.jpg")
-%p
-  %b Name:
-  = @player.name
-%p
-  %b E name:
-  = @player.e_name
-%p
-  %b Nationality:
-  = @player.nationality
-%p
-  %b Day of birth:
-  = @player.day_of_birth
-%p
-  %b Position:
-  = @player.position
-
-= link_to 'Edit', edit_player_path(@player)
-\|
-= link_to 'Back', players_path
+#main
+  .container
+    .row
+      .mainbar.span9.box
+        %section#profile
+          .player-info
+            .avatar.pull-left
+              = image_tag "players/#{@player.e_name}.jpg"
+            .info-wrapper
+              .info-txt
+                %h3 #{@player.name}
+                %table
+                  %thead
+                    %tr
+                      %th 位置
+                      %th 国籍
+                      %th 出生日期
+                  %tbody
+                    %tr
+                      %td #{@player.position}
+                      %td #{@player.nationality}
+                      %td #{@player.day_of_birth}
+      %aside.span3.box
+        .control
+          %ul.unstyled
+            %li
+              = link_to '编辑', edit_player_path(@player)
+            %li
+              = link_to '删除', @player, method: :delete, confirm: "确定删除？"
+                
+          
+          

@@ -1,5 +1,12 @@
 @import "bootstrap";
 
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius:    $radius;
+   -border-radius:        $radius;
+}
+
+
 body {
   min-width: 960px;
   background-color: OldLace;
@@ -8,14 +15,13 @@ body {
 
 
 .topbar {
-  margin-bottom: 10px;
   
   .logo-box {
     background-color: red;
-    @include border-radius(20px);
+    @include border-radius(18px);
     //width: 60%;
     margin: 10px 0;
-    padding: 10px;
+    padding: 12px;
     display: inline-block;
     
     .logo {
@@ -26,8 +32,7 @@ body {
     .slogan {
       text-align: left;
       margin: 0 3px 5px;
-    }
-    
+    }    
   }
 }
 
@@ -36,6 +41,14 @@ body {
   display: inline-block;
 }
 
+.breadcrumbs {
+  padding: 7px 14px;
+  margin: 0 0 10px;
+
+  li {
+    display: inline;
+  }
+}
 
 //字体
 @mixin web-font {
@@ -60,9 +73,4 @@ body {
   color: white;
 }
 
-
-.topbar {
-    
-  
-}
 

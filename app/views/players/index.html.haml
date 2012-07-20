@@ -1,29 +1,22 @@
 #main
   .container
-    %h1 Listing players
-
-    %table
-      %tr
-        %th Name
-        %th E name
-        %th Nationality
-        %th Day of birth
-        %th Position
-        %th
-        %th
-        %th
+    .row
+      .mainbar.span9.box
+        %ul.breadcrumbs
+          %li
+            = link_to 'Gooner.in', root_path
+            %span.divider -
+          %li.active 球员
+        .players-list
+          %ul.unstyled
+            - @players.each do |player|
+              %li.pull-left
+                .avatar-small
+                  = link_to image_tag("players/#{player.e_name}.jpg"), player_path(id: player.e_name)
+                =link_to player.name, player_path(id: player.e_name)
     
-    - @players.each do |player|
-      %tr
-      %td= player.name
-      %td= player.e_name
-      %td= player.nationality
-      %td= player.day_of_birth
-      %td= player.position
-      %td= link_to 'Show', player
-      %td= link_to 'Edit', edit_player_path(player)
-      %td= link_to 'Destroy', player, :confirm => 'Are you sure?', :method => :delete
-      
-      %br
+      %aside.span3.box
+        .control
+          %h3 管理
+          = link_to '新球员', new_player_path
     
-    = link_to 'New Player', new_player_path

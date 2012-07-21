@@ -1,4 +1,7 @@
 GoonerIn::Application.routes.draw do  
+  
+  resources :questions
+
   resources :players
   
 

@@ -15,7 +15,7 @@
   .field
     = f.label :nationality
     = f.text_field :nationality
-  .field
+  .h
     = f.label :day_of_birth
     = f.date_select :day_of_birth, start_year: 1949, end_year: 2000
   .field
@@ -23,4 +23,3 @@
     = f.text_field :position
   .actions
     = f.submit 'Save'
-    = link_to '取消', player_path

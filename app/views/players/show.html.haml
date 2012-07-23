@@ -14,7 +14,7 @@
         %section#profile
           .player-info
             .avatar-large.pull-left
-              = image_tag "players/#{@player.e_name}.jpg"
+              = image_tag "players/#{@player.e_name}.jpg", alt: "#{@player.name}"
             .info-wrapper
               .info-txt
                 %h3 #{@player.name}

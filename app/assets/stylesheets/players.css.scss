@@ -14,6 +14,9 @@
   @include border-radius(58px);
   -webkit-transition: background .1s linear;
   
+  &:hover {
+    background: -webkit-linear-gradient(-45deg, #fc9300 0%,#f9b55c 50%,#f49a46 51%,#f9a200 100%);  
+  }
   img {
     width: 100px;
     @include border-radius(50px);
@@ -22,9 +25,6 @@
   }
 }
 
-.avatar-small:hover {
-  background: -webkit-linear-gradient(-45deg, #fc9300 0%,#f9b55c 50%,#f49a46 51%,#f9a200 100%);
-}
 
 .avatar-large {
   background: -webkit-linear-gradient(-45deg, #ff0000 0%,#ff7f7f 50%,#ef5a4c 51%,#ff0505 100%);

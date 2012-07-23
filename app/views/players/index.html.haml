@@ -12,7 +12,7 @@
             - @players.each do |player|
               %li.pull-left
                 .avatar-small
-                  = link_to image_tag("players/#{player.e_name}.jpg"), player_path(id: player.e_name)
+                  = link_to image_tag("players/#{player.e_name}.jpg", alt: "#{player.name}"), player_path(id: player.e_name)
                 =link_to player.name, player_path(id: player.e_name)
     
       %aside.span3.box

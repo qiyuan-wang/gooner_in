@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe "Static Pages" do
+  let(:base_title) { "Gooner.in - In Arsenal we trust." }
+  subject { page }
+  
   describe "Home Page" do
-    it "should have the content 'Gooner.in'" do
-      visit '/'
-      page.should have_content('Gooner.in')
-    end
+    before { visit root_path }
+    
+    it {should have_selector('title', text: full_title('')) }
   end
 end

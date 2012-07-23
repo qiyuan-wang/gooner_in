@@ -1,5 +1,6 @@
 GoonerIn::Application.routes.draw do  
   resources :players
+  resources :questions
   
 
   # The priority is based upon order of creation:

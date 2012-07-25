@@ -1,4 +1,11 @@
 GoonerIn::Application.routes.draw do  
+  match '/sign_up' => "users#new", as: :sign_up
+  match '/log_in' => "sessions#new", as: :log_in
+  match '/log_out' => "sessions#destroy", as: :log_out
+  
+  match '/~:user_name' => "users#show"
+  resources :users
+  resources :sessions
   resources :players
   resources :questions
   

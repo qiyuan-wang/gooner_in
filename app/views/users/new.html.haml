@@ -2,13 +2,7 @@
   .container
     .row
       .mainbar.span9.box
-        = form_for @user do |f|
-          - if @user.errors.any?
-            #error_explanation
-              %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-              %ul
-                - @user.errors.full_messages.each do |msg|
-                  %li= msg
+        = form_for @user, validate: true do |f|
           .field
             = f.label :email, 'Email:'
             = f.text_field :email
@@ -17,12 +11,12 @@
             = f.text_field :name
           .field
             = f.label :password, '密码:' 
-            = f.password_field :password
+            = f.password_field :password , :validate => { :confirmation => false }
           .field
             = f.label :password_confirmation, '确认密码:'
             = f.password_field :password_confirmation
           .actions
-            = f.submit '创建用户'
+            = f.submit '创建用户', class: "btn btn-success"
         
   
     

@@ -7,9 +7,10 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'mongoid', '~> 3.0.0.rc'
+gem 'client_side_validations'
 gem 'haml'
 gem 'haml-rails'
-
+gem 'sorcery'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

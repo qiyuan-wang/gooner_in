@@ -37,6 +37,8 @@
               = link_to '编辑', edit_player_path(@player)
             %li
               = link_to '删除', @player, method: :delete, confirm: "确定删除？"
+            %li
+              = link_to '登出', log_out_path, confirm: "确定？"
                 
           
           

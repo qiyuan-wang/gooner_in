@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  before_filter :require_login, :only => :show
+#  before_filter :require_login, :only => :show
   
   # GET /players
   # GET /players.json
@@ -16,7 +16,7 @@ class PlayersController < ApplicationController
   # GET /players/1.json
   def show
     @player = Player.find(params[:id])
-
+    @questions = @player.related_questions
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @player }

@@ -4,6 +4,7 @@ GoonerIn::Application.routes.draw do
   match '/log_in' => "sessions#new", as: :log_in
   match '/log_out' => "sessions#destroy", as: :log_out
   match "/users/:name" => "people#show", as: :person
+  
   resources :users, :only => [:create]
   resources :sessions, :only => [:create]
   resources :players

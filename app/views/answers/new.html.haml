@@ -1,0 +1,4 @@
+= form_for @answer, :url => answers_path(question_id: @question) do |f|
+  = f.label 'Content'
+  = f.text_area :content, row: 10
+  = f.submit 'save'

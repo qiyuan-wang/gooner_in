@@ -6,7 +6,7 @@ class User
   field :name,    type: String
   field :email,   type: String
   
-  attr_accessible :name, :email, :password
+  attr_accessible :name, :email, :password, :password_confirmation
   authenticates_with_sorcery!
 
   validates :name, :presence => { message: "不能为空" },
@@ -19,4 +19,6 @@ class User
   validates :password, :presence => { on: :create, message: "不能为空" }, 
                        :confirmation => { message: "与确认密码不匹配" },
                        :length => { minimum: 6, too_short: "密码过短(最少为6位字符)" }
+  has_many :questions
+  has_many :answers
 end

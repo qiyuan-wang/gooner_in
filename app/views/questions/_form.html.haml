@@ -1,5 +1,5 @@
 
-= form_for @question do |f|
+= form_for @question, validate: true do |f|
   -if @question.errors.any?
     #error_explanation
       %h2= "#{pluralize(@question.errors.count, "error")} prohibited this question from being saved:"
@@ -11,6 +11,6 @@
     = f.label :title
     = f.text_field :title
     = f.label :related_players
-    = select "question", "related_players", Player.all.collect{|p| [p.name, p.id]},{ include_blank: false }, { multiple: true }
+    = select "question", "related_players", classified_players, { include_blank: false, selected: @question.related_players.collect{|p| p.id}}, { multiple: true, class: "chzn-select" }
   .actions
     = f.submit 'Save'

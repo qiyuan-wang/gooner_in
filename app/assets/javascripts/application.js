@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails.validations
+//= require chosen-jquery
 //= require_tree .
+
+jQuery(function($){
+    $('.chzn-select').data("placeholder", "选择相关人物").chosen();
+});

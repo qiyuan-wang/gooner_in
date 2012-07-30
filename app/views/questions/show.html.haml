@@ -1,9 +1,11 @@
-%p#notice= notice
-
 %p
   %b Title:
   = @question.title
-
+  - @question.answers.each do |a|
+    = a.content
+  - @question.related_players.each do |p|
+    = p.name
+= link_to 'Answer', new_answer_path(question_id: @question.id)
 = link_to 'Edit', edit_question_path(@question)
 \|
 = link_to 'Back', questions_path

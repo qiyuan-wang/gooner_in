@@ -21,14 +21,16 @@
                 %table
                   %thead
                     %tr
-                      %th 位置
                       %th 国籍
                       %th 出生日期
                   %tbody
                     %tr
-                      %td #{@player.position}
                       %td #{@player.nationality}
                       %td #{@player.day_of_birth}
+        %section#questions
+          - @player.related_questions.each do |q|
+            = q.title
+        
       %aside.span3.box
         .control
           %h3 管理

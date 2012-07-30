@@ -1,2 +1,8 @@
 %h1 People#show
 %p Find me in app/views/people/show.html.haml
+
+= @person.name
+- @person.questions.each do |q|
+  = q.title
+  - q.related_players.each do |p|
+    = p.name

@@ -1,5 +1,5 @@
 GoonerIn::Application.routes.draw do  
-  root :to => 'static_pages#home'
+  root :to => 'static_pages#index'
   match '/sign_up' => "users#new", as: :sign_up
   match '/log_in' => "sessions#new", as: :log_in
   match '/log_out' => "sessions#destroy", as: :log_out

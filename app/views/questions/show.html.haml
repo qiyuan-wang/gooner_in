@@ -1,10 +1,38 @@
-%p
-  %b Title:
-  = @question.title
-  - @question.answers.each do |a|
-    = a.content
-  - @question.related_players.each do |p|
-    = p.name
+#main
+  .container
+    .row
+      .mainbar.span9.box
+        .question-field
+          %span
+            = link_to "#{@question.user.name}", person_path(@question.user.name)
+            问了个问题
+            －
+            = @question.created_time
+          %h2.white #{@question.title}
+          - if !@question.related_players.empty?
+            .related-players-wrapper.clearfix
+              .related-players
+                %h4.white 相关球员
+                %ul.unstyled
+                  - @question.related_players.each do |p|
+                    %li.pull-left
+                      .avatar-small
+                        = link_to image_tag("players/#{p.e_name}.jpg", alt: "#{p.name}"), player_path(id: p.e_name)
+          
+        %hr.clear-element
+        .answers-field
+          %h3.white 大家的答案
+          - if @question.answers.empty?
+            %p 这个问题还没有答案额，你来一个吧先！
+            = link_to '回答这个问题', new_answer_path(question_id: @question.id)
+          - else
+            - @question.answers.each do |a|
+              .answer-squad
+              .user-info
+                = link_to "#{a.user.name}", person_path(a.user.name)
+                = a.updated_time
+              = a.content.html_safe
+           
 = link_to 'Answer', new_answer_path(question_id: @question.id)
 = link_to 'Edit', edit_question_path(@question)
 \|

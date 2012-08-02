@@ -1,4 +1,13 @@
-= form_for @answer, :url => answers_path(question_id: @question) do |f|
-  = f.label 'Content'
-  = f.text_area :content, row: 10
-  = f.submit 'save'
+- content_for :head do
+  = javascript_include_tag "redactor"
+  = javascript_include_tag "langs/zh_cn.js"
+  = stylesheet_link_tag 'redactor'
+
+#main
+  .container
+    .row
+      .span9
+        = form_for @answer, :url => answers_path(question_id: @question) do |f|
+          = f.label 'Content'
+          = f.text_area :content, rows: 10, style: "height:300px", id: "redactor_content"
+          = f.submit 'save'

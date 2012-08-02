@@ -6,4 +6,8 @@ class Answer
   
   belongs_to :user
   belongs_to :question
+  
+  def updated_time
+    self.updated_at.to_date
+  end
 end

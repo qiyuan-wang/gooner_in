@@ -27,7 +27,6 @@ class QuestionsController < ApplicationController
   # GET /questions/new.json
   def new
     @question = Question.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @question }
@@ -43,6 +42,8 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = current_user.questions.new(params[:question])
+    @question.add_related_players(params[:question][:related_players])
+
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
@@ -58,7 +59,7 @@ class QuestionsController < ApplicationController
   # PUT /questions/1.json
   def update
     @question = current_user.questions.find(params[:id])
-
+    @question.update_related_players(params[:question][:related_players])
     respond_to do |format|
       if @question.update_attributes(params[:question])
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }

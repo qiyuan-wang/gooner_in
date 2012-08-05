@@ -13,6 +13,11 @@ gem 'haml'
 gem 'haml-rails'
 gem 'sorcery'
 
+#文件上传
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => "carrierwave/mongoid"
+gem 'mini_magick'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

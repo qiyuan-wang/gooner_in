@@ -5,8 +5,10 @@ class User
   
   field :name,    type: String
   field :email,   type: String
+
+  mount_uploader :avatar, AvatarUploader
   
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :avatar, :avatar_cache
   authenticates_with_sorcery!
 
   validates :name, :presence => { message: "不能为空" },
@@ -21,4 +23,5 @@ class User
                        :length => { minimum: 6, too_short: "密码过短(最少为6位字符)" }
   has_many :questions
   has_many :answers
+  
 end

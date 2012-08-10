@@ -6,4 +6,13 @@
   = q.title
   - q.related_players.each do |p|
     = p.name
-= image_tag(@person.avatar_url)
+
+= image_tag @person.avatar_url(:large)
+= image_tag @person.avatar_url(:normal)
+= image_tag @person.avatar_url(:thumb)
+
+
+
+- if current_user == @person
+  = link_to '编辑头像', settings_avatar_path, class: 'btn btn-primary'
+

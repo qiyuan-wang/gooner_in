@@ -2,7 +2,7 @@
   .container
     .row
       .mainbar.span9.box
-        = form_for @user, html: {multiple: true}, validate: true do |f|
+        = form_for @user, html: {multipart: true}, validate: true do |f|
           .field
             = f.label :email, 'Email:'
             = f.text_field :email
@@ -16,13 +16,9 @@
             = f.label :password_confirmation, '确认密码:'
             = f.password_field :password_confirmation
           .field
-            = f.label :avatar, '头像'
-            - if @user.avatar?
-              = image_tag(@user.avatar_url)
+            = f.label :avatar
             = f.file_field :avatar
             = f.hidden_field :avatar_cache
           .actions
             = f.submit '创建用户', class: "btn btn-success"
         
-  
-    

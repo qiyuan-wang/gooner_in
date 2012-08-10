@@ -1,0 +1,2 @@
+module Settings::AvatarsHelper
+end

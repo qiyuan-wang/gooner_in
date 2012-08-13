@@ -46,8 +46,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [50, 50]
   end
   
-  version :thumb, :from => :normal do
-    process :resize_to_limit => [30, 30]
+  version :thumb, :from_version => :normal do
+    process :resize_to_limit => [24, 24]
   end
     
   

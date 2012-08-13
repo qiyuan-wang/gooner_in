@@ -3,11 +3,13 @@
     .row
       .mainbar.span9.box
         .question-field
-          %span
-            = link_to "#{@question.user.name}", person_path(@question.user.name)
-            问了个问题
-            －
-            = @question.created_time
+          .asker
+            = link_to image_tag(@question.user.avatar_url(:thumb), alt: "#{@question.user.name}", class: "u-avatar-small"), person_path(@question.user.name)
+            %span
+              = link_to "#{@question.user.name}", person_path(@question.user.name)
+              问了一个问题
+              －
+              = @question.created_time
           %h2.white #{@question.title}
           - if !@question.related_players.empty?
             .related-players-wrapper.clearfix
@@ -18,22 +20,26 @@
                     %li.pull-left
                       .avatar-small
                         = link_to image_tag("players/#{p.e_name}.jpg", alt: "#{p.name}"), player_path(id: p.e_name)
-          
-        %hr.clear-element
         .answers-field
-          %h3.white 大家的答案
+          %h3.white
+            = @question.answers.count
+            个回答
           - if @question.answers.empty?
             %p 这个问题还没有答案额，你来一个吧先！
-            = link_to '回答这个问题', new_answer_path(question_id: @question.id)
           - else
             - @question.answers.each do |a|
               .answer-squad
-              .user-info
-                = link_to "#{a.user.name}", person_path(a.user.name)
-                = a.updated_time
-              = a.content.html_safe
-           
-= link_to 'Answer', new_answer_path(question_id: @question.id)
+                .user-avatar
+                  = link_to image_tag(@question.user.avatar_url(:normal), alt: "#{@question.user.name}", class: "u-avatar-small"), person_path(@question.user.name)
+                .answer-main  
+                  .user-info
+                    = link_to "#{a.user.name}", person_path(a.user.name)
+                    = a.updated_time
+                  .answer-content
+                    = a.content.html_safe
+              %hr
+          = link_to '回答这个问题', new_answer_path(question_id: @question.id), class: "btn"
+          
 = link_to 'Edit', edit_question_path(@question)
 \|
 = link_to 'Back', questions_path

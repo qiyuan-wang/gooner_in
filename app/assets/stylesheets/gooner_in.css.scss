@@ -1,5 +1,8 @@
 @import "bootstrap";
-
+[class*="span"] {
+  float: left;
+  margin-left: 10px;
+}
 //自定义mixins--------------------------------------------------
 
 //logo使用的web-font
@@ -10,14 +13,13 @@
 //球员头像样式 $radius为头像图片半径
 @mixin avatar-image($radius) {
   background: -webkit-linear-gradient(-45deg, #ff0000 0%,#ff7f7f 50%,#ef5a4c 51%,#ff0505 100%);
-  width: 2 * $radius + 6px;
+  width: 2 * $radius;
   @include border-radius($radius + 3px);
-  
+  padding: 3px;
   img {
     width: 2 * $radius;
     @include border-radius($radius);
     vertical-align: middle;
-    margin: 3px;
   }
 }
 
@@ -30,12 +32,24 @@
   }
 }
 
+//用户头像样式
+@mixin u-avatar-image() {
+}
 //通用---------------------------------------------------------
 body {
-  min-width: 960px;
+  min-width: 940px;
   background-color: OldLace;
+  font: 13px/22px 'Helvetica Neue', Helvetica, Verdana, Tahoma, Arial, Sans-serif;
+  color: #222;
 }
 
+hr {
+  margin: 14px;
+}
+
+.u-avatar-small {
+  @include border-radius(3px);
+}
 .avatar-small {
   @include avatar-image-with-hover(20px);
 }
@@ -329,17 +343,22 @@ body {
 //Question
 .question-field {
   h2 {
+    margin: 5px 0;
     padding: 8px;
     background-color: $green;
     @include border-radius(5px);
   }
-  span {
-    display: inline-block;
-    font-size: 14px;
-    margin: 5px 2px;
-  }
 }
 
+.asker {
+  margin: 4px;
+  span {
+    display: inline-block;
+    font-size: 13px;
+    //margin: 5px 2px;
+    vertical-align: middle;
+  }
+}
 .related-players-wrapper {
   height: 60px;
 }
@@ -355,7 +374,7 @@ body {
   }
   ul {
     height: 50px;
-    margin: 4px 0 4px 71px;
+    margin: 4px 0 4px 74px;
     li{
       display: inline;
       margin-right: 2px;
@@ -365,12 +384,37 @@ body {
 
 
 
-
 .answers-field {
   h3 {
     width: 30%;
     padding: 8px;
+    margin-bottom: 15px;
     background-color: $blue;
     @include border-radius(5px);
+  }
+  
+  .answer-squad {
+    margin: 5px;
+    
+    .user-avatar {
+      display: block;
+      float: left;
+      margin-top: 4px;
+    }
+    
+    .answer-main {
+      margin-left: 60px;
+    
+      .user-info {
+        color: gray;
+      }
+    }
+  }
+}
+
+.user-profile {
+  margin: 10px 40px;
+  img {
+    
   }
 }

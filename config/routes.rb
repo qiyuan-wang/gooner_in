@@ -1,4 +1,5 @@
 GoonerIn::Application.routes.draw do  
+
   root :to => 'static_pages#index'
   match '/sign_up' => "users#new", as: :sign_up
   match '/log_in' => "sessions#new", as: :log_in
@@ -10,7 +11,10 @@ GoonerIn::Application.routes.draw do
   resources :players
   resources :questions
   resources :answers, :only => [:new, :create]
-
+  
+  namespace :settings do
+    resource :avatar
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

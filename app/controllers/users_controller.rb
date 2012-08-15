@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+    @user.avatar = params[:user][:avatar]
     if @user.save
       auto_login @user
       redirect_to root_path, notice: ""

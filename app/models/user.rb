@@ -5,8 +5,14 @@ class User
   
   field :name,    type: String
   field :email,   type: String
+
+  mount_uploader :avatar, AvatarUploader
   
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :avatar, :avatar_cache, :crop_x, :crop_y, :crop_w, :crop_h
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :crop_avatar
+#  after_update :delete_original_file
+  
   authenticates_with_sorcery!
 
   validates :name, :presence => { message: "不能为空" },
@@ -21,4 +27,12 @@ class User
                        :length => { minimum: 6, too_short: "密码过短(最少为6位字符)" }
   has_many :questions
   has_many :answers
+  
+  def crop_avatar
+    avatar.recreate_versions! if crop_x.present?
+  end
+  
+  def delete_original_file
+    File.delete self.original_file_path if File.exists? self.original_file_path
+  end
 end

@@ -6,12 +6,13 @@ $(document).ready(
 	function()
 	{
 		$('#redactor_content').redactor({ lang: 'zh_cn',
-                                          autoresize: true,
+                                          autoresize: false,
                                           fixed: true,
+                                          focus: true,
                                           buttons: [ 'bold', 'italic', 'deleted', '|',
                                                      'unorderedlist', 'orderedlist', 'indent', '|',
                                                      'image', 'video', 'link', '|', 
-                                                     'horizontalrule' ]
+                                                     'horizontalrule' ],
                                         }
                                     );
     }

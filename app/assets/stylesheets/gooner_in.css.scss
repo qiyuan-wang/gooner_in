@@ -1,5 +1,8 @@
 @import "bootstrap";
-
+[class*="span"] {
+  float: left;
+  margin-left: 10px;
+}
 //自定义mixins--------------------------------------------------
 
 //logo使用的web-font
@@ -34,7 +37,7 @@
 }
 //通用---------------------------------------------------------
 body {
-  min-width: 960px;
+  min-width: 940px;
   background-color: OldLace;
   font: 13px/22px 'Helvetica Neue', Helvetica, Verdana, Tahoma, Arial, Sans-serif;
   color: #222;
@@ -385,6 +388,7 @@ hr {
   h3 {
     width: 30%;
     padding: 8px;
+    margin-bottom: 15px;
     background-color: $blue;
     @include border-radius(5px);
   }
@@ -408,6 +412,9 @@ hr {
   }
 }
 
-.anwser-content {
-  width: 80%;
+.user-profile {
+  margin: 10px 40px;
+  img {
+    
+  }
 }

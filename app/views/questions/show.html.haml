@@ -23,23 +23,15 @@
         .answers-field
           %h3.white
             = @question.answers.count
-            个回答
+            个答案       
           - if @question.answers.empty?
             %p 这个问题还没有答案额，你来一个吧先！
           - else
-            - @question.answers.each do |a|
-              .answer-squad
-                .user-avatar
-                  = link_to image_tag(@question.user.avatar_url(:normal), alt: "#{@question.user.name}", class: "u-avatar-small"), person_path(@question.user.name)
-                .answer-main  
-                  .user-info
-                    = link_to "#{a.user.name}", person_path(a.user.name)
-                    = a.updated_time
-                  .answer-content
-                    = a.content.html_safe
-              %hr
+            = render :partial => 'answer', collection: @question.answers
           = link_to '回答这个问题', new_answer_path(question_id: @question.id), class: "btn"
-          
+      .sidebar.span3.box
+        .user-profile
+          = image_tag current_user.avatar_url(:large), alt: "#{@question.user.name}"
 = link_to 'Edit', edit_question_path(@question)
 \|
 = link_to 'Back', questions_path

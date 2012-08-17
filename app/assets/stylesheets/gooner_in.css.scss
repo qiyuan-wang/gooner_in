@@ -5,11 +5,6 @@
 }
 //自定义mixins--------------------------------------------------
 
-//logo使用的web-font
-@mixin web-font {
-  font-family: 'Trocchi', sans-serif;
-}
-
 //球员头像样式 $radius为头像图片半径
 @mixin avatar-image($radius) {
   background: -webkit-linear-gradient(-45deg, #ff0000 0%,#ff7f7f 50%,#ef5a4c 51%,#ff0505 100%);
@@ -35,12 +30,21 @@
 //用户头像样式
 @mixin u-avatar-image() {
 }
+
 //通用---------------------------------------------------------
 body {
   min-width: 940px;
   background-color: OldLace;
   font: 13px/22px 'Helvetica Neue', Helvetica, Verdana, Tahoma, Arial, Sans-serif;
   color: #222;
+}
+
+//logo用的字体
+@font-face {
+    font-family:"Trocchi";
+    src:url("../font/Trocchi-Regular.eot?") format("eot"), url("../font/Trocchi-Regular.woff") format("woff"), url("../font/Trocchi-Regular.ttf") format("truetype"), url("../font/Trocchi-Regular.svg#Trocchi") format("svg");
+    font-weight:normal;
+    font-style:normal;
 }
 
 hr {
@@ -118,7 +122,7 @@ hr {
   color: white;
     
   a {
-    @include web-font;
+    font-family: "Trocchi", san-serif;
     font-size: 55px;
     color: white;
     text-decoration: none;
@@ -126,7 +130,7 @@ hr {
 }
 
 .slogan {
-  @include web-font;
+  font-family:"Trocchi", san-serif;
   font-size: 18px;
   color: white;
 }

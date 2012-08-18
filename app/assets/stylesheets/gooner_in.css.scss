@@ -355,7 +355,7 @@ hr {
 }
 
 .asker {
-  margin: 4px;
+  margin: 5px;
   span {
     display: inline-block;
     font-size: 13px;
@@ -389,10 +389,10 @@ hr {
 
 
 .answers-field {
-  h3 {
+  #leading {
     width: 30%;
     padding: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     background-color: $blue;
     @include border-radius(5px);
   }
@@ -408,9 +408,14 @@ hr {
     
     .answer-main {
       margin-left: 60px;
-    
+      
       .user-info {
         color: gray;
+        margin-bottom: 10px;
+      }
+      
+      .answer-content {
+        margin-top: 5px;
       }
     }
   }

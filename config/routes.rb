@@ -1,4 +1,25 @@
-GoonerIn::Application.routes.draw do
+GoonerIn::Application.routes.draw do  
+
+  root :to => 'static_pages#index'
+  match '/sign_up' => "users#new", as: :sign_up
+  match '/log_in' => "sessions#new", as: :log_in
+  match '/log_out' => "sessions#destroy", as: :log_out
+  match "/people/:name" => "people#show", as: :person
+
+  resources :users, :only => [:create]
+  resources :sessions, :only => [:create]
+  resources :players
+  resources :questions
+  resources :answers, :only => [:new, :create] do
+    member do
+      post :like
+      delete :like, :action => :unlike
+    end
+  end
+  
+  namespace :settings do
+    resource :avatar
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,8 +69,7 @@ GoonerIn::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
-
+  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

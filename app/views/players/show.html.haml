@@ -1,0 +1,46 @@
+#main
+  .container
+    .row
+      .mainbar.span9.box
+        %ul.breadcrumbs
+          %li
+            = link_to 'Gooner.in', root_path
+            %span.divider -
+          %li
+            = link_to '球员', players_path
+            %span.divider -
+          %li.active
+            #{@player.name}
+        %section#profile
+          .player-info
+            .avatar-large.pull-left
+              = image_tag "players/#{@player.e_name}.jpg", alt: "#{@player.name}"
+            .info-wrapper
+              .info-txt
+                %h3 #{@player.name}
+                %table
+                  %thead
+                    %tr
+                      %th 国籍
+                      %th 出生日期
+                  %tbody
+                    %tr
+                      %td #{@player.nationality}
+                      %td #{@player.day_of_birth}
+        %section#questions
+          - @player.related_questions.each do |q|
+            = q.title
+        
+      %aside.span3.box
+        .control
+          %h3 管理
+          %ul.unstyled
+            %li
+              = link_to '编辑', edit_player_path(@player)
+            %li
+              = link_to '删除', @player, method: :delete, confirm: "确定删除？"
+            %li
+              = link_to '登出', log_out_path, confirm: "确定？"
+                
+          
+          

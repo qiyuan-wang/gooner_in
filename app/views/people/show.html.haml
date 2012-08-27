@@ -1,0 +1,18 @@
+%h1 People#show
+%p Find me in app/views/people/show.html.haml
+
+= @person.name
+- @person.questions.each do |q|
+  = q.title
+  - q.related_players.each do |p|
+    = p.name
+
+= image_tag @person.avatar_url(:large)
+= image_tag @person.avatar_url(:normal)
+= image_tag @person.avatar_url(:thumb)
+
+
+
+- if current_user == @person
+  = link_to '编辑头像', settings_avatar_path, class: 'btn btn-primary'
+

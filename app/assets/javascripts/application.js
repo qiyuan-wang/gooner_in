@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require rails.validations
+//= require chosen-jquery
+//= require editor/redactor
+//= require editor/langs/zh_cn
+//= require jcrop/jquery.Jcrop
 //= require_tree .

@@ -1,13 +1,22 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
-gem 'bootstrap-sass', '2.0.0'
+gem 'bootstrap-sass', '~> 2.0.4.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
-gem 'mongoid', '~> 3.0.0.rc'
+gem 'mongoid', '~> 3.0.0'
+gem 'client_side_validations'
+gem 'chosen-rails'
 gem 'haml'
+gem 'haml-rails'
+gem 'sorcery'
+
+#文件上传
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => "carrierwave/mongoid"
+gem 'mini_magick'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -16,6 +25,8 @@ group :development do
   gem 'rspec-rails', '2.9.0'
   gem 'guard-rspec', '0.5.5'
   gem 'annotate', '~> 2.4.1.beta'
+  gem 'guard-livereload'
+  gem 'rack-livereload'
 end
 
 

@@ -1,0 +1,475 @@
+@import "bootstrap";
+[class*="span"] {
+  float: left;
+  margin-left: 10px;
+}
+//自定义mixins--------------------------------------------------
+
+//球员头像样式 $radius为头像图片半径
+@mixin avatar-image($radius) {
+  background: -webkit-linear-gradient(-45deg, #ff0000 0%,#ff7f7f 50%,#ef5a4c 51%,#ff0505 100%);
+  width: 2 * $radius;
+  @include border-radius($radius + 3px);
+  padding: 3px;
+  img {
+    width: 2 * $radius;
+    @include border-radius($radius);
+    vertical-align: middle;
+  }
+}
+
+//球员头像样式 有hover效果 $radius为头像图片半径
+@mixin avatar-image-with-hover($radius) {
+  @include avatar-image($radius);
+
+  &:hover {
+    background: -webkit-linear-gradient(-45deg, #fc9300 0%,#f9b55c 50%,#f49a46 51%,#f9a200 100%);  
+  }
+}
+
+//用户头像样式
+@mixin u-avatar-image() {
+}
+
+//通用---------------------------------------------------------
+body {
+  min-width: 960px;
+  background-color: OldLace;
+  font: 13px/22px 'Helvetica Neue', Helvetica, Verdana, Tahoma, Arial, Sans-serif;
+  color: #222;
+}
+
+//logo用的字体
+@font-face {
+    font-family:"Trocchi";
+    src:url("../font/Trocchi-Regular.eot?") format("eot"), url("../font/Trocchi-Regular.woff") format("woff"), url("../font/Trocchi-Regular.ttf") format("truetype"), url("../font/Trocchi-Regular.svg#Trocchi") format("svg");
+    font-weight:normal;
+    font-style:normal;
+}
+
+hr {
+  margin: 14px;
+}
+
+.u-avatar-small {
+  @include border-radius(3px);
+}
+.avatar-small {
+  @include avatar-image-with-hover(20px);
+}
+
+.avatar-middle {
+  @include avatar-image-with-hover(50px);
+}
+
+.avatar-large {
+  @include avatar-image(75px);
+}
+
+//白色字体
+.white {
+  color: #FFEEFF;
+}
+
+.clear-element {
+  clear: both;
+  visibility: hidden;
+  margin: 0 auto;
+}
+//
+
+.topbar {
+  
+  .logo-box {
+    background-color: red;
+    @include border-radius(18px);
+    width: 54%;
+    margin: 10px 0;
+    padding: 10px;
+    display: inline-block;
+    
+    .logo {
+      margin-top: 16px;
+      margin-left: 15px;
+      display: inline-block;
+    }
+    
+    .slogan {
+      text-align: left;
+      margin: 0 3px 5px;
+    }    
+  }
+  
+  .log-in-out {
+    position: relative;
+    background-color: #0303DD;
+    //width: 39%;
+    top: 44 px;
+    text-align: right;
+    padding: 10px 20px;
+    //重写a的样式
+    a {
+      color: white;
+      font-size: 14px;
+      
+      &:hover {
+        decoration: none;
+      }
+    }
+  }
+  
+}
+
+.slogan {
+  text-align: right;
+  display: inline-block;
+}
+
+.breadcrumbs {
+  padding: 7px 14px;
+  margin: 0 0 10px;
+
+  li {
+    display: inline;
+  }
+}
+
+//字体
+
+.logo {
+  font-weight: bold;
+  color: white;
+    
+  a {
+    font-family: "Trocchi", san-serif;
+    font-size: 55px;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.slogan {
+  font-family:"Trocchi", san-serif;
+  font-size: 18px;
+  color: white;
+}
+
+.player-info {
+  height: 154px;
+  margin: 10px;
+  
+  .info-wrapper {
+    padding: 32px 50px;
+    
+    .info-txt {
+      background: -webkit-linear-gradient(-45deg, #bfd255 0%,#8eb92a 80%,#72aa00 85%,#9ecb2d 100%); 
+      @include border-radius(10px);
+      padding: 10px 0 10px 120px;
+      width: 55%;
+      h3 {
+        margin-bottom: 5px;
+      }
+      
+      th, td {
+        padding-right: 10px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.players-list {
+  padding:0 35px;
+  
+  ul {
+    li {
+      margin: 10px;
+      text-align: center;
+      width: 106px;
+    
+      a {
+        padding-top: 5px;
+      }
+    }
+  }
+  
+}
+
+.control {
+  padding: 10px;
+  
+  ul {
+    li {
+      a {
+        padding: 5px;
+      }
+    }
+  }
+}
+
+.mainbar {
+  form {
+    margin: 10px;
+  }
+  padding: 10px;
+}
+//字体
+.player-info {
+  color: white;
+  
+  h3 {
+    color: white;
+    font-size: 22px;
+  }
+  
+  table {
+    font-size: 14px;
+  }
+}
+
+.players-list {
+  
+  h2 {
+    color: grey;
+    font-size: 22px;
+  }
+}
+
+
+//位置
+
+#upper-wrapper {
+	width: 100%;
+	height: 360px;
+}
+
+#lower-wrapper {
+  margin: 10px;
+}
+.h-divider {
+  height: 5px;
+  width: 100%;
+  background-color: red;
+  -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.v-divider {
+  width: 12px;
+  height: 80%;
+  color: black;
+  z-index: 999;
+}
+
+.box {
+  @include border-radius(10px);
+}
+
+
+#intro {
+  width: 100%;
+  height: 360px;
+}
+
+@mixin image-setting {
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 360px;
+  position: absolute;
+  z-index: -2;
+}
+
+#img1 {
+  @include image-setting;
+  background-image: url('gooner-large-1.jpg');
+}
+  
+#img2 {
+  @include image-setting;
+  background-image: url('gooner-large-2.jpg');
+}
+
+#img3 {
+  @include image-setting;
+  background-image: url('gooner-large-3.jpg');
+}
+
+#intro-txt {
+  margin: 50px 0 50px 50px;
+  padding: 10px 0;
+}
+
+#login-box {
+  background-color: rgba(255, 0, 0, 0.6);
+  border: none;
+  width: 280px;
+  @include border-radius(20px);
+  margin: 40px 50px 0;
+  padding: 45px 30px;
+  
+  #login-btn {
+    margin-top: 20px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  span {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+#lower-wrapper {
+  .span4 {
+    padding: 15px;
+  }
+}
+
+//字体、颜色、样式
+#intro-txt {
+  h2 {
+    font-size: 55px;
+    color: white;
+    line-height: 60px;
+  }
+}
+
+
+#login-box {
+  
+  #login-btn {
+    text-align: center;
+    span {
+      color: white;
+    }
+  }
+}
+
+.box {
+  background-color: white;
+}
+
+.field_with_errors {
+  .message {
+    display: inline-block;
+    margin-left: 10px;
+    color: red;
+  }
+}
+
+//Question
+.question-field {
+  h2 {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: $green;
+    @include border-radius(5px);
+  }
+}
+
+.asker {
+  margin: 5px;
+  span {
+    display: inline-block;
+    font-size: 13px;
+    //margin: 5px 2px;
+    vertical-align: middle;
+  }
+}
+.related-players-wrapper {
+  height: 60px;
+}
+.related-players {
+  position: relative;
+  height: 30px;
+  h4 {
+    position: absolute;
+    top: 10px;
+    padding: 6px 8px;
+    background-color: $orange;
+    @include border-radius(5px);
+  }
+  ul {
+    height: 50px;
+    margin: 4px 0 4px 74px;
+    li{
+      display: inline;
+      margin-right: 2px;
+    }
+  }
+}
+
+
+
+.answers-field {
+  #leading {
+    width: 30%;
+    padding: 8px;
+    margin-bottom: 10px;
+    background-color: $blue;
+    @include border-radius(5px);
+  }
+  
+  .answer-squad {
+    margin: 5px;
+    
+    .user-avatar {
+      display: block;
+      float: left;
+      margin-top: 4px;
+    }
+    
+    .answer-main {
+      margin-left: 60px;
+      
+      .user-info {
+        color: gray;
+        margin-bottom: 10px;
+      }
+      
+      .answer-content {
+        margin-top: 5px;
+        min-height: 50px;
+      }
+    }
+  }
+}
+
+.icon {
+  
+}
+
+.small_like {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 17px;
+  background: url(image_path("like.png")) no-repeat;
+  vertical-align: top;
+}
+
+.small_liked {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  background: url(image_path("liked.png")) no-repeat;
+  vertical-align: top;
+}
+
+.like {
+  vertical-align: middle;
+}
+
+.user-profile {
+  margin: 10px 40px;
+  img {
+    
+  }
+}

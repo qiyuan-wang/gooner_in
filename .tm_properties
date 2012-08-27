@@ -1,0 +1,5 @@
+softTabs = true 
+[ *.haml ] 
+tabSize = 2
+[ *.scss ] 
+tabSize = 2

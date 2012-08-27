@@ -33,7 +33,7 @@
 
 //通用---------------------------------------------------------
 body {
-  min-width: 940px;
+  min-width: 960px;
   background-color: OldLace;
   font: 13px/22px 'Helvetica Neue', Helvetica, Verdana, Tahoma, Arial, Sans-serif;
   color: #222;
@@ -83,7 +83,7 @@ hr {
   .logo-box {
     background-color: red;
     @include border-radius(18px);
-    width: 55%;
+    width: 54%;
     margin: 10px 0;
     padding: 10px;
     display: inline-block;
@@ -99,6 +99,25 @@ hr {
       margin: 0 3px 5px;
     }    
   }
+  
+  .log-in-out {
+    position: relative;
+    background-color: #0303DD;
+    //width: 39%;
+    top: 44 px;
+    text-align: right;
+    padding: 10px 20px;
+    //重写a的样式
+    a {
+      color: white;
+      font-size: 14px;
+      
+      &:hover {
+        decoration: none;
+      }
+    }
+  }
+  
 }
 
 .slogan {
@@ -416,9 +435,36 @@ hr {
       
       .answer-content {
         margin-top: 5px;
+        min-height: 50px;
       }
     }
   }
+}
+
+.icon {
+  
+}
+
+.small_like {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 17px;
+  background: url(image_path("like.png")) no-repeat;
+  vertical-align: top;
+}
+
+.small_liked {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  background: url(image_path("liked.png")) no-repeat;
+  vertical-align: top;
+}
+
+.like {
+  vertical-align: middle;
 }
 
 .user-profile {

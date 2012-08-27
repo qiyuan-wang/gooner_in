@@ -16,14 +16,11 @@
               .related-players
                 %h4.white 相关球员
                 %ul.unstyled
-                  - @question.related_players.each do |p|
-                    %li.pull-left
-                      .avatar-small
-                        = link_to image_tag("players/#{p.e_name}.jpg", alt: "#{p.name}"), player_path(id: p.e_name)
+                  = render :partial => 'related_player', collection: @question.related_players
         .answers-field
-          %h3.white
+          %h3#leading.white
             = @question.answers.count
-            个答案       
+            个答案 
           - if @question.answers.empty?
             %p 这个问题还没有答案额，你来一个吧先！
           - else

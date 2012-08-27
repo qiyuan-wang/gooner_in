@@ -6,9 +6,14 @@
           .logo
             %a(href='#') Gooner.in
           %span.slogan - In Arsenal we trust.
-        .pull-right
+        .navi
+          = link_to "首页"
+          = link_to "球员"
+        .log-in-out.pull-right
           - if logged_in?
             = link_to "#{current_user.name}", person_path(current_user.name)
+            = link_to "通知", '#'
+            = link_to "设置", '#'
             = link_to "退出", :log_out
           - else
             = link_to "登录", :log_in

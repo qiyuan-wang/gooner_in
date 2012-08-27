@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
   before_filter :require_login, only: [:create]
   before_filter :find_question, only: [:new, :create]
+  
   def new
     @answer = current_user.answers.new question: @question
     respond_to do |format|
@@ -20,6 +21,18 @@ class AnswersController < ApplicationController
         format.html { render action: "new" }
       end
     end
+  end
+  
+  def like
+    @answer = Answer.find(params[:id])
+    @answer.like_by current_user
+    render :text => @answer.reload.likes_count
+  end
+  
+  def unlike
+    @answer = Answer.find(params[:id])
+    @answer.unlike_by current_user
+    render :text => @answer.reload.likes_count
   end
   
   protected

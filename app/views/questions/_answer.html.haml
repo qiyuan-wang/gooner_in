@@ -1,11 +1,13 @@
 .answer-squad
   .user-avatar
     = link_to image_tag(answer.user.avatar_url(:normal), alt: "#{answer.user.name}", class: "u-avatar-small"), person_path(answer.user.name)
-  .answer-main  
+  .answer-main.clearfix
     .user-info
       = link_to "#{answer.user.name}", person_path(answer.user.name)
       %span.pull-right
         = answer.updated_time
     .answer-content
       = answer.content.html_safe
+    .like
+      = likeable_tag answer
   %hr

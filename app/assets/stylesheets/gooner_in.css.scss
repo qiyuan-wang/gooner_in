@@ -5,11 +5,6 @@
 }
 //自定义mixins--------------------------------------------------
 
-//logo使用的web-font
-@mixin web-font {
-  font-family: 'Trocchi', sans-serif;
-}
-
 //球员头像样式 $radius为头像图片半径
 @mixin avatar-image($radius) {
   background: -webkit-linear-gradient(-45deg, #ff0000 0%,#ff7f7f 50%,#ef5a4c 51%,#ff0505 100%);
@@ -35,12 +30,21 @@
 //用户头像样式
 @mixin u-avatar-image() {
 }
+
 //通用---------------------------------------------------------
 body {
-  min-width: 940px;
+  min-width: 960px;
   background-color: OldLace;
   font: 13px/22px 'Helvetica Neue', Helvetica, Verdana, Tahoma, Arial, Sans-serif;
   color: #222;
+}
+
+//logo用的字体
+@font-face {
+    font-family:"Trocchi";
+    src:url("../font/Trocchi-Regular.eot?") format("eot"), url("../font/Trocchi-Regular.woff") format("woff"), url("../font/Trocchi-Regular.ttf") format("truetype"), url("../font/Trocchi-Regular.svg#Trocchi") format("svg");
+    font-weight:normal;
+    font-style:normal;
 }
 
 hr {
@@ -79,7 +83,7 @@ hr {
   .logo-box {
     background-color: red;
     @include border-radius(18px);
-    width: 55%;
+    width: 54%;
     margin: 10px 0;
     padding: 10px;
     display: inline-block;
@@ -95,6 +99,25 @@ hr {
       margin: 0 3px 5px;
     }    
   }
+  
+  .log-in-out {
+    position: relative;
+    background-color: #0303DD;
+    //width: 39%;
+    top: 44 px;
+    text-align: right;
+    padding: 10px 20px;
+    //重写a的样式
+    a {
+      color: white;
+      font-size: 14px;
+      
+      &:hover {
+        decoration: none;
+      }
+    }
+  }
+  
 }
 
 .slogan {
@@ -118,7 +141,7 @@ hr {
   color: white;
     
   a {
-    @include web-font;
+    font-family: "Trocchi", san-serif;
     font-size: 55px;
     color: white;
     text-decoration: none;
@@ -126,7 +149,7 @@ hr {
 }
 
 .slogan {
-  @include web-font;
+  font-family:"Trocchi", san-serif;
   font-size: 18px;
   color: white;
 }
@@ -351,7 +374,7 @@ hr {
 }
 
 .asker {
-  margin: 4px;
+  margin: 5px;
   span {
     display: inline-block;
     font-size: 13px;
@@ -385,10 +408,10 @@ hr {
 
 
 .answers-field {
-  h3 {
+  #leading {
     width: 30%;
     padding: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     background-color: $blue;
     @include border-radius(5px);
   }
@@ -404,12 +427,44 @@ hr {
     
     .answer-main {
       margin-left: 60px;
-    
+      
       .user-info {
         color: gray;
+        margin-bottom: 10px;
+      }
+      
+      .answer-content {
+        margin-top: 5px;
+        min-height: 50px;
       }
     }
   }
+}
+
+.icon {
+  
+}
+
+.small_like {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 17px;
+  background: url(image_path("like.png")) no-repeat;
+  vertical-align: top;
+}
+
+.small_liked {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  background: url(image_path("liked.png")) no-repeat;
+  vertical-align: top;
+}
+
+.like {
+  vertical-align: middle;
 }
 
 .user-profile {

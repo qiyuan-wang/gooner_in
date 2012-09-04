@@ -5,6 +5,7 @@ class Question
   include Mongoid::AutoId
   
   field :title, type: String
+  field :answered_users, type: Array, default: []
   attr_accessible :title
   
   validates :title, presence: { message: "这里可不能空着额"}
@@ -23,7 +24,26 @@ class Question
     self.add_related_players(players)
   end
   
-  def created_time
-    return self.created_at.to_date
+  def modified?
+    self.updated_at > self.created_at
+  end
+  
+  def modified_time
+    return self.updated_at
+  end
+  
+  def asked_by?(user)
+    self.user_id == user.id
+  end
+  
+  def answered_by(user)
+    unless answered_by? user
+      self.push(:answered_users, user.id)
+      self.touch
+    end
+  end
+  
+  def answered_by?(user)
+    self.answered_users.include? user.id
   end
 end

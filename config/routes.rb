@@ -9,12 +9,16 @@ GoonerIn::Application.routes.draw do
   resources :users, :only => [:create]
   resources :sessions, :only => [:create]
   resources :players
-  resources :questions
-  resources :answers, :only => [:new, :create] do
+  
+  resources :answers, :only => [:like, :unlike] do
     member do
       post :like
       delete :like, :action => :unlike
     end
+  end
+  
+  resources :questions do
+    resources :answers
   end
   
   namespace :settings do

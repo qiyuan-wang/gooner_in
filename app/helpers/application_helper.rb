@@ -8,4 +8,8 @@ module ApplicationHelper
       "#{page_title} | #{base_title}"
     end
   end
+  
+  def icon_tag_label(icon, title)
+    raw "<i class=\"icon-#{icon} icon-white\"></i> #{title}"
+  end
 end

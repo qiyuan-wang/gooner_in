@@ -1,0 +1,9 @@
+%span{id: answer.anchor}
+  - if [1 .. 8].include? answer.likes_count
+    - answer.liked_users_list.each do |p|
+      = link_to image_tag(p.avatar_url(:thumb), alt: "#{p.name}", class: "u-avatar-small"), person_path(p.name)
+  - else
+    - answer.liked_users_list_alt.each do |p|
+      = link_to image_tag(p.avatar_url(:thumb), alt: "#{p.name}", class: "u-avatar-small"), person_path(p.name)
+  - if answer.likes_count > 8
+    = link_to "更多", question_answer_path(answer), style: "vertical-align: middle;"

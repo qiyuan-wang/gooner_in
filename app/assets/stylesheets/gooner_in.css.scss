@@ -31,6 +31,16 @@
 @mixin u-avatar-image() {
 }
 
+@mixin like($size) {
+  display: inline-block;
+  width: $size;
+  height: $size;
+  line-height: $size;
+  vertical-align: top;
+  -webkit-transition-property: background;
+  -webkit-transition-duration: .3s;
+}
+
 //通用---------------------------------------------------------
 body {
   min-width: 960px;
@@ -82,12 +92,11 @@ hr {
   
   .logo-box {
     background-color: red;
-    @include border-radius(18px);
+    @include border-radius(15px);
     width: 54%;
     margin: 10px 0;
     padding: 10px;
-    display: inline-block;
-    
+    display: inline-block;    
     .logo {
       margin-top: 16px;
       margin-left: 15px;
@@ -99,25 +108,48 @@ hr {
       margin: 0 3px 5px;
     }    
   }
-  
-  .log-in-out {
+
+  .nav {
     position: relative;
-    background-color: #0303DD;
-    //width: 39%;
-    top: 44 px;
-    text-align: right;
-    padding: 10px 20px;
-    //重写a的样式
-    a {
-      color: white;
-      font-size: 14px;
-      
-      &:hover {
-        decoration: none;
+    background-color: #35C9DD;
+    @include border-radius(5px);
+    display: inline-block;
+    margin-right: -10px;
+    width: 43%;
+    top: 42px;
+    //text-align: right;
+    padding: 5px;
+    
+    li {       
+      a {
+        vertical-align: top;
+        font-size: 14px;
+        color: white;
+        &:hover {
+          background-color: #0AB2C9;
+        }
+      }
+    }
+    
+    .dropdown-menu {
+      li {
+        a {
+          color: black;
+          
+          &:hover {
+            color: white;
+          }
+        }
       }
     }
   }
-  
+}
+
+//强行解决dropdown-toggle的颜色问题
+.nav-pills .open .dropdown-toggle {
+  color: white;
+  background-color: #0AB2C9;
+  border-color: #0AB2C9;
 }
 
 .slogan {
@@ -207,12 +239,10 @@ hr {
   }
 }
 
-.mainbar {
-  form {
-    margin: 10px;
-  }
+#mainbar {
   padding: 10px;
 }
+
 //字体
 .player-info {
   color: white;
@@ -263,6 +293,7 @@ hr {
 
 .box {
   @include border-radius(10px);
+  background-color: white;
 }
 
 
@@ -308,7 +339,7 @@ hr {
   border: none;
   width: 280px;
   @include border-radius(20px);
-  margin: 40px 50px 0;
+  margin: 33px 50px;
   padding: 45px 30px;
   
   #login-btn {
@@ -351,10 +382,6 @@ hr {
   }
 }
 
-.box {
-  background-color: white;
-}
-
 .field_with_errors {
   .message {
     display: inline-block;
@@ -364,27 +391,30 @@ hr {
 }
 
 //Question
-.question-field {
-  h2 {
-    margin: 5px 0;
-    padding: 8px;
-    background-color: $green;
-    @include border-radius(5px);
-  }
+.question-title {
+  background-color: #26CC26;
+  @include border-radius(3px);
+  margin: 5px 0;
+  padding: 8px;
 }
 
-.asker {
+.question-field {
+
+}
+
+.asker-info {
   margin: 5px;
   span {
+    color: gray;
     display: inline-block;
     font-size: 13px;
-    //margin: 5px 2px;
     vertical-align: middle;
   }
 }
 .related-players-wrapper {
   height: 60px;
 }
+
 .related-players {
   position: relative;
   height: 30px;
@@ -392,8 +422,8 @@ hr {
     position: absolute;
     top: 10px;
     padding: 6px 8px;
-    background-color: $orange;
-    @include border-radius(5px);
+    background-color: orange;
+    @include border-radius(3px);
   }
   ul {
     height: 50px;
@@ -406,16 +436,15 @@ hr {
 }
 
 
+.leading {
+  width: 30%;
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #09A8EB;
+  @include border-radius(3px);
+}
 
 .answers-field {
-  #leading {
-    width: 30%;
-    padding: 8px;
-    margin-bottom: 10px;
-    background-color: $blue;
-    @include border-radius(5px);
-  }
-  
   .answer-squad {
     margin: 5px;
     
@@ -434,42 +463,77 @@ hr {
       }
       
       .answer-content {
-        margin-top: 5px;
+        margin: 5px 0;
         min-height: 50px;
       }
     }
   }
 }
 
-.icon {
-  
-}
-
 .small_like {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  line-height: 17px;
+  @include like(16px);
   background: url(image_path("like.png")) no-repeat;
-  vertical-align: top;
 }
 
 .small_liked {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  line-height: 16px;
+  @include like(16px);
   background: url(image_path("liked.png")) no-repeat;
-  vertical-align: top;
 }
 
-.like {
-  vertical-align: middle;
+.actions {
+
 }
 
-.user-profile {
-  margin: 10px 40px;
-  img {
+
+#place-holder {
+  text-align: center;
+  margin: 30px 0;
+  height: 100px;
+  vertical-align: middle;    
+  p {
+    font-size: 16px;
+    line-height: 100px;
+  }
+}
+
+#footer-m {
+  color: #8A858A;
+  margin: 10px -10px 0 0;
+  padding: 5px;
+  background: #DDDDD9;
+  text-align: center;
+  
+  a {
+    color: #C77979;
+    padding: 3px;
+    -webkit-transition-property: background color;
+    -webkit-transition-duration: .3s;
     
+    &:hover {
+      background: #F36E6E;
+      color: white;
+      text-decoration:none;
+    }
+  }
+}
+
+.sidebar-wrapper {
+  margin: 15px 10px;
+}
+.user-profile {
+  .user-avatar {
+    margin: 5px 20px 30px;
+  }
+  
+  span {
+    display: block;
+    width: 100%;
+  }
+}
+
+.ask {
+  margin: 0 20px;
+  a {
+    text-align: center;
   }
 }

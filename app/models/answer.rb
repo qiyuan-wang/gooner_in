@@ -5,7 +5,6 @@ class Answer
   include Mongoid::AutoId
   include Mongoid::Likeable
   field :content
-  
   belongs_to :user
   belongs_to :question
   
@@ -13,6 +12,9 @@ class Answer
     self.updated_at.to_date
   end
   
+  def anchor
+    "answer-#{self.id}"
+  end
   #标注喜欢
   def like_by(user)
     unless self.liked_by_user? user
@@ -29,5 +31,18 @@ class Answer
       self.inc(:likes_count, -1)
       self.touch
     end
+  end
+  
+  #获取点击喜欢的用户
+  def liked_users_list
+    User.where(:_id.in => self.liked_user_ids).limit(8).order_by(:created_at => -1)
+  end
+  
+  #按喜欢时间排序后的用户列表 性能较差
+  #!!需修改
+  def liked_users_list_alt
+    ordering = {}
+    self.liked_user_ids.last(8).reverse.each_with_index {|id, i| ordering[id] = i }
+    User.where(:_id.in => self.liked_user_ids).limit(8).sort_by{|o| ordering[o.id]}
   end
 end

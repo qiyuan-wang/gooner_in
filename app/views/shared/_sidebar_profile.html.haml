@@ -1,0 +1,14 @@
+.user-profile.sidebar-wrapper
+  %h4 我的资料
+  .user-avatar
+    = image_tag current_user.avatar_url(:large), alt: "#{@question.user.name}"
+    = link_to '编辑头像', settings_avatar_path, class: "pull-right"
+%hr
+%ul.nav.nav-list
+  %li.active
+    = link_to '我的提问'
+  %li
+    = link_to '我的回答'
+  %li
+    = link_to '我喜欢的'
+%hr

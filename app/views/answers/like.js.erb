@@ -1,0 +1,6 @@
+(function() {
+  var $list = $('#' + '<%= @answer.anchor %>');
+  $list.fadeOut('300', function(){
+    $(this).replaceWith('<%= escape_javascript(render :partial => 'questions/liked_users_list', :locals => {:answer => @answer}) %>');
+  }); 
+})();

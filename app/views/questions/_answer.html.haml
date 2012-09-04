@@ -8,6 +8,11 @@
         = answer.updated_time
     .answer-content
       = answer.content.html_safe
-    .like
+    .actions
       = likeable_tag answer
+      = render :partial => 'liked_users_list', :locals => { :answer => answer }
+      - if answer.user == current_user
+        .edit.pull-right
+          = link_to '编辑', edit_question_answer_path(answer.question, answer), :class => "btn btn-small"
+          = link_to '删除', question_answer_path(answer.question, answer), :confirm => '确定要删除这个问题?', :method => :delete, :class => "btn btn-small btn-danger"
   %hr

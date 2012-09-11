@@ -12,4 +12,12 @@ module ApplicationHelper
   def icon_tag_label(icon, title)
     raw "<i class=\"icon-#{icon} icon-white\"></i> #{title}"
   end
+  
+  def short_question_title(question)
+    if question.title.length < 40
+      question.title
+    else
+      question.title.slice(0, 30) + "..."
+    end
+  end
 end

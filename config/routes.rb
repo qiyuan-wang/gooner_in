@@ -10,7 +10,7 @@ GoonerIn::Application.routes.draw do
   resources :sessions, :only => [:create]
   resources :players
   
-  resources :answers, :only => [:like, :unlike] do
+  resources :answers, :only => [:like, :unlike, :index] do
     member do
       post :like
       delete :like, :action => :unlike

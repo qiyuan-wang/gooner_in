@@ -1,7 +1,7 @@
 .user-profile.sidebar-wrapper
-  %h4 我的资料
+  %h4.title-small.white 我的资料
   .user-avatar
-    = image_tag current_user.avatar_url(:large), alt: "#{@question.user.name}"
+    = image_tag current_user.avatar_url(:large), alt: "#{current_user.name}"
     = link_to '编辑头像', settings_avatar_path, class: "pull-right"
 %hr
 %ul.nav.nav-list

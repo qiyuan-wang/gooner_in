@@ -5,7 +5,7 @@
     .user-info
       = link_to "#{answer.user.name}", person_path(answer.user.name)
       %span.pull-right
-        = answer.updated_time
+        = answer.modified_time
     .answer-content
       = answer.content.html_safe
     .actions

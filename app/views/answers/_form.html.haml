@@ -1,6 +1,2 @@
-%h3.white.leading 你的回答
-= form_for @answer, :url => question_answers_path(question_id: @question) do |f|
-  .field
-    = f.text_area :content, rows: 10, style: "height:300px", id: "redactor_content"
-  .actions
-    = f.submit '发表', class: "btn btn-success", style: "margin-top: 10px;"
+.field
+  = form.text_area :content, rows: 10, style: "height:300px", id: "redactor_content"

@@ -8,8 +8,8 @@ class Answer
   belongs_to :user
   belongs_to :question
   
-  def updated_time
-    self.updated_at.to_date
+  def modified_time
+    return self.created_at.strftime("%y-%m-%d %k:%M:%S")
   end
   
   def anchor
@@ -20,7 +20,7 @@ class Answer
     unless self.liked_by_user? user
       self.push(:liked_user_ids, user.id)
       self.inc(:likes_count, 1)
-      self.touch
+      #self.touch
     end
   end
   
@@ -29,7 +29,7 @@ class Answer
     if self.liked_by_user? user
       self.pull(:liked_user_ids, user.id)
       self.inc(:likes_count, -1)
-      self.touch
+      #self.touch
     end
   end
   

@@ -49,7 +49,7 @@ body .redactor_air {
 .redactor_editor embed,
 .redactor_editor video,
 .redactor_editor img {
-	width: auto;
+	//width: auto;
 	max-width: 100%;
 }
 .redactor_editor video,

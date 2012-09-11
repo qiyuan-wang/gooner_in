@@ -1,7 +1,8 @@
 class AnswersController < ApplicationController
   before_filter :require_login, only: [:create, :new]
-  before_filter :find_question, only: [:new, :create, :destroy]
+  before_filter :find_question, except: [:like, :unlike]
   before_filter :answer_authentication, only: [:new, :create]
+  
   def new
     @answer = current_user.answers.new question: @question
     respond_to do |format|
@@ -40,7 +41,21 @@ class AnswersController < ApplicationController
   
   def edit
     @answer = Answer.find(params[:id])
+    #@question = @answer.question
   end
+  
+  def update
+    @answer = Answer.find(params[:id])
+    respond_to do |format|
+      if @answer.update_attributes(params[:answer])
+        format.html { redirect_to @question }
+        format.json { render json: @question, status: :created, location: @question }
+      else
+        format.html { render action: "edit" }
+      end
+    end
+  end
+    
 
   def like
     @answer = Answer.find(params[:id])

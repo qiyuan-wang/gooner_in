@@ -7,7 +7,8 @@
 
 //球员头像样式 $radius为头像图片半径
 @mixin avatar-image($radius) {
-  background: -webkit-linear-gradient(-45deg, #ff0000 0%,#ff7f7f 50%,#ef5a4c 51%,#ff0505 100%);
+  //background: -webkit-linear-gradient(-45deg, #ff0000 0%,#ff7f7f 50%,#ef5a4c 51%,#ff0505 100%);
+  background: #fc9300;
   width: 2 * $radius;
   @include border-radius($radius + 3px);
   padding: 3px;
@@ -21,14 +22,22 @@
 //球员头像样式 有hover效果 $radius为头像图片半径
 @mixin avatar-image-with-hover($radius) {
   @include avatar-image($radius);
-
+  @include bg-transition(.3s);
   &:hover {
-    background: -webkit-linear-gradient(-45deg, #fc9300 0%,#f9b55c 50%,#f49a46 51%,#f9a200 100%);  
+    //background: -webkit-linear-gradient(-45deg, #fc9300 0%,#f9b55c 50%,#f49a46 51%,#f9a200 100%);  
+    background: #ff0000;
   }
 }
 
 //用户头像样式
 @mixin u-avatar-image() {
+}
+
+@mixin bg-transition($last) {
+  -webkit-transition-property: background;
+  -moz-transition-property: background;
+  -webkit-transition-duration: $last;
+  -moz-transition-duration: $last;
 }
 
 @mixin like($size) {
@@ -37,8 +46,7 @@
   height: $size;
   line-height: $size;
   vertical-align: top;
-  -webkit-transition-property: background;
-  -webkit-transition-duration: .3s;
+  @include bg-transition(.3s);
 }
 
 //通用---------------------------------------------------------
@@ -85,6 +93,28 @@ hr {
   clear: both;
   visibility: hidden;
   margin: 0 auto;
+}
+
+.title-small {
+  background: #08C;
+  max-width: 40%;
+  padding: 5px 8px;
+  @include border-radius(2px);
+}
+
+.title-large {
+  background: #43C248;
+  max-width: 60%;
+  padding: 5px 8px;
+  @include border-radius(2px);
+  -webkit-transition-property: background;
+  -moz-transition-property: background;
+  -webkit-transition-duration: .3s;
+  -moz-transition-duration: .3s;
+
+  &:hover {
+    background: #3AAC3F;
+  };
 }
 //
 
@@ -241,6 +271,7 @@ hr {
 
 #mainbar {
   padding: 10px;
+  min-height: 430px;
 }
 
 //字体
@@ -392,6 +423,8 @@ hr {
 
 //Question
 .question-title {
+  word-wrap: break-word;
+  overflow: hidden;
   background-color: #26CC26;
   @include border-radius(3px);
   margin: 5px 0;
@@ -403,7 +436,7 @@ hr {
 }
 
 .asker-info {
-  margin: 5px;
+  margin: 0 5px 5px;
   span {
     color: gray;
     display: inline-block;
@@ -417,17 +450,17 @@ hr {
 
 .related-players {
   position: relative;
-  height: 30px;
-  h4 {
+  height: 20px;
+  span {
     position: absolute;
-    top: 10px;
-    padding: 6px 8px;
+    top: 12px;
+    padding: 2px 5px;
     background-color: orange;
     @include border-radius(3px);
   }
   ul {
     height: 50px;
-    margin: 4px 0 4px 74px;
+    margin: 4px 0 4px 66px;
     li{
       display: inline;
       margin-right: 2px;
@@ -518,11 +551,11 @@ hr {
 }
 
 .sidebar-wrapper {
-  margin: 15px 10px;
+  margin: 10px;
 }
 .user-profile {
   .user-avatar {
-    margin: 5px 20px 30px;
+    margin: 10px 20px 30px;
   }
   
   span {
@@ -536,4 +569,45 @@ hr {
   a {
     text-align: center;
   }
+}
+
+.question-list > article > .upper-box > .title-line > h3 > a {
+  color: white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  };
+}
+
+.question-list {
+  article {
+    margin: 10px 0;
+    min-height: 80px;
+    position: relative;
+
+    .upper-box {
+      margin-bottom: 10px;
+    }
+    
+    .right-box {
+      position: relative;
+      
+    }
+  }
+}
+
+
+.tags {
+  display: block;
+  position: relative;
+  float: left;
+  //top: -2px;
+  padding:2px 5px;
+  margin-right: 4px;
+  background-color: #09A8EB;
+  @include border-radius(3px);
+}
+
+.title-line {
+  margin-bottom: 5px;
 }

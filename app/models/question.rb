@@ -29,11 +29,15 @@ class Question
   end
   
   def modified_time
-    return self.updated_at
+    return self.created_at.strftime("%y-%m-%d %k:%M:%S")
   end
   
   def asked_by?(user)
     self.user_id == user.id
+  end
+  
+  def answers_count
+    self.answers.count
   end
   
   def answered_by(user)

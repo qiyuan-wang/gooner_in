@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.recent.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -76,6 +76,7 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1.json
   def destroy
     @question = current_user.questions.find(params[:id])
+    #@question.related_player
     @question.destroy
 
     respond_to do |format|

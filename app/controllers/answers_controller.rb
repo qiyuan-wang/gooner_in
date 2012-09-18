@@ -1,7 +1,11 @@
 class AnswersController < ApplicationController
   before_filter :require_login, only: [:create, :new]
-  before_filter :find_question, except: [:like, :unlike]
+  before_filter :find_question, except: [:index, :like, :unlike]
   before_filter :answer_authentication, only: [:new, :create]
+  
+  def index
+    @answers = Answer.most_likes
+  end
   
   def new
     @answer = current_user.answers.new question: @question

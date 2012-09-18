@@ -3,6 +3,8 @@
   float: left;
   margin-left: 10px;
 }
+
+
 //自定义mixins--------------------------------------------------
 
 //球员头像样式 $radius为头像图片半径
@@ -571,7 +573,7 @@ hr {
   }
 }
 
-.question-list > article > .upper-box > .title-line > h3 > a {
+#answer-list >article > .title-line > h3 > a, #question-list > article > .upper-box > .title-line > h3 > a {
   color: white;
   &:hover {
     color: white;
@@ -579,7 +581,7 @@ hr {
   };
 }
 
-.question-list {
+#question-list, #answer-list {
   article {
     margin: 10px 0;
     min-height: 80px;

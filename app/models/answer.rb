@@ -7,9 +7,14 @@ class Answer
   field :content
   belongs_to :user
   belongs_to :question
+  scope :most_likes, order_by(:like => -1 )
   
   def modified_time
     return self.created_at.strftime("%y-%m-%d %k:%M:%S")
+  end
+  
+  def question_title
+    return self.question.title
   end
   
   def anchor

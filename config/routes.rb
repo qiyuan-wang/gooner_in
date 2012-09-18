@@ -19,6 +19,9 @@ GoonerIn::Application.routes.draw do
   
   resources :questions do
     resources :answers
+    collection do
+      get 'pages/:page', :action => :index
+    end
   end
   
   namespace :settings do

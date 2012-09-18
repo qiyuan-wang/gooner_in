@@ -1,0 +1,29 @@
+- provide(:title, "热门回答")
+#main
+  .container
+    .row
+      #mainbar.span9.box
+        #answer-list
+          - @answers.each do |answer|
+            %article.clearfix
+              .title-line
+                %h3
+                  = link_to "#{answer.question_title}", question_path(answer.question), class:"title-large white"
+              .related-players
+                %span.white 相关球员
+                - if !answer.question.related_players.empty?
+                  %ul.unstyled
+                    = render :partial => 'shared/related_player', collection: answer.question.related_players.limit(5)
+              .answer
+                .answer-squad
+                  .user-avatar
+                    = link_to image_tag(answer.user.avatar_url(:normal), alt: "#{answer.user.name}", class: "u-avatar-small"), person_path(answer.user.name)
+                  .answer-main.clearfix
+                    .user-info
+                      = link_to "#{answer.user.name}", person_path(answer.user.name)
+                      %span.pull-right
+                        = answer.modified_time
+                    .answer-content
+                      = answer.content.html_safe
+                    .actions
+            %hr

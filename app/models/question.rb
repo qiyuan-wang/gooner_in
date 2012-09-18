@@ -7,15 +7,19 @@ class Question
   field :title, type: String
   field :answered_users, type: Array, default: []
   attr_accessible :title
+  scope :recent, order_by(updated_at: -1)
+  
+  paginates_per 10
   
   validates :title, presence: { message: "这里可不能空着额"}
   belongs_to :user
-  has_many :answers, :dependent => :delete
+  has_many :answers, :dependent => :destroy
   has_and_belongs_to_many :related_players, class_name: "Player", inverse_of: :related_questions
   
   def add_related_players(players)
     players.each do |p|
       self.related_players << Player.find(p) unless p.empty?
+      #Player.find(p).touch
     end
   end
   

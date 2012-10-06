@@ -5,7 +5,7 @@
         %h2.question-title.white #{@question.title}
         .related-players-wrapper.clearfix
           .related-players
-            %h4.white 相关球员
+            %span.white 相关球员
             - if !@question.related_players.empty?
               %ul.unstyled
                 = render :partial => 'shared/related_player', collection: @question.related_players.limit(2)

@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
   before_filter :answer_authentication, only: [:new, :create]
   
   def index
-    @answers = Answer.most_likes
+    @answers = Answer.most_likes.page params[:page]
   end
   
   def new

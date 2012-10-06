@@ -7,7 +7,9 @@ class Answer
   field :content
   belongs_to :user
   belongs_to :question
-  scope :most_likes, order_by(:like => -1 )
+  scope :most_likes, order_by(:likes_count => -1 )
+  
+  paginates_per 10
   
   def modified_time
     return self.created_at.strftime("%y-%m-%d %k:%M:%S")

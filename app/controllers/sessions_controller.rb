@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
   
   def destroy
     logout
-    redirect_back_or_to home_path
+    redirect_back_or_to root_path
   end
 end

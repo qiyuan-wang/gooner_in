@@ -10,7 +10,7 @@
       = answer.content.html_safe
     .actions
       = likeable_tag answer
-      = render :partial => 'liked_users_list', :locals => { :answer => answer }
+      = render :partial => 'shared/liked_users_list', :locals => { :answer => answer }
       - if answer.user == current_user
         .edit.pull-right
           = link_to '编辑', edit_question_answer_path(answer.question, answer), :class => "btn btn-small"

@@ -6,24 +6,44 @@
         #answer-list
           - @answers.each do |answer|
             %article.clearfix
-              .title-line
-                %h3
-                  = link_to "#{answer.question_title}", question_path(answer.question), class:"title-large white"
-              .related-players
-                %span.white 相关球员
-                - if !answer.question.related_players.empty?
-                  %ul.unstyled
-                    = render :partial => 'shared/related_player', collection: answer.question.related_players.limit(5)
-              .answer
-                .answer-squad
-                  .user-avatar
-                    = link_to image_tag(answer.user.avatar_url(:normal), alt: "#{answer.user.name}", class: "u-avatar-small"), person_path(answer.user.name)
-                  .answer-main.clearfix
-                    .user-info
-                      = link_to "#{answer.user.name}", person_path(answer.user.name)
-                      %span.pull-right
-                        = answer.modified_time
-                    .answer-content
-                      = answer.content.html_safe
-                    .actions
+              .user-avatar.pull-left
+                = link_to image_tag(answer.user.avatar_url(:normal), alt: "#{answer.user.name}", class: "u-avatar-small"), person_path(answer.user.name)
+              .answer-box.clearfix
+                .responder-info
+                  %span
+                    = link_to "#{answer.user.name}", person_path(answer.user.name)
+                    回答了这个话题
+                  %span.pull-right 
+                    = answer.modified_time
+                .title-line
+                  %h3
+                    = link_to "#{answer.question_title}", question_path(answer.question), class:"title-large white"
+                .related-players
+                  %span.white 相关球员
+                  - if !answer.question.related_players.empty?
+                    %ul.unstyled
+                      = render :partial => 'shared/related_player', collection: answer.question.related_players.limit(5)
+                %br
+                .answer-content
+                  = answer.content.html_safe
+                .actions
+                  = likeable_tag answer
+                  = render :partial => 'shared/liked_users_list', :locals => { :answer => answer }
+                  - if answer.user == current_user
+                    .edit.pull-right
+                      = link_to '编辑', edit_question_answer_path(answer.question, answer), :class => "btn btn-small"
+                      = link_to '删除', question_answer_path(answer.question, answer), :confirm => '确定要删除这个问题?', :method => :delete, :class => "btn btn-small btn-danger"
             %hr
+        = paginate @answers
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        .ask
+          %p 问题都没意思？那你问一个
+          - if logged_in?
+            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
+          - else
+            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
+        %br

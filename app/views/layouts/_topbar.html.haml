@@ -8,9 +8,9 @@
           %span.slogan - In Arsenal we trust.
         %ul.nav.nav-pills.pull-right
           %li
-            = link_to icon_tag_label("home", "首页"), root_path
+            = link_to icon_tag_label("home", "首页"), questions_path
           %li
-            = link_to icon_tag_label("th-large", "最新"), questions_path
+            = link_to icon_tag_label("th-large", "最新"), answers_path
           %li
             = link_to icon_tag_label("list-alt", "阵容"), players_path
           - if logged_in?

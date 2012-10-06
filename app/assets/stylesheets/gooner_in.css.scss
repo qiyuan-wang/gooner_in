@@ -452,7 +452,7 @@ hr {
 
 .related-players {
   position: relative;
-  height: 20px;
+  height: 40px;
   span {
     position: absolute;
     top: 12px;
@@ -573,7 +573,7 @@ hr {
   }
 }
 
-#answer-list >article > .title-line > h3 > a, #question-list > article > .upper-box > .title-line > h3 > a {
+#answer-list > article > .answer-box > .title-line > h3 > a, #question-list > article > .upper-box > .title-line > h3 > a {
   color: white;
   &:hover {
     color: white;
@@ -583,7 +583,7 @@ hr {
 
 #question-list, #answer-list {
   article {
-    margin: 10px 0;
+    margin: 5px 0;
     min-height: 80px;
     position: relative;
 
@@ -603,7 +603,6 @@ hr {
   display: block;
   position: relative;
   float: left;
-  //top: -2px;
   padding:2px 5px;
   margin-right: 4px;
   background-color: #09A8EB;
@@ -611,5 +610,53 @@ hr {
 }
 
 .title-line {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.answer-box {
+  margin-left: 60px;
+}
+
+.responder-info {
+  color: grey;
+  position: relative;
+  top: -5px;
+}
+
+//回答样式
+.answer-content {
+  p, ul, ol, table, dl, blockquote, pre {
+    font-size: 15px;
+    color: #534F4F;
+  	margin-bottom: 15px !important;
+  	line-height: 1.5em !important;
+  }
+  
+  object,
+  embed,
+  video,
+  img {
+  	//width: auto;
+  	max-width: 100%;
+  }
+  iframe, 
+  object,
+  hr {
+  	margin-bottom: 15px !important;
+  }
+  
+  blockquote {
+  	margin-left: 3em !important;
+  	//font-style: italic !important;
+  	color: #777;	
+  }
+ ul, 
+ ol {
+  	padding-left: 2em !important;	
+  }
+  
+  hr {
+    border-top: 1px solid #ECC6C6;
+    border-bottom: 1px solid white;
+  }
 }

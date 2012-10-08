@@ -1,9 +1,19 @@
-%h1 People#show
-%p Find me in app/views/people/show.html.haml
-
-= @person.name
-- @person.questions.each do |q|
-  = q.title
-  - q.related_players.each do |p|
-    = p.name
+- provide(:title, "#{@person.name}")
+#main
+  .container
+    .row
+      #mainbar.span9.box
+        %h1.title-small.white #{@person.name}
+        #person-info
+          = image_tag @person.avatar_url(:large), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
+          #person-details
+            %span Ta是这样介绍自己的
+            %span "Ipes iete sa;fadldfif
+            %span Ta的微博
+            %span Ta没有绑定额
+        = @person.name
+        - @person.questions.each do |q|
+          = q.title
+          - q.related_players.each do |p|
+            = p.name
 

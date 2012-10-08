@@ -28,6 +28,15 @@ class User
   has_many :questions
   has_many :answers
   
+  #统计获得喜欢数
+  def total_likes
+    total_likes = 0
+    self.answers.each do |a|
+      total_likes += a.likes_count
+    end
+    total_likes
+  end
+  
   def crop_avatar
     avatar.recreate_versions! if crop_x.present?
   end

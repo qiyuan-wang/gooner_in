@@ -12,5 +12,4 @@ class Player
   field :_id, type: String, default: ->{ e_name }
   
   has_and_belongs_to_many :related_questions, class_name: "Question", inverse_of: :related_players
-
 end

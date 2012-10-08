@@ -5,15 +5,20 @@
       #mainbar.span9.box
         %h1.title-small.white #{@person.name}
         #person-info
-          = image_tag @person.avatar_url(:large), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
+          = image_tag @person.avatar_url(:profile), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
           #person-details
-            %span Ta是这样介绍自己的
-            %span "Ipes iete sa;fadldfif
-            %span Ta的微博
-            %span Ta没有绑定额
-        = @person.name
-        - @person.questions.each do |q|
-          = q.title
-          - q.related_players.each do |p|
-            = p.name
+            .box-t
+              Ta是这样介绍自己的
+            .box-c(style="min-height: 30px; font-size: 16px;")
+              我是一个特立独行而缺乏独立行走能力的人，所以我基本上是个废人。
+            .box-t
+              Ta在gooner.in…
+            .box-c
+              提出了<i> #{@person.questions.count} </i>个问题，写了<i> #{@person.answers.count} </i>个答案，获得了<i> #{@person.total_likes} </i>个喜欢
+          %ul#person-stats
+        #person-questions
+          - @person.questions.each do |q|
+            = q.title
+            - q.related_players.each do |p|
+              = p.name
 

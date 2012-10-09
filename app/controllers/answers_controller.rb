@@ -20,6 +20,7 @@ class AnswersController < ApplicationController
     @answer.question = @question
     respond_to do |format|
       if @answer.save
+        @answer.get_summary
         @question.answered_by current_user
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render json: @question, status: :created, location: @question }
@@ -52,6 +53,7 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
+        @answer.get_summary
         format.html { redirect_to @question }
         format.json { render json: @question, status: :created, location: @question }
       else

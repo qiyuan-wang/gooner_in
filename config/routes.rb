@@ -7,6 +7,7 @@ GoonerIn::Application.routes.draw do
   match "/people/:name" => "people#show", as: :person
   match "/people/:name/questions" => "people#questions_list", as: :person_questions
   match "/people/:name/questions/pages/:page" => "people#questions_list"
+  
   resources :users, :only => [:create]
   resources :sessions, :only => [:create]
   resources :players

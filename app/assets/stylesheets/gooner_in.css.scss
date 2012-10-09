@@ -184,6 +184,13 @@ hr {
   border-color: #0AB2C9;
 }
 
+//强行解决nav-pills active状态的颜色问题
+.nav-pills .active > a, .nav-pills .active > a:hover {
+  color: white;
+  background-color: #0AB2C9;
+  border-color: #0AB2C9;
+}
+
 .slogan {
   text-align: right;
   display: inline-block;
@@ -502,6 +509,17 @@ hr {
   }
 }
 
+.answer-summary {
+  border: 1px solid #CBCCDA;
+  margin-left: 60px;
+  margin-bottom: 10px;
+  padding: 0 5px;
+  font-size: 14px;
+  a {
+    margin-top: 20px;
+    color: blue;
+  }
+}
 .small_like {
   @include like(16px);
   background: url(image_path("like.png")) no-repeat;
@@ -511,11 +529,6 @@ hr {
   @include like(16px);
   background: url(image_path("liked.png")) no-repeat;
 }
-
-.actions {
-
-}
-
 
 #place-holder {
   text-align: center;
@@ -620,7 +633,7 @@ hr {
 .responder-info {
   color: grey;
   position: relative;
-  top: -5px;
+  top: -6px;
 }
 
 //People@show

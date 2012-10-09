@@ -3,16 +3,16 @@
   .container
     .row
       #mainbar.span9.box
-        %h3.title-small.white #{@person.name}的问题
+        %h3.title-small.white #{@person.name}的提出问题
         #person-links
           = image_tag @person.avatar_url(:normal), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
           %ul.unstyled
             %li
-              = link_to 'Ta的主页', person_path(@person.name)
+              = link_to "#{@name}的主页", person_path(@person.name)
             %li
-              = link_to 'Ta的回答'
+              = link_to "#{@name}的回答"
             %li
-              Ta的问题
+              #{@name}的问题
         %hr
         #question-list
           - @questions.each do |question|
@@ -32,3 +32,15 @@
                       = render :partial => 'shared/related_player', collection: question.related_players.limit(5)
             %hr
         = paginate @questions
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        .ask
+          %p 问题都没意思？那你问一个
+          - if logged_in?
+            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
+          - else
+            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
+        %br

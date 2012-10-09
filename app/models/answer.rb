@@ -5,6 +5,7 @@ class Answer
   include Mongoid::AutoId
   include Mongoid::Likeable
   field :content
+  field :summary, type: String, default: ""
   belongs_to :user
   belongs_to :question
   scope :most_likes, order_by(:likes_count => -1 )
@@ -22,6 +23,14 @@ class Answer
   def anchor
     "answer-#{self.id}"
   end
+  
+  def get_summary
+    unless self.content.empty?
+      self.summary = self.content.gsub(/<[^>]*>/, "").first(160)
+    end
+    self.touch
+  end
+  
   #标注喜欢
   def like_by(user)
     unless self.liked_by_user? user
@@ -30,6 +39,7 @@ class Answer
       #self.touch
     end
   end
+  
   
   #取消喜欢
   def unlike_by(user)

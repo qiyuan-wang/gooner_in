@@ -1,3 +1,4 @@
+# coding: utf-8
 class PeopleController < ApplicationController
   before_filter :find_person
   def show
@@ -12,5 +13,10 @@ class PeopleController < ApplicationController
   def find_person
     @person = User.find_by(name: params[:name])
     raise Mongoid::Errors::DocumentNotFound.new(User, params[:name]) if @person.nil?
+    if @person == current_user
+      @name = "我"
+    else
+      @name = "Ta"
+    end
   end
 end

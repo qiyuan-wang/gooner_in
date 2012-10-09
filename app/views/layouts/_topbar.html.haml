@@ -7,11 +7,11 @@
             %a(href='#') Gooner.in
           %span.slogan - In Arsenal we trust.
         %ul.nav.nav-pills.pull-right
-          %li
+          %li{:class => (controller_name == 'questions' && action_name == 'index' ? 'active' : nil)}
             = link_to icon_tag_label("home", "首页"), questions_path
-          %li
+          %li{:class => (controller_name == 'answers' && action_name == 'index' ? 'active' : nil)}
             = link_to icon_tag_label("th-large", "最新"), answers_path
-          %li
+          %li{:class => (controller_name == 'players' && action_name == 'index' ? 'active' : nil)}
             = link_to icon_tag_label("list-alt", "阵容"), players_path
           - if logged_in?
             %li.dropdown.pull-right
@@ -20,7 +20,7 @@
                 %b.caret
               %ul.dropdown-menu
                 %li
-                  = link_to "通知", '#'
+                  = link_to "我的主页", person_path(current_user.name)
                 %li
                   = link_to "设置", '#'
                 %li

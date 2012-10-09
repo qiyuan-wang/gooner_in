@@ -8,13 +8,13 @@
           = image_tag @person.avatar_url(:profile), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
           #person-details
             .box-t
-              Ta是这样介绍自己的…
+              #{@name}是这样介绍自己的…
             .box-c(style="min-height: 30px; font-size: 14px;")
               我是一个特立独行而缺乏独立行走能力的人，所以我基本上是个废人。
             .box-t
-              Ta的微博… <span>Ta还没有绑定咧</span>
+              #{@name}的微博… <span>#{@name}还没有绑定咧</span>
             .box-t
-              Ta在Gooner.in…
+              #{@name}在Gooner.in…
             .box-c
               提出了<span> #{@person.questions.count} </span>个问题，写了<span> #{@person.answers.count} </span>个答案，获得了<span> #{@person.total_likes} </span>个喜欢
           %ul#person-stats
@@ -23,10 +23,10 @@
             %ul.nav.nav-tabs
               %li.active
                 %a(href="#tab1" data-toggle="tab")
-                  Ta的回答
+                  #{@name}的回答
               %li
                 %a(href="#tab2" data-toggle="tab")
-                  Ta的问题
+                  #{@name}的问题
             .tab-content
               .tab-pane.active#tab1
                 %ul.unstyled
@@ -37,7 +37,7 @@
                         %span.pull-right
               .tab-pane#tab2
                 %ul.unstyled
-                  - @questions.each do |q|
+                  - @person.questions.each do |q|
                     %li
                       .box-q
                         %span.tags.white 

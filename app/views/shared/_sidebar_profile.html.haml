@@ -5,8 +5,8 @@
     = link_to '编辑头像', settings_avatar_path, class: "pull-right"
 %hr
 %ul.nav.nav-list
-  %li.active
-    = link_to '我的提问'
+  %li{:class => (action_name == 'questions_list' ? 'active' : nil)}
+    = link_to '我的问题', person_questions_path(current_user.name)
   %li
     = link_to '我的回答'
   %li

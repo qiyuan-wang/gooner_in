@@ -1,6 +1,11 @@
 class PeopleController < ApplicationController
   before_filter :find_person
   def show
+    @questions = @person.questions.recent[1..10]
+  end
+  
+  def questions_list
+    @questions = @person.questions.recent.page params[:page]
   end
   
   private

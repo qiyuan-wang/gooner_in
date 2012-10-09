@@ -1,0 +1,34 @@
+- provide(:title, "#{@person.name}提出的问题")
+#main
+  .container
+    .row
+      #mainbar.span9.box
+        %h3.title-small.white #{@person.name}的问题
+        #person-links
+          = image_tag @person.avatar_url(:normal), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
+          %ul.unstyled
+            %li
+              = link_to 'Ta的主页', person_path(@person.name)
+            %li
+              = link_to 'Ta的回答'
+            %li
+              Ta的问题
+        %hr
+        #question-list
+          - @questions.each do |question|
+            %article.clearfix
+              .upper-box
+                .title-line
+                  %span.tags.white
+                    %em #{question.answers_count}
+                    个回答
+                  %h3
+                    = link_to "#{short_question_title(question)}", question_path(question), class:"title-large white"
+              .lower-box
+                .related-players
+                  %span.white 相关球员
+                  - if !question.related_players.empty?
+                    %ul.unstyled
+                      = render :partial => 'shared/related_player', collection: question.related_players.limit(5)
+            %hr
+        = paginate @questions

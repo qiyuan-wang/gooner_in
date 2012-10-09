@@ -433,9 +433,6 @@ hr {
   padding: 8px;
 }
 
-.question-field {
-
-}
 
 .asker-info {
   margin: 0 5px 5px;
@@ -631,8 +628,12 @@ hr {
   margin: 10px 0;
 }
 
+#person-info > img {
+  margin-top: 5px;
+}
+
 #person-details {
-  margin-left: 143px;
+  margin-left: 140px;
 }
 
 .box-t {
@@ -641,9 +642,62 @@ hr {
   margin-bottom: 5px;
 }
 
+.box-t > span {
+  color: #75867C;
+  font-size: 12px;
+}
+
 .box-c {
   color: #75867C;
   margin: 0 10px;
+}
+
+.box-c > span {
+  color: #76B8A3;
+  font-size: 18px;
+}
+
+#tab2 {
+  li:first-child {
+    margin-top: 5px;
+  }
+}
+
+.box-q {
+  margin-bottom: 10px;
+  min-height: 30px;
+  vertical-align: middle;
+  
+  h4{
+    margin-bottom: 8px;
+    line-height: 21px;
+  }
+}
+
+.box-q > h4 > a {
+  &:hover {
+    color: white;
+    text-decoration: none;
+  };
+}
+
+//Person#questions_list
+#person-links {
+  margin: 10px;
+  height: 45px;
+}
+
+#person-links > ul {
+  font-size: 14px;
+  vertical-align: middle;
+  li:first-child {
+    margin-left: 10px;
+  };
+  li {
+    float: left;
+    margin-right: 20px;
+    margin-top: 30px;
+  }
 }
 //回答样式
 .answer-content {

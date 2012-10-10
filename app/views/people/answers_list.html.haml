@@ -1,0 +1,16 @@
+- provide(:title, "#{@person.name}的答案")
+#main
+  .container
+    .row
+      #mainbar.span9.box
+        %h3.title-small.white #{@person.name}的答案
+        #person-links
+          = image_tag @person.avatar_url(:normal), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
+          %ul.unstyled
+            %li
+              = link_to "#{@name}的主页", person_path(@person.name)
+            %li
+              = "#{@name}的回答"
+            %li
+              = link_to "#{@name}的问题", person_questions_path(@person.name)
+        %hr

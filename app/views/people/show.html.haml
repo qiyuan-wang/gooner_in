@@ -30,14 +30,25 @@
             .tab-content
               .tab-pane.active#tab1
                 %ul.unstyled
-                  - @person.answers.each do |a|
+                  - @answers.each do |a|
                     %li
-                      .box-a
-                        = link_to a.question_title, question_answer_path(a.question, a)
-                        %span.pull-right
+                      .box-q
+                        %h4
+                          = link_to "#{short_question_title(a.question)}", question_path(a.question), class:"title-large white"
+                        .answer-sum
+                          %p
+                            = a.summary
+                          - if a.likes_count > 0 
+                            %span.like-details 
+                              %em #{a.likes_count}
+                              人喜欢
+                          %span
+                            = link_to '查看全文', question_answer_path(a.question, a)
+                  - if @person.answers.count > 5
+                    = link_to '更多', person_answers_path(@person.name), style: "text-align: center;"
               .tab-pane#tab2
                 %ul.unstyled
-                  - @person.questions.each do |q|
+                  - @questions.each do |q|
                     %li
                       .box-q
                         %span.tags.white 
@@ -45,6 +56,6 @@
                           个回答
                         %h4
                           = link_to "#{short_question_title(q)}", question_path(q), class:"title-large white" 
-                = link_to '更多', person_questions_path(@person.name), class:"pull-right"
-
+                - if @person.questions.count > 10
+                  = link_to '更多', person_questions_path(@person.name)
 

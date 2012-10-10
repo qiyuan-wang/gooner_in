@@ -9,6 +9,7 @@ class Answer
   belongs_to :user
   belongs_to :question
   scope :most_likes, order_by(:likes_count => -1 )
+  scope :recent, order_by(updated_at: -1)
   
   paginates_per 10
   
@@ -26,7 +27,7 @@ class Answer
   
   def get_summary
     unless self.content.empty?
-      self.summary = self.content.gsub(/<[^>]*>/, "").first(160)
+      self.summary = self.content.gsub(/<[^>]*>/, "").first(140)
     end
     self.touch
   end

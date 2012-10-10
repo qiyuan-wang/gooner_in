@@ -509,17 +509,6 @@ hr {
   }
 }
 
-.answer-summary {
-  border: 1px solid #CBCCDA;
-  margin-left: 60px;
-  margin-bottom: 10px;
-  padding: 0 5px;
-  font-size: 14px;
-  a {
-    margin-top: 20px;
-    color: blue;
-  }
-}
 .small_like {
   @include like(16px);
   background: url(image_path("like.png")) no-repeat;
@@ -543,7 +532,7 @@ hr {
 
 #footer-m {
   color: #8A858A;
-  margin: 10px -10px 0 0;
+  margin: 10px -10px 10px 0;
   padding: 5px;
   background: #DDDDD9;
   text-align: center;
@@ -586,7 +575,7 @@ hr {
 #ansser-list {
   margin-top: 5px;
 }
-#answer-list > article > .answer-box > .title-line > h3 > a, #question-list > article > .upper-box > .title-line > h3 > a {
+#answer-list > article  > .title-line > h3 > a, #question-list > article > .upper-box > .title-line > h3 > a {
   color: white;
   &:hover {
     color: white;
@@ -626,14 +615,42 @@ hr {
   margin-bottom: 10px;
 }
 
-.answer-box {
+.answer-summary {
   margin-left: 60px;
+  margin-bottom: 10px;
+  padding: 0 5px;
+  font-size: 14px;
+  
+  p {
+    color: #476968;
+  }
 }
 
+.answer-summary > a, .answer-sum > span > a {
+  margin-top: 20px;
+  padding: 2px 4px;
+  font-size: 12px;
+  @include bg-transition(.3s);
+  
+  &:hover {
+    background-color: #46A7D6;
+    color: white;
+    text-decoration: none;
+  };
+}
 .responder-info {
-  color: grey;
+  color: #6D8C9B;
+  font-weight: bold;
   position: relative;
   top: -6px;
+}
+
+.responder-info > span > a {
+  color: #6D8C9B;
+  
+  &:hover {
+    color: #6D8C9B;
+  };
 }
 
 //People@show
@@ -670,9 +687,25 @@ hr {
   font-size: 18px;
 }
 
-#tab2 {
+#tab2, #tab1 {
   li:first-child {
     margin-top: 5px;
+  }
+}
+
+.answer-sum {
+  @extend .answer-summary;
+  padding: 5px 10px;
+  margin-left: 0;
+}
+
+.like-details {
+  color: grey;
+  font-size: 12px;
+  margin-right: 10px;
+  em {
+    color: #76B8A3;
+    font-size: 14px;
   }
 }
 
@@ -687,7 +720,7 @@ hr {
   }
 }
 
-.box-q > h4 > a {
+.box-q > h4 > a, .box-a > h4 > a {
   &:hover {
     color: white;
     text-decoration: none;

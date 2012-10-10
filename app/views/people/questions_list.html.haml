@@ -10,7 +10,7 @@
             %li
               = link_to "#{@name}的主页", person_path(@person.name)
             %li
-              = link_to "#{@name}的回答"
+              = link_to "#{@name}的回答", person_answers_path(@person.name)
             %li
               #{@name}的问题
         %hr

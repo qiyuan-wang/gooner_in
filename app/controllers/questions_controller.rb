@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers.order_by(created_at: -1)
+    @answers = @question.answers.recent.page params[:page]
     @related_players = @question.related_players.limit(5)
     respond_to do |format|
       format.html # show.html.erb

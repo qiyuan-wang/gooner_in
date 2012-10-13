@@ -1,9 +1,23 @@
 @import "bootstrap";
+//覆盖修正span* margin-left值
 [class*="span"] {
   float: left;
   margin-left: 10px;
 }
 
+//强行解决dropdown-toggle的颜色问题
+.nav-pills .open .dropdown-toggle {
+  color: white;
+  background-color: #0AB2C9;
+  border-color: #0AB2C9;
+}
+
+//强行解决nav-pills active状态的颜色问题
+.nav-pills .active > a, .nav-pills .active > a:hover {
+  color: white;
+  background-color: #0AB2C9;
+  border-color: #0AB2C9;
+}
 
 //自定义mixins--------------------------------------------------
 
@@ -84,6 +98,7 @@ hr {
 
 .avatar-large {
   @include avatar-image(75px);
+  background: red;
 }
 
 //白色字体
@@ -117,6 +132,12 @@ hr {
   &:hover {
     background: #3AAC3F;
   };
+}
+
+.title-small-in-blue {
+  @extend .title-small;
+  width: 30%;
+  background: blue;
 }
 //
 
@@ -177,20 +198,6 @@ hr {
   }
 }
 
-//强行解决dropdown-toggle的颜色问题
-.nav-pills .open .dropdown-toggle {
-  color: white;
-  background-color: #0AB2C9;
-  border-color: #0AB2C9;
-}
-
-//强行解决nav-pills active状态的颜色问题
-.nav-pills .active > a, .nav-pills .active > a:hover {
-  color: white;
-  background-color: #0AB2C9;
-  border-color: #0AB2C9;
-}
-
 .slogan {
   text-align: right;
   display: inline-block;
@@ -234,6 +241,7 @@ hr {
     
     .info-txt {
       background: -webkit-linear-gradient(-45deg, #bfd255 0%,#8eb92a 80%,#72aa00 85%,#9ecb2d 100%); 
+      //background: #1743CE;
       @include border-radius(10px);
       padding: 10px 0 10px 120px;
       width: 55%;
@@ -242,7 +250,7 @@ hr {
       }
       
       th, td {
-        padding-right: 10px;
+        padding-right: 15px;
         text-align: left;
       }
     }
@@ -476,8 +484,8 @@ hr {
 
 
 .leading {
-  width: 30%;
-  padding: 8px;
+  width: 20%;
+  padding: 6px 8px;
   margin-bottom: 10px;
   background-color: #09A8EB;
   @include border-radius(3px);
@@ -497,8 +505,9 @@ hr {
       margin-left: 60px;
       
       .user-info {
-        color: gray;
+        color: #6D8C9B;
         margin-bottom: 10px;
+        font-size: 14px;
       }
       
       .answer-content {
@@ -522,11 +531,12 @@ hr {
 #place-holder {
   text-align: center;
   margin: 30px 0;
-  height: 100px;
+  height: 80px;
   vertical-align: middle;    
   p {
-    font-size: 16px;
-    line-height: 100px;
+    color: gray;
+    font-size: 14px;
+    line-height: 80px;
   }
 }
 
@@ -616,7 +626,7 @@ hr {
 }
 
 .answer-summary {
-  margin-left: 60px;
+  margin-left: 55px;
   margin-bottom: 10px;
   padding: 0 5px;
   font-size: 14px;
@@ -640,7 +650,6 @@ hr {
 }
 .responder-info {
   color: #6D8C9B;
-  font-weight: bold;
   position: relative;
   top: -6px;
 }
@@ -687,11 +696,12 @@ hr {
   font-size: 18px;
 }
 
-#tab2, #tab1 {
+#tab3, #tab2, #tab1 {
   li:first-child {
     margin-top: 5px;
   }
 }
+
 
 .answer-sum {
   @extend .answer-summary;
@@ -745,11 +755,14 @@ hr {
     margin-top: 30px;
   }
 }
+
 //回答样式
 .answer-content {
+  font-size: 14px;
+  
   p, ul, ol, table, dl, blockquote, pre {
-    font-size: 15px;
     color: #534F4F;
+    font-size: 14px;
   	margin-bottom: 15px !important;
   	line-height: 1.5em !important;
   }
@@ -761,6 +774,7 @@ hr {
   	//width: auto;
   	max-width: 100%;
   }
+  
   iframe, 
   object,
   hr {
@@ -768,13 +782,23 @@ hr {
   }
   
   blockquote {
-  	margin-left: 3em !important;
+  	margin-left: 2em !important;
   	//font-style: italic !important;
-  	color: #777;	
+    
+    p {
+      color: #AA5656;
+    }
   }
+  
+  b {
+    color: #08C;
+  }
+  
  ul, 
  ol {
+    text-decoration: none;
   	padding-left: 2em !important;	
+    color: #AA5656;
   }
   
   hr {

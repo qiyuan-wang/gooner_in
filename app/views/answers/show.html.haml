@@ -1,5 +1,21 @@
+- provide(:title, "#{@question.title}")
 #main
   .container
     .row
-      .mainbar.span9.box
-        
+      #mainbar.span9.box
+        .question-field
+          .asker-info
+            = link_to image_tag(@question.user.avatar_url(:thumb), alt: "#{@question.user.name}", class: "u-avatar-small"), person_path(@question.user.name)
+            %span
+              = link_to "#{@question.user.name}", person_path(@question.user.name)
+              提出了一个话题
+            %span.pull-right 
+              = @question.modified_time 
+          %h2.question-title.white #{@question.title}
+          .related-players-wrapper.clearfix
+            .related-players
+              %span.white 相关球员
+              - if !@related_players.empty?
+                %ul.unstyled
+                  = render :partial => 'shared/related_player', collection: @related_players
+          %hr

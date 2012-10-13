@@ -5,7 +5,7 @@ class User
   
   field :name,    type: String
   field :email,   type: String
-
+  
   mount_uploader :avatar, AvatarUploader
   
   attr_accessible :name, :email, :password, :password_confirmation, :avatar, :avatar_cache, :crop_x, :crop_y, :crop_w, :crop_h
@@ -35,6 +35,10 @@ class User
       total_likes += a.likes_count
     end
     total_likes
+  end
+  
+  def admin?
+    APP_CONFIG['key_name'].include?(self.name)
   end
   
   def crop_avatar

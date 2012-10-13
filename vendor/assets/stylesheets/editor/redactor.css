@@ -81,12 +81,13 @@ body .redactor_air {
 }
 .redactor_editor blockquote {
 	margin-left: 3em !important;
-	font-style: italic !important;
-	color: #777;	
+	//font-style: italic !important;
+	color: #AA5656;	
 }
 .redactor_editor ul, 
 .redactor_editor ol {
 	padding-left: 2em !important;	
+  color: #AA5656;
 }
 .redactor_editor ul ul, 
 .redactor_editor ol ol, 
@@ -112,6 +113,10 @@ body .redactor_air {
 .redactor_editor table thead td {
 	border-bottom: 2px solid #000 !important;
 	font-weight: bold !important;
+}
+
+.redactor_editor b {
+  color: #08C;
 }
 .redactor_editor code, 
 .redactor_editor pre {

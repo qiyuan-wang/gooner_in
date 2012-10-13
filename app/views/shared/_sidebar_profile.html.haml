@@ -1,14 +1,14 @@
 .user-profile.sidebar-wrapper
-  %h4.title-small.white 我的资料
+  %h4.title-small.white About me
   .user-avatar
     = image_tag current_user.avatar_url(:large), alt: "#{current_user.name}"
     = link_to '编辑头像', settings_avatar_path, class: "pull-right"
 %hr
 %ul.nav.nav-list
-  %li{:class => (action_name == 'questions_list' ? 'active' : nil)}
-    = link_to '我的问题', person_questions_path(current_user.name)
-  %li{:class => (action_name == 'answers_list' ? 'active' : nil)}
+  %li{:class => (action_name == 'answers_list' && current_user == @person ? 'active' : nil)}
     = link_to '我的回答', person_answers_path(current_user.name)
-  %li
-    = link_to '我喜欢的'
+  %li{:class => (action_name == 'questions_list' && current_user == @person ? 'active' : nil)}
+    = link_to '我的问题', person_questions_path(current_user.name)
+  %li{:class => (action_name == 'liked_list' && current_user == @person ? 'active' : nil)}
+    = link_to '我喜欢的', person_liked_path(current_user.name)
 %hr

@@ -42,6 +42,8 @@ class AnswersController < ApplicationController
   
   def show
     @answer = Answer.find(params[:id])
+    @question = @answer.question
+    @related_players = @question.related_players
   end
   
   def edit

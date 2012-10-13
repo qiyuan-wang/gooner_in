@@ -10,8 +10,7 @@
               = link_to "#{@question.user.name}", person_path(@question.user.name)
               提出了一个话题
             %span.pull-right 
-              = @question.modified_time
-            
+              = @question.modified_time 
           %h2.question-title.white #{@question.title}
           .related-players-wrapper.clearfix
             .related-players
@@ -34,6 +33,7 @@
               %hr
             - else
               = render :partial => 'answer', collection: @answers
+              = paginate @answers
             - if logged_in? && !@question.answered_by?(current_user)
               .actions
                 = link_to '回答这个问题', new_question_answer_path(question_id: @question.id), class: "btn btn-info btn-large"

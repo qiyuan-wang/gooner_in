@@ -27,35 +27,83 @@
               %li
                 %a(href="#tab2" data-toggle="tab")
                   #{@name}的问题
+              - if current_user == @person
+                %li
+                  %a(href="#tab3" data-toggle="tab")
+                    我喜欢的
             .tab-content
               .tab-pane.active#tab1
-                %ul.unstyled
-                  - @answers.each do |a|
-                    %li
-                      .box-q
-                        %h4
-                          = link_to "#{short_question_title(a.question)}", question_path(a.question), class:"title-large white"
-                        .answer-sum
-                          %p
-                            = a.summary
-                          - if a.likes_count > 0 
-                            %span.like-details 
-                              %em #{a.likes_count}
-                              人喜欢
-                          %span
-                            = link_to '查看全文', question_answer_path(a.question, a)
-                  - if @person.answers.count > 5
-                    = link_to '更多', person_answers_path(@person.name), style: "text-align: center;"
+                - if @answers.count == 0
+                  #place-holder
+                    %p #{@name}还没写过答案呢。
+                - else
+                  %ul.unstyled
+                    - @answers.each do |a|
+                      %li
+                        .box-q
+                          %h4
+                            = link_to "#{short_question_title(a.question)}", question_path(a.question), class:"title-large white"
+                          .answer-sum
+                            %p
+                              = a.summary
+                            - if a.likes_count > 0 
+                              %span.like-details 
+                                %em #{a.likes_count}
+                                人喜欢
+                            %span
+                              = link_to '查看全文', question_answer_path(a.question, a)
+                    - if @person.answers.count > 5
+                      = link_to '更多', person_answers_path(@person.name), class:"get-more-link"
               .tab-pane#tab2
-                %ul.unstyled
-                  - @questions.each do |q|
-                    %li
-                      .box-q
-                        %span.tags.white 
-                          %em #{q.answers_count}
-                          个回答
-                        %h4
-                          = link_to "#{short_question_title(q)}", question_path(q), class:"title-large white" 
-                - if @person.questions.count > 10
-                  = link_to '更多', person_questions_path(@person.name)
-
+                - if @questions.count == 0
+                  #place-holder
+                    %p #{@name}还没提出过问题呢。
+                - else
+                  %ul.unstyled
+                    - @questions.each do |q|
+                      %li
+                        .box-q
+                          %span.tags.white 
+                            %em #{q.answers_count}
+                            个回答
+                          %h4
+                            = link_to "#{short_question_title(q)}", question_path(q), class:"title-large white" 
+                  - if @person.questions.count > 10
+                    = link_to '更多', person_questions_path(@person.name), class:"get-more-link"
+              - if current_user == @person
+                .tab-pane#tab3
+                  - if @liked_answers.count == 0
+                    #place-holder
+                      %p #{@name}还没提出过问题呢。
+                  - else
+                    %ul.unstyled
+                      - @liked_answers.each do |a|
+                        %li
+                          .box-q
+                            %h4(style="margin-bottom: 10px;")
+                              = link_to "#{short_question_title(a.question)}", question_path(a.question), class:"title-large white" 
+                            .user-avatar.pull-left
+                              = link_to image_tag(a.user.avatar_url(:normal), alt: "#{a.user.name}", class: "u-avatar-small"), person_path(a.user.name)
+                            .answer-summary
+                              %p
+                                = a.summary
+                              - if a.likes_count > 0 
+                                %span.like-details 
+                                  %em #{a.likes_count}
+                                  人喜欢
+                              %span
+                                = link_to '查看全文', question_answer_path(a.question, a)
+                      - if @person.answers.count > 5
+                        = link_to '更多', person_answers_path(@person.name), class:"get-more-link"
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        .ask
+          %p 问题都没意思？那你问一个
+          - if logged_in?
+            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
+          - else
+            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
+        %br

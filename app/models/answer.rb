@@ -8,8 +8,10 @@ class Answer
   field :summary, type: String, default: ""
   belongs_to :user
   belongs_to :question
+  
   scope :most_likes, order_by(:likes_count => -1 )
   scope :recent, order_by(updated_at: -1)
+  scope :liked_by, lambda {|user| where(:liked_user_ids => user.id)}
   
   paginates_per 10
   
@@ -37,7 +39,6 @@ class Answer
     unless self.liked_by_user? user
       self.push(:liked_user_ids, user.id)
       self.inc(:likes_count, 1)
-      #self.touch
     end
   end
   
@@ -47,7 +48,6 @@ class Answer
     if self.liked_by_user? user
       self.pull(:liked_user_ids, user.id)
       self.inc(:likes_count, -1)
-      #self.touch
     end
   end
   

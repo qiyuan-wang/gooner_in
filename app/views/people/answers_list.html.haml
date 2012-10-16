@@ -1,0 +1,52 @@
+- provide(:title, "#{@person.name}的回答")
+#main
+  .container
+    .row
+      #mainbar.span9.box
+        %h3.title-small.white #{@person.name}的回答
+        #person-links
+          = image_tag @person.avatar_url(:normal), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
+          %ul.unstyled
+            %li
+              = link_to "#{@name}的主页", person_path(@person.name)
+            %li
+              = "#{@name}的回答"
+            %li
+              = link_to "#{@name}的问题", person_questions_path(@person.name)
+            - if @person == current_user
+              %li
+                = link_to "我喜欢的", person_liked_path(@person.name)
+        %hr
+        #answers-list
+          - if @answers.count == 0
+            #place-holder
+              %p #{@name}还没写过答案呢。
+          - else
+            %ul.unstyled
+              - @answers.each do |a|
+                %li
+                  .box-q
+                    %h4
+                      = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large white"
+                    .answer-sum
+                      %p
+                        = a.summary
+                      - if a.likes_count > 0 
+                        %span.like-details 
+                          %em #{a.likes_count}
+                          人喜欢
+                      %span
+                        = link_to '查看全文', question_answer_path(a.question, a)
+          = paginate @answers
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        .ask
+          %p 问题都没意思？那你问一个
+          - if logged_in?
+            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
+          - else
+            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
+        %br

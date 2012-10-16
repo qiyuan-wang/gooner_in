@@ -4,16 +4,39 @@ GoonerIn::Application.routes.draw do
   match '/sign_up' => "users#new", as: :sign_up
   match '/log_in' => "sessions#new", as: :log_in
   match '/log_out' => "sessions#destroy", as: :log_out
+  
+  
   match "/people/:name" => "people#show", as: :person
-
+  match "/people/:name/questions" => "people#questions_list", as: :person_questions
+  match "/people/:name/questions/pages/:page" => "people#questions_list"
+  match "/people/:name/answers" => "people#answers_list", as: :person_answers
+  match "/people/:name/answers/pages/:page" => "people#answers_list"
+  match "/people/:name/liked" => "people#liked_list", as: :person_liked
+  match "/people/:name/liked/pages/:page" => "people#liked_list"
+  
   resources :users, :only => [:create]
   resources :sessions, :only => [:create]
-  resources :players
-  resources :questions
-  resources :answers, :only => [:new, :create] do
+  
+  resources :players do
+    member do
+      get '/questions/pages/:page', :action => :show
+    end
+  end
+  
+  resources :answers, :only => [:like, :unlike, :index] do
     member do
       post :like
       delete :like, :action => :unlike
+    end
+  end
+  
+  resources :questions do
+    resources :answers
+    collection do
+      get 'pages/:page', :action => :index
+    end
+    member do
+      get 'pages/:page', :action => :show
     end
   end
   

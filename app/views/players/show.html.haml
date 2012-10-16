@@ -1,16 +1,8 @@
+- provide(:title, "#{@player.name}")
 #main
   .container
     .row
-      .mainbar.span9.box
-        %ul.breadcrumbs
-          %li
-            = link_to 'Gooner.in', root_path
-            %span.divider -
-          %li
-            = link_to '球员', players_path
-            %span.divider -
-          %li.active
-            #{@player.name}
+      #mainbar.span9.box
         %section#profile
           .player-info
             .avatar-large.pull-left
@@ -22,25 +14,58 @@
                   %thead
                     %tr
                       %th 国籍
-                      %th 出生日期
+                      %th 出生
+                      %th 效力
                   %tbody
                     %tr
                       %td #{@player.nationality}
                       %td #{@player.day_of_birth}
+                      %td 1990 - 至今
         %section#questions
-          - @player.related_questions.each do |q|
-            = q.title
-        
-      %aside.span3.box
-        .control
-          %h3 管理
-          %ul.unstyled
-            %li
-              = link_to '编辑', edit_player_path(@player)
-            %li
-              = link_to '删除', @player, method: :delete, confirm: "确定删除？"
-            %li
-              = link_to '登出', log_out_path, confirm: "确定？"
+          .tabbable
+            %ul.nav.nav-tabs
+              %li.active
+                %a
+                  关于他的问题
+         
+          - if @questions.count == 0
+            #place-holder
+              %p 还没提出过关于他的问题呢。
+          - else
+            %ul.unstyled
+              - @questions.each do |q|
+                %li
+                  .box-q
+                    %span.tags.white 
+                      %em #{q.answers_count}
+                      个回答
+                    %h4
+                      = link_to "#{short_question_title(q)}", question_path(q), class:"title-large white"
+            = paginate @questions
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        .ask
+          %p 问题都没意思？那你问一个
+          - if logged_in?
+            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
+          - else
+            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
+        - if current_user.admin?
+          %hr
+          .control
+            %h3 管理
+            %ul.unstyled
+              %li
+                = link_to '添加', new_player_path
+              %li
+                = link_to '编辑', edit_player_path(@player)
+              %li
+                = link_to '删除', @player, method: :delete, confirm: "确定删除？"
+        - else
+          %br
                 
           
           

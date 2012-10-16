@@ -16,7 +16,7 @@ class PlayersController < ApplicationController
   # GET /players/1.json
   def show
     @player = Player.find(params[:id])
-    @questions = @player.related_questions
+    @questions = @player.related_questions.recent.page params[:page]
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @player }

@@ -1,0 +1,57 @@
+- provide(:title, "我喜欢的")
+#main
+  .container
+    .row
+      #mainbar.span9.box
+        %h3.title-small.white 我喜欢的
+        #person-links
+          = image_tag @person.avatar_url(:normal), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
+          %ul.unstyled
+            %li
+              = link_to "#{@name}的主页", person_path(@person.name)
+            %li
+              = link_to "#{@name}的回答", person_answers_path(@person.name)
+            %li
+              = link_to "#{@name}的问题", person_questions_path(@person.name)
+            %li
+              = "我喜欢的"
+        %hr
+        #answer-list
+          - if @answers.count == 0
+            #place-holder
+              %p #{@name}还没标注过喜欢的回答呢。
+          - else
+            - @answers.each do |answer|
+              %article.clearfix
+                .title-line
+                  %h3(style="margin-bottom: 13px;")
+                    = link_to "#{answer.question_title}", question_answer_path(answer.question, answer), class:"title-large white"
+                .user-avatar.pull-left
+                  = link_to image_tag(answer.user.avatar_url(:normal), alt: "#{answer.user.name}", class: "u-avatar-small"), person_path(answer.user.name)
+                .answer-summary
+                  .responder-info
+                    %span
+                      = link_to "#{answer.user.name}", person_path(answer.user.name)
+                      回答了这个话题
+                    %span(style="margin-left: 20px;")
+                      = answer.modified_time
+                  %p
+                    = answer.summary
+                  - if answer.likes_count > 0 
+                    %span.like-details 
+                      %em #{answer.likes_count}
+                      人喜欢
+                  = link_to '查看全文', question_answer_path(answer.question, answer)
+              = paginate @answers
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        .ask
+          %p 问题都没意思？那你问一个
+          - if logged_in?
+            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
+          - else
+            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
+        %br

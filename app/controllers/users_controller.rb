@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user.avatar = params[:user][:avatar]
     if @user.save
       auto_login @user
-      redirect_to root_path, notice: ""
+      redirect_to root_path
     else
       render 'new'
     end

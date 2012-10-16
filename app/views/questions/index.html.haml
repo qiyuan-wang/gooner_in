@@ -1,20 +1,42 @@
-%h1 Listing questions
-
-%table
-  %tr
-    %th Title
-    %th
-    %th
-    %th
-
-  - @questions.each do |question|
-    %tr
-      %td= question.title
-      %td= link_to 'Show', question_path(question)
-      %td= link_to 'Edit', edit_question_path(question)
-      %td= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete
-
-
-%br
-
-= link_to 'New Question', new_question_path
+- provide(:title, "最新话题")
+#main
+  .container
+    .row
+      #mainbar.span9.box
+        #question-list
+          - @questions.each do |question|
+            %article.clearfix
+              .upper-box
+                .pull-right
+                  = link_to image_tag(question.user.avatar_url(:normal), alt: "#{question.user.name}", class: "u-avatar-small"), person_path(question.user.name)
+                .title-line
+                  %span.tags.white
+                    %em #{question.answers_count}
+                    个回答
+                  %h3
+                    = link_to "#{short_question_title(question)}", question_path(question), class:"title-large white"
+              .lower-box
+                .related-players
+                  %span.white 相关球员
+                  - if !question.related_players.empty?
+                    %ul.unstyled
+                      = render :partial => 'shared/related_player', collection: question.related_players.limit(5)
+                .asker-info.pull-right
+                  %span
+                    这个问题是
+                    = link_to "#{question.user.name}", person_path(question.user.name), alt: "#{question.user.name}"
+                    提出的    #{question.modified_time}
+            %hr
+        = paginate @questions
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        .ask
+          %p 问题都没意思？那你问一个
+          - if logged_in?
+            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
+          - else
+            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
+        %br

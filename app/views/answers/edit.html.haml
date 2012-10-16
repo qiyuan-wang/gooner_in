@@ -10,11 +10,10 @@
               %ul.unstyled
                 = render :partial => 'shared/related_player', collection: @question.related_players.limit(2)
         %h3.white.leading 你的回答
-        = form_for @answer, :url => question_answers_path(question_id: @question) do |f|
+        = form_for @answer, :url => question_answer_path(question_id: @question) do |f|
           = render :partial => 'form', :object => f
           .actions
-            = f.submit '发表', class: "btn btn-success", style: "margin-top: 10px;"
-
+            = f.submit '更新', class: "btn btn-success", style: "margin-top: 10px;"
       #sidebar.span3.box
         - if logged_in?
           = render 'shared/sidebar_profile'

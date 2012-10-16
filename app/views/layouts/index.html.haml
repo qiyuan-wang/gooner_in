@@ -2,12 +2,11 @@
 %html(lang="zh-CN")
   %head
     %title
-      = full_title(yield(:title))
+      Gooner.in - In Arsenal we trust.
     
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = render 'layouts/topbar'
     = yield
     = render 'layouts/footer'

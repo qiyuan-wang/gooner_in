@@ -25,9 +25,13 @@ module LikesHelper
     end
     
     like_label = raw "#{icon} <span>#{label}</span>"
-    link_to(like_label,"#",:title => title, 'data-count' => likeable.likes_count,
-                'data-state' => state,'data-type' => likeable.class,'data-id' => likeable.id,
-                :class => 'btn btn-small', :onclick => "return Like.likeable(this);")
+    if logged_in?      
+      link_to(like_label,"#",:title => title, 'data-count' => likeable.likes_count,
+                  'data-state' => state,'data-type' => likeable.class,'data-id' => likeable.id,
+                  :class => 'btn btn-small', :onclick => "return Like.likeable(this);")
+    else
+      link_to(like_label, :log_in, :class => 'btn btn-small')
+    end
   end
 end
     

@@ -1,0 +1,53 @@
+- provide(:title, "#{@person.name}提出的问题")
+#main
+  .container
+    .row
+      #mainbar.span9.box
+        %h3.title-small.white #{@person.name}的提出问题
+        #person-links
+          = image_tag @person.avatar_url(:normal), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
+          %ul.unstyled
+            %li
+              = link_to "#{@name}的主页", person_path(@person.name)
+            %li
+              = link_to "#{@name}的回答", person_answers_path(@person.name)
+            %li
+              #{@name}的问题
+            - if @person == current_user
+              %li
+                = link_to "我喜欢的", person_liked_path(@person.name)
+        %hr
+        #question-list
+          - if @questions.count == 0
+            #place-holder
+              %p #{@name}还没写过答案呢。
+          - else
+            - @questions.each do |question|
+              %article.clearfix
+                .upper-box
+                  .title-line
+                    %span.tags.white
+                      %em #{question.answers_count}
+                      个回答
+                    %h3
+                      = link_to "#{short_question_title(question)}", question_path(question), class:"title-large white"
+                .lower-box
+                  .related-players
+                    %span.white 相关球员
+                    - if !question.related_players.empty?
+                      %ul.unstyled
+                        = render :partial => 'shared/related_player', collection: question.related_players.limit(5)
+              %hr
+          = paginate @questions
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        .ask
+          %p 问题都没意思？那你问一个
+          - if logged_in?
+            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
+          - else
+            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
+        %br

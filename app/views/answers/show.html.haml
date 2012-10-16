@@ -19,3 +19,37 @@
                 %ul.unstyled
                   = render :partial => 'shared/related_player', collection: @related_players
           %hr
+          .responder
+            .user-avatar.pull-left
+              = link_to image_tag(@answer.user.avatar_url(:normal), alt: "#{@answer.user.name}", class: "u-avatar-small"), person_path(@answer.user.name)
+            .answer-summary
+              .responder-info
+                %span
+                  = link_to "#{@answer.user.name}", person_path(@answer.user.name)
+                  对这个话题的回答
+                %span.pull-right(style="margin-left: 20px;")
+                  = @answer.modified_time
+              .answer-content
+                = @answer.content.html_safe
+              .actions
+                = likeable_tag @answer
+                = render :partial => 'shared/liked_users_list', :locals => { :answer => @answer }
+                - if @answer.user == current_user
+                  .edit.pull-right
+                    = link_to '编辑', edit_question_answer_path(@question, @answer), :class => "btn btn-small"
+                    = link_to '删除', question_answer_path(@question, @answer), :confirm => '确定要删除这个问题?', :method => :delete, :class => "btn btn-small btn-danger"
+          %hr
+          .more-answers
+            = link_to '看看其他人的回答', question_path(@question)
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        .ask
+          %p 问题都没意思？那你问一个
+          - if logged_in?
+            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
+          - else
+            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
+        %br

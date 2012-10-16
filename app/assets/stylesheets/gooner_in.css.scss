@@ -5,6 +5,10 @@
   margin-left: 10px;
 }
 
+.offset4 {
+  margin-left: 340px;
+}
+
 //强行解决dropdown-toggle的颜色问题
 .nav-pills .open .dropdown-toggle {
   color: white;
@@ -114,7 +118,8 @@ hr {
 
 .title-small {
   background: #08C;
-  max-width: 40%;
+  font-weight: lighter;
+  max-width: 50%;
   padding: 5px 8px;
   @include border-radius(2px);
 }
@@ -483,6 +488,13 @@ hr {
 }
 
 
+
+#actions > span {
+    display: block;
+    margin-top: 25px;
+    color: gray;
+}
+
 .leading {
   width: 20%;
   padding: 6px 8px;
@@ -756,6 +768,10 @@ hr {
   }
 }
 
+//answer#show
+.more-answers {
+
+}
 //回答样式
 .answer-content {
   font-size: 14px;

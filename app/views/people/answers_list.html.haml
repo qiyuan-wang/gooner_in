@@ -1,9 +1,9 @@
-- provide(:title, "#{@person.name}的答案")
+- provide(:title, "#{@person.name}的回答")
 #main
   .container
     .row
       #mainbar.span9.box
-        %h3.title-small.white #{@person.name}的答案
+        %h3.title-small.white #{@person.name}的回答
         #person-links
           = image_tag @person.avatar_url(:normal), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
           %ul.unstyled
@@ -27,7 +27,7 @@
                 %li
                   .box-q
                     %h4
-                      = link_to "#{short_question_title(a.question)}", question_path(a.question), class:"title-large white"
+                      = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large white"
                     .answer-sum
                       %p
                         = a.summary

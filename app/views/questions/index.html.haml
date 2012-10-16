@@ -25,7 +25,7 @@
                   %span
                     这个问题是
                     = link_to "#{question.user.name}", person_path(question.user.name), alt: "#{question.user.name}"
-                    提出的    #{question.modified_time}           
+                    提出的    #{question.modified_time}
             %hr
         = paginate @questions
       #sidebar.span3.box

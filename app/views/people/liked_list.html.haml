@@ -19,13 +19,13 @@
         #answer-list
           - if @answers.count == 0
             #place-holder
-              %p #{@name}还没标注过喜欢的答案呢。
+              %p #{@name}还没标注过喜欢的回答呢。
           - else
             - @answers.each do |answer|
               %article.clearfix
                 .title-line
                   %h3(style="margin-bottom: 13px;")
-                    = link_to "#{answer.question_title}", question_path(answer.question), class:"title-large white"
+                    = link_to "#{answer.question_title}", question_answer_path(answer.question, answer), class:"title-large white"
                 .user-avatar.pull-left
                   = link_to image_tag(answer.user.avatar_url(:normal), alt: "#{answer.user.name}", class: "u-avatar-small"), person_path(answer.user.name)
                 .answer-summary

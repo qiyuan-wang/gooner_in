@@ -42,7 +42,7 @@
                       %li
                         .box-q
                           %h4
-                            = link_to "#{short_question_title(a.question)}", question_path(a.question), class:"title-large white"
+                            = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large white"
                           .answer-sum
                             %p
                               = a.summary
@@ -74,14 +74,14 @@
                 .tab-pane#tab3
                   - if @liked_answers.count == 0
                     #place-holder
-                      %p #{@name}还没提出过问题呢。
+                      %p #{@name}还没标注过喜欢的回答呢。
                   - else
                     %ul.unstyled
                       - @liked_answers.each do |a|
                         %li
                           .box-q
                             %h4(style="margin-bottom: 10px;")
-                              = link_to "#{short_question_title(a.question)}", question_path(a.question), class:"title-large white" 
+                              = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large white" 
                             .user-avatar.pull-left
                               = link_to image_tag(a.user.avatar_url(:normal), alt: "#{a.user.name}", class: "u-avatar-small"), person_path(a.user.name)
                             .answer-summary

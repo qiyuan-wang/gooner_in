@@ -1,5 +1,5 @@
 set :application, "gooner_in"
-#set :repository,  "git://github.com/qiyuan-wang/gooner_in.git"
+set :repository,  "git://github.com/qiyuan-wang/gooner_in.git"
 set :domain, "192.168.1.2"
 set :user, "zisasign"
 set :password, "danniwang"

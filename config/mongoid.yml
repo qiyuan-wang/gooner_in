@@ -1,3 +1,15 @@
+production:
+  sessions:
+    default:
+      database: gooner_in_prodction
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+  options:
+    allow_dynamic_fields: true
+    identity_map_enabled: true
+
 development:
   # Configure available database sessions. (required)
   sessions:

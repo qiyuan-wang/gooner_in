@@ -3,7 +3,7 @@
   .container
     .row
       #mainbar.span9.box
-        %h1.title-small.white #{@person.name}
+        %h2.title-small.font-white.background-dark-blue #{@person.name}
         #person-info
           = image_tag @person.avatar_url(:profile), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
           #person-details
@@ -42,7 +42,7 @@
                       %li
                         .box-q
                           %h4
-                            = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large white"
+                            = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large font-white"
                           .answer-sum
                             %p
                               = a.summary
@@ -63,11 +63,11 @@
                     - @questions.each do |q|
                       %li
                         .box-q
-                          %span.tags.white 
+                          %span.tags.font-white 
                             %em #{q.answers_count}
                             个回答
                           %h4
-                            = link_to "#{short_question_title(q)}", question_path(q), class:"title-large white" 
+                            = link_to "#{short_question_title(q)}", question_path(q), class:"title-large font-white" 
                   - if @person.questions.count > 10
                     = link_to '更多', person_questions_path(@person.name), class:"get-more-link"
               - if current_user == @person
@@ -81,7 +81,7 @@
                         %li
                           .box-q
                             %h4(style="margin-bottom: 10px;")
-                              = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large white" 
+                              = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large font-white" 
                             .user-avatar.pull-left
                               = link_to image_tag(a.user.avatar_url(:normal), alt: "#{a.user.name}", class: "u-avatar-small"), person_path(a.user.name)
                             .answer-summary

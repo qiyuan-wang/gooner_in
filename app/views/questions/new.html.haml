@@ -1,5 +1,11 @@
-%h1 New question
-
-= render 'form'
-
-= link_to 'Back', questions_path
+- provide(:title, "你的新问题")
+#main
+  .container
+    .row
+      #mainbar-small.span9.box
+        = render 'form'
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'

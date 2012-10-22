@@ -11,10 +11,10 @@
               提出了一个话题
             %span.pull-right 
               = @question.modified_time 
-          %h2.question-title.white #{@question.title}
+          %h2.question-title.font-white #{@question.title}
           .related-players-wrapper.clearfix
             .related-players
-              %span.white 相关球员
+              %span.font-white 相关球员
               - if !@related_players.empty?
                 %ul.unstyled
                   = render :partial => 'shared/related_player', collection: @related_players

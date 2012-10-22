@@ -1,4 +1,8 @@
-GoonerIn::Application.routes.draw do  
+GoonerIn::Application.routes.draw do
+
+  get "passwords/show"
+
+  get "passwords/update"
 
   root :to => 'static_pages#index'
   match '/sign_up' => "users#new", as: :sign_up
@@ -42,6 +46,8 @@ GoonerIn::Application.routes.draw do
   
   namespace :settings do
     resource :avatar
+    resource :profile
+    resource :password
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

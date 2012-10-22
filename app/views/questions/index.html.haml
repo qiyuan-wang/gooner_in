@@ -10,14 +10,14 @@
                 .pull-right
                   = link_to image_tag(question.user.avatar_url(:normal), alt: "#{question.user.name}", class: "u-avatar-small"), person_path(question.user.name)
                 .title-line
-                  %span.tags.white
+                  %span.tags.font-white
                     %em #{question.answers_count}
                     个回答
                   %h3
-                    = link_to "#{short_question_title(question)}", question_path(question), class:"title-large white"
+                    = link_to "#{short_question_title(question)}", question_path(question), class:"title-large font-white"
               .lower-box
                 .related-players
-                  %span.white 相关球员
+                  %span.font-white 相关球员
                   - if !question.related_players.empty?
                     %ul.unstyled
                       = render :partial => 'shared/related_player', collection: question.related_players.limit(5)
@@ -34,7 +34,7 @@
         - else
           = render 'shared/sidebar_login'
         .ask
-          %p 问题都没意思？那你问一个
+          %p.font-gray 问题都没意思？那你问一个
           - if logged_in?
             = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
           - else

@@ -1,10 +1,11 @@
 class Settings::AvatarsController < ApplicationController
+  before_filter :require_login
+
   def show
   end
   
   def update
     current_user.update_attributes params[:user]
-    current_user.avatar = params[:user][:avatar]
     if current_user.save!(validate: false)
       if params[:user][:avatar].present?
         render :crop

@@ -1,0 +1,18 @@
+%h3.title-small.font-white.background-dark-blue 密码设置
+#password-settings
+  - if flash[:success]
+    %br
+    .alert.alert-success(style="width: 30%;")
+      = flash[:success]
+  .box-s.font-gray
+    = form_for @user, :url => settings_password_path, :validate => true do |f|
+      .field  
+        = f.label :current_password, "原密码:"
+        = f.password_field :current_password
+        = f.label :password, "新密码:"
+        = f.password_field :password , :validate => { :confirmation => false }
+        = f.label :password_confirmation, "新密码确认:"
+        = f.password_field :password_confirmation
+      .field
+        = f.submit '保存', class: "btn btn-primary"
+    

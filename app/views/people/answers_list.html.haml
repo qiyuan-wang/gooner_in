@@ -3,7 +3,7 @@
   .container
     .row
       #mainbar.span9.box
-        %h3.title-small.white #{@person.name}的回答
+        %h3.title-small.font-white.background-dark-blue #{@person.name}的回答
         #person-links
           = image_tag @person.avatar_url(:normal), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
           %ul.unstyled
@@ -27,7 +27,7 @@
                 %li
                   .box-q
                     %h4
-                      = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large white"
+                      = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large font-white"
                     .answer-sum
                       %p
                         = a.summary

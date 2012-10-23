@@ -1,3 +1,4 @@
+# coding: utf-8
 class Settings::AvatarsController < ApplicationController
   before_filter :require_login
 
@@ -10,7 +11,8 @@ class Settings::AvatarsController < ApplicationController
       if params[:user][:avatar].present?
         render :crop
       else
-        redirect_to person_path(current_user.name)
+        flash[:success] = '有新头像喽。'
+        redirect_to settings_profile_path
       end
     else
       render :show

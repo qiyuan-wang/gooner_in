@@ -7,7 +7,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
-
+  
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -35,7 +35,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   
   process :scale => [180, 180]
-
   
   version :large do
     process :crop
@@ -53,10 +52,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   version :thumb, :from_version => :normal do
     process :resize_to_limit => [24, 24]
   end
-    
-  
- 
-
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
@@ -72,12 +67,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def scale(width, height)
     img = MiniMagick::Image.open(self.path)
     if img[:width] < width || img[:height] < height
-      resize_to_fit(500, 500)
+      resize_to_fit(400, 400)
     else
-      resize_to_limit(500, 500)
+      resize_to_limit(400, 400)
     end
   end
-        
+  
   def crop
     if model.crop_x.present?
       manipulate! do |img|

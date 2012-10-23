@@ -1,9 +1,4 @@
 GoonerIn::Application.routes.draw do
-
-  get "passwords/show"
-
-  get "passwords/update"
-
   root :to => 'static_pages#index'
   match '/sign_up' => "users#new", as: :sign_up
   match '/log_in' => "sessions#new", as: :log_in

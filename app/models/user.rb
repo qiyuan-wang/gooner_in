@@ -14,6 +14,7 @@ class User
   attr_accessible :name, :email, :password, :password_confirmation, :avatar, :avatar_cache, :crop_x, :crop_y, :crop_w, :crop_h
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :crop_avatar
+  #after_update :delete_original_file
   
   authenticates_with_sorcery!
 

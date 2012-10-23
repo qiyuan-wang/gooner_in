@@ -1,7 +1,7 @@
 # coding: utf-8
 class Settings::ProfilesController < ApplicationController
   layout "settings"
-
+  
   before_filter :require_login
   before_filter :find_user
   

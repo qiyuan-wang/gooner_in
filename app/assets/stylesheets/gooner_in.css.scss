@@ -9,6 +9,10 @@
   margin-left: 350px;
 }
 
+.offset3 {
+  margin-left: 240px;
+}
+
 //强行解决dropdown-toggle的颜色问题
 .nav-pills .open .dropdown-toggle {
   color: white;
@@ -332,7 +336,7 @@ hr {
 
 #mainbar {
   padding: 10px;
-  min-height: 430px;
+  min-height: 305px;
 }
 
 #mainbar-small {
@@ -881,6 +885,16 @@ form.new_question {
   width: 480px;
 }
 
+//AvatarUploader#crop
+#box-o {
+  margin: 20px 30px;
+}
+
+#btn {
+  margin-left: -85px;
+  margin-top: 10px;
+  text-align: center;
+}
 //回答样式
 .answer-content {
   font-size: 14px;

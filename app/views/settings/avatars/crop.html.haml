@@ -1,5 +1,13 @@
-= image_tag current_user.avatar.url, id: "cropbox"
-= form_for current_user, :url => settings_avatar_path, :html => {:multipart => true} do |f|
-  - for attribute in  [:crop_x, :crop_y, :crop_w, :crop_h]
-    = f.text_field attribute, id: attribute
-  = f.submit "剪裁"
+- provide(:title, "图片剪裁")
+#main
+  .container
+    .row
+      #mainbar-small.span6.offset3.box
+        %h3.title-small.font-white.background-dark-blue 图片剪裁
+        #box-o
+          = image_tag current_user.avatar.url, id: "cropbox"
+          = form_for current_user, :url => settings_avatar_path, :html => {:multipart => true} do |f|
+            - for attribute in  [:crop_x, :crop_y, :crop_w, :crop_h]
+              = f.hidden_field attribute, id: attribute
+            #btn
+              = f.submit "保存", class: "btn btn-primary"

@@ -1,11 +1,11 @@
-#mainbar-small.span9.box
+#mainbar.span9.box
   %h3.title-small.font-white.background-dark-blue 密码设置
   #password-settings
+    - if flash[:success]
+      .alert.alert-success(style="width: 40%; margin-top: 10px;")
+        %h4.alert-leading 保存成功
+        = flash[:success]
     .box-s.font-gray
-      - if flash[:success]
-        .alert.alert-success(style="width: 35%; margin-top: 10px;")
-          %h4.alert-leading 保存成功
-          = flash[:success]
       = form_for @user, :url => settings_password_path, :validate => true do |f|
         .field
           = f.label :password, "新密码:"

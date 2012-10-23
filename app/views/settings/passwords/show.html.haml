@@ -1,17 +1,18 @@
-%h3.title-small.font-white.background-dark-blue 密码设置
-#password-settings
-  - if flash[:success]
-    .alert.alert-success(style="width: 35%; margin-top: 10px;")
-      = flash[:success]
-  .box-s.font-gray
-    = form_for @user, :url => settings_password_path, :validate => true do |f|
-      .field  
-        = f.label :current_password, "原密码:"
-        = f.password_field :current_password
-        = f.label :password, "新密码:"
-        = f.password_field :password , :validate => { :confirmation => false }
-        = f.label :password_confirmation, "新密码确认:"
-        = f.password_field :password_confirmation
-      .field
-        = f.submit '保存', class: "btn btn-primary"
+#mainbar-small.span9.box
+  %h3.title-small.font-white.background-dark-blue 密码设置
+  #password-settings
+    - if flash[:success]
+      .alert.alert-success(style="width: 35%; margin-top: 10px;")
+        = flash[:success]
+    .box-s.font-gray
+      = form_for @user, :url => settings_password_path, :validate => true do |f|
+        .field
+          = f.label :password, "新密码:"
+          = f.password_field :password , :validate => { :confirmation => false }
+          = f.label :password_confirmation, "新密码确认:"
+          = f.password_field :password_confirmation
+        .field
+          = f.submit '保存', class: "btn btn-primary"
+          #tips.font-red
+            %span 保存可就生效了额，考虑好。
     

@@ -295,7 +295,6 @@ hr {
       th, td {
         padding-right: 15px;
         text-align: left;
-        width: 80px;
       }
     }
   }
@@ -882,9 +881,6 @@ form.new_question {
   width: 480px;
 }
 
-#profile-settings, #password-settings {
-  height: 300px;
-}
 //回答样式
 .answer-content {
   font-size: 14px;

@@ -1,0 +1,6 @@
+.edit.pull-right
+  - if answer.user == current_user
+    = link_to '编辑', edit_question_answer_path(answer.question, answer), :class => "btn btn-small"
+    = link_to '删除', question_answer_path(answer.question, answer), :confirm => '确定要删除这个问题?', :method => :delete, :class => "btn btn-small btn-danger"
+  - elsif current_user.admin?
+    = link_to '删除', question_answer_path(answer.question, answer), :confirm => '确定要删除这个问题?', :method => :delete, :class => "btn btn-small btn-danger"

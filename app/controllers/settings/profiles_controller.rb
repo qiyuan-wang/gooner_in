@@ -10,7 +10,7 @@ class Settings::ProfilesController < ApplicationController
 
   def update
     if @user.update_attribute(:description, params[:user][:description])
-      flash[:success] = '更新成功'
+      flash[:success] = '个人介绍已经更新'
       redirect_to :action => :show
     else
       flash[:bad] = '更新失败'

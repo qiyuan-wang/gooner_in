@@ -2,6 +2,10 @@
   .container
     .row
       #mainbar-small.span3.offset4.box
+        - if flash[:alert]
+          .alert.alert-error(style="margin-top: 10px;")
+            %h4.alert-leading 登录失败
+            = flash[:alert]
         = form_tag sessions_path, method: :post do
           %h4.leading-small.font-white.background-light-red Email:
           = text_field_tag :email

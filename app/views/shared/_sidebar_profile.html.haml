@@ -2,7 +2,7 @@
   %h4.title-small.font-white.background-dark-blue A Gooner...
   .user-avatar
     = image_tag current_user.avatar_url(:large), alt: "#{current_user.name}"
-    = link_to '编辑头像', settings_avatar_path, class: "pull-right"
+    = link_to '编辑头像', settings_profile_path, class: "pull-right"
 %hr
 %ul.nav.nav-list
   %li{:class => (action_name == 'answers_list' && current_user == @person ? 'active' : nil)}

@@ -1,6 +1,4 @@
 = image_tag current_user.avatar.url, id: "cropbox"
-
-
 = form_for current_user, :url => settings_avatar_path, :html => {:multipart => true} do |f|
   - for attribute in  [:crop_x, :crop_y, :crop_w, :crop_h]
     = f.text_field attribute, id: attribute

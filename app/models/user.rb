@@ -3,14 +3,16 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   
+  
   field :name,    type: String
   field :email,   type: String
   field :description, type: String, default: ""
+
   
   mount_uploader :avatar, AvatarUploader
   
   attr_accessible :name, :email, :password, :password_confirmation, :avatar, :avatar_cache, :crop_x, :crop_y, :crop_w, :crop_h
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :current_password
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :crop_avatar
   #after_update :delete_original_file
   

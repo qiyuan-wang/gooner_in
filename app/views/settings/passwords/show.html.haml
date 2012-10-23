@@ -1,8 +1,7 @@
 %h3.title-small.font-white.background-dark-blue 密码设置
 #password-settings
   - if flash[:success]
-    %br
-    .alert.alert-success(style="width: 30%;")
+    .alert.alert-success(style="width: 35%; margin-top: 10px;")
       = flash[:success]
   .box-s.font-gray
     = form_for @user, :url => settings_password_path, :validate => true do |f|

@@ -2,5 +2,12 @@
   .container
     .row
       #mainbar.span9.box
-        = render 'form'
-        = link_to '返回', player_path
+        #player-input
+          %h3.title-small.font-white.background-light-red 编辑球员资料
+          = render 'form'
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        %br

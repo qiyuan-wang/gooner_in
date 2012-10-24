@@ -1,25 +1,22 @@
 = form_for @player do |f|
-  -if @player.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
-      %ul
-        - @player.errors.full_messages.each do |msg|
-          %li= msg
-
   .field
-    = f.label :name
+    %h4.leading-tiny.font-white.background-light-red 姓名:
     = f.text_field :name
   .field
-    = f.label :e_name
+    %h4.leading-tiny.font-white.background-light-red 英文名:
     = f.text_field :e_name
   .field
-    = f.label :nationality
+    %h4.leading-tiny.font-white.background-light-red 国籍:
     = f.text_field :nationality
-  .fiels
-    = f.label :day_of_birth
+  .field
+    %h4.leading-tiny.font-white.background-light-red 生日:
     = f.date_select :day_of_birth, start_year: 1949, end_year: 2000
   .field
-    = f.label :position
-    = f.text_field :position
-  .actions
-    = f.submit 'Save'
+    %h4.leading-tiny.font-white.background-light-red 场上位置:
+    = f.select :position, ["门将", "后卫", "中场", "前锋", "教练"]
+  .field
+    %h4.leading-tiny.font-white.background-light-red 头像:
+    = f.file_field :avatar
+  .field
+    = f.submit '保存', class: "btn btn-primary"
+    = link_to '返回', players_path

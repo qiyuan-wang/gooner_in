@@ -6,7 +6,7 @@
         %section#profile
           .player-info
             .avatar-large.pull-left
-              = image_tag "players/#{@player.e_name}.jpg", alt: "#{@player.name}"
+              = image_tag @player.avatar_url, alt: "#{@player.name}"
             .info-wrapper
               .info-txt
                 %h3 #{@player.name}
@@ -57,7 +57,7 @@
           %hr
           .control
             %h4.title-small.font-white.background-dark-blue 管理
-            %ul.unstyled
+            %ul.nav.nav-list
               %li
                 = link_to '编辑', edit_player_path(@player)
               %li

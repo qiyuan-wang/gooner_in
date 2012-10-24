@@ -149,11 +149,14 @@ hr {
 }
 
 .leading-small {
-  font-weight: normal;
+  @extend .title-small;
   max-width: 30%;
-  padding: 5px 8px;
   margin-bottom: 10px;
-  @include border-radius(2px);
+}
+
+.leading-tiny {
+  @extend .leading-small;
+  max-width: 10%;
 }
 
 .title-large {
@@ -182,11 +185,11 @@ hr {
     
   a {
     margin-left: 10px;
-    vertical-align: bottom;
+    vertical-align: middle;
   }
 }
 
-//
+//topbar
 
 .topbar {
   
@@ -279,6 +282,7 @@ hr {
   color: white;
 }
 
+//Player#show
 .player-info {
   height: 154px;
   margin: 10px;
@@ -304,6 +308,7 @@ hr {
   }
 }
 
+//Player#index
 .players-list {
   padding:0 35px;
   
@@ -332,6 +337,11 @@ hr {
       }
     }
   }
+}
+
+//Player#new #edit
+#player-input {
+  padding: 10px;
 }
 
 #mainbar {

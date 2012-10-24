@@ -2,14 +2,14 @@
   .container
     .row
       #mainbar.span9.box
-        %h2.question-title.white #{@question.title}
+        %h2.question-title.font-white #{@question.title}
         .related-players-wrapper.clearfix
           .related-players
-            %span.white 相关球员
+            %span.font-white 相关球员
             - if !@question.related_players.empty?
               %ul.unstyled
                 = render :partial => 'shared/related_player', collection: @question.related_players.limit(2)
-        %h3.white.leading 你的回答
+        %h3.font-white.leading 你的回答
         = form_for @answer, :url => question_answer_path(question_id: @question) do |f|
           = render :partial => 'form', :object => f
           .actions

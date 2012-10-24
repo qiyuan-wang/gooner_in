@@ -3,7 +3,7 @@
   .container
     .row
       #mainbar.span9.box
-        %h3.title-small.white 我喜欢的
+        %h3.title-small.font-white.background-dark-blue 我喜欢的
         #person-links
           = image_tag @person.avatar_url(:normal), title: "#{@person.name}",alt: "#{@person.name}", class: "pull-left"
           %ul.unstyled
@@ -25,7 +25,7 @@
               %article.clearfix
                 .title-line
                   %h3(style="margin-bottom: 13px;")
-                    = link_to "#{answer.question_title}", question_answer_path(answer.question, answer), class:"title-large white"
+                    = link_to "#{answer.question_title}", question_answer_path(answer.question, answer), class:"title-large font-white"
                 .user-avatar.pull-left
                   = link_to image_tag(answer.user.avatar_url(:normal), alt: "#{answer.user.name}", class: "u-avatar-small"), person_path(answer.user.name)
                 .answer-summary

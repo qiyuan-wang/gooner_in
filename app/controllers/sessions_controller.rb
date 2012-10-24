@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user
       redirect_back_or_to person_path user.name
     else
-      flash.now.alert = "登录失败"
+      flash.now.alert = "Email或密码错误"
       render 'new'
     end
   end

@@ -1,16 +1,12 @@
-
 = form_for @question, validate: true do |f|
-  -if @question.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@question.errors.count, "error")} prohibited this question from being saved:"
-      %ul
-        - @question.errors.full_messages.each do |msg|
-          %li= msg
-
+  %h3.leading-small.font-white.background-light-green 你的新问题
   .field
-    = f.label :title
-    = f.text_field :title
-    = f.label :related_players
+    = f.text_field :title, :placeholder => "你想问的是？"
+  %h3.leading-small.font-white.background-light-green 相关人物
+  #tips.font-red
+    %span 问题是不是针对哪个球员或是教练的？把他标出来吧，可以多选的噢。
+  .field
     = select "question", "related_players", classified_players, { include_blank: false, selected: @question.related_players.collect{|p| p.id}}, { multiple: true, class: "chzn-select" }
-  .actions
-    = f.submit 'Save'
+  .field
+    = f.submit '提交', class: "btn btn-success"
+    = link_to '算了，等会儿再说的', questions_path

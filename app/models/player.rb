@@ -11,5 +11,7 @@ class Player
   field :position, type: String
   field :_id, type: String, default: ->{ e_name }
   
+  mount_uploader :avatar, PlayerAvatarUploader
+  
   has_and_belongs_to_many :related_questions, class_name: "Question", inverse_of: :related_players
 end

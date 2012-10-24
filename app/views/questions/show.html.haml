@@ -8,19 +8,20 @@
             = link_to image_tag(@question.user.avatar_url(:thumb), alt: "#{@question.user.name}", class: "u-avatar-small"), person_path(@question.user.name)
             %span
               = link_to "#{@question.user.name}", person_path(@question.user.name)
-              提出了一个话题
+              提出了一个问题
             %span.pull-right 
               = @question.modified_time 
-          %h2.question-title.white #{@question.title}
+          %h2.question-title.font-white #{@question.title}
           .related-players-wrapper.clearfix
             .related-players
-              %span.white 相关球员
+              %span.font-white 相关球员
               - if !@related_players.empty?
                 %ul.unstyled
                   = render :partial => 'shared/related_player', collection: @related_players
           - if logged_in? && @question.asked_by?(current_user)
             = link_to '编辑', edit_question_path(@question), :class => "btn btn-small"
-            = link_to '删除', @question, :confirm => '确定要删除这个问题?', :method => :delete, :class => "btn btn-small btn-danger"
+            - if current_user.admin?
+              = link_to '删除', @question, :confirm => '确定要删除这个问题?', :method => :delete, :class => "btn btn-small btn-danger"
           %br
           #actions
             %span
@@ -30,7 +31,7 @@
                 你已经回答过这个问题了。
             %hr
         .answers-field
-          %h3.leading.white
+          %h3.leading.font-white
             = @answers.count
             个回答
           .answers 

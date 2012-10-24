@@ -1,3 +1,3 @@
 %li.pull-left
   .avatar-small
-    = link_to image_tag("players/#{related_player.e_name}.jpg", alt: "#{related_player.name}"), player_path(id: related_player.e_name)
+    = link_to image_tag(related_player.avatar_url(:thumb), alt: "#{related_player.name}"), player_path(id: related_player.e_name)

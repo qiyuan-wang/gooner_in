@@ -22,7 +22,7 @@
                 %li
                   = link_to "我的主页", person_path(current_user.name)
                 %li
-                  = link_to "设置", '#'
+                  = link_to "设置", settings_profile_path
                 %li
                   = link_to "退出", :log_out
           - else

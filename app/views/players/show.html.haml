@@ -6,7 +6,7 @@
         %section#profile
           .player-info
             .avatar-large.pull-left
-              = image_tag "players/#{@player.e_name}.jpg", alt: "#{@player.name}"
+              = image_tag @player.avatar_url, alt: "#{@player.name}"
             .info-wrapper
               .info-txt
                 %h3 #{@player.name}
@@ -36,11 +36,11 @@
               - @questions.each do |q|
                 %li
                   .box-q
-                    %span.tags.white 
+                    %span.tags.font-white 
                       %em #{q.answers_count}
                       个回答
                     %h4
-                      = link_to "#{short_question_title(q)}", question_path(q), class:"title-large white"
+                      = link_to "#{short_question_title(q)}", question_path(q), class:"title-large font-white"
             = paginate @questions
       #sidebar.span3.box
         - if logged_in?
@@ -56,15 +56,12 @@
         - if current_user.admin?
           %hr
           .control
-            %h3 管理
-            %ul.unstyled
-              %li
-                = link_to '添加', new_player_path
+            %h4.title-small.font-white.background-dark-blue 管理
+            %ul.nav.nav-list
               %li
                 = link_to '编辑', edit_player_path(@player)
               %li
                 = link_to '删除', @player, method: :delete, confirm: "确定删除？"
-        - else
           %br
                 
           

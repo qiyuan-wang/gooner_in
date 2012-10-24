@@ -6,7 +6,11 @@
 }
 
 .offset4 {
-  margin-left: 340px;
+  margin-left: 350px;
+}
+
+.offset3 {
+  margin-left: 240px;
 }
 
 //强行解决dropdown-toggle的颜色问题
@@ -102,12 +106,33 @@ hr {
 
 .avatar-large {
   @include avatar-image(75px);
-  background: red;
+  //background: red;
 }
 
-//白色字体
-.white {
+//字体颜色类
+.font-white {
   color: #FFEEFF;
+}
+
+.font-red {
+  color: #B16969;
+}
+
+.font-gray {
+  color: #615A5A;
+}
+
+//标题背景颜色类
+.background-dark-blue {
+  background: #08C;
+}
+
+.background-light-green {
+  background: #0DCF99;
+}
+
+.background-light-red {
+  background: #E47974;
 }
 
 .clear-element {
@@ -117,11 +142,21 @@ hr {
 }
 
 .title-small {
-  background: #08C;
-  font-weight: lighter;
-  max-width: 50%;
+  font-weight: normal;
+  max-width: 40%;
   padding: 5px 8px;
   @include border-radius(2px);
+}
+
+.leading-small {
+  @extend .title-small;
+  max-width: 30%;
+  margin-bottom: 10px;
+}
+
+.leading-tiny {
+  @extend .leading-small;
+  max-width: 10%;
 }
 
 .title-large {
@@ -139,12 +174,22 @@ hr {
   };
 }
 
-.title-small-in-blue {
-  @extend .title-small;
-  width: 30%;
-  background: blue;
+.title-text {
+  float: left;
+  font-weight: normal;
+  padding: 5px 8px;
+  @include border-radius(2px);
 }
-//
+.field {
+  margin: 10px;
+    
+  a {
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+}
+
+//topbar
 
 .topbar {
   
@@ -237,6 +282,7 @@ hr {
   color: white;
 }
 
+//Player#show
 .player-info {
   height: 154px;
   margin: 10px;
@@ -249,7 +295,7 @@ hr {
       //background: #1743CE;
       @include border-radius(10px);
       padding: 10px 0 10px 120px;
-      width: 55%;
+      width: 70%;
       h3 {
         margin-bottom: 5px;
       }
@@ -262,6 +308,7 @@ hr {
   }
 }
 
+//Player#index
 .players-list {
   padding:0 35px;
   
@@ -280,9 +327,10 @@ hr {
 }
 
 .control {
-  padding: 10px;
+  padding: 0 10px;
   
   ul {
+    margin-top: 10px;
     li {
       a {
         padding: 5px;
@@ -291,9 +339,18 @@ hr {
   }
 }
 
+//Player#new #edit
+#player-input {
+  padding: 10px;
+}
+
 #mainbar {
   padding: 10px;
-  min-height: 430px;
+  min-height: 305px;
+}
+
+#mainbar-small {
+  padding: 10px;
 }
 
 //字体
@@ -674,7 +731,33 @@ hr {
   };
 }
 
-//People@show
+//Question#new
+.q-box {
+  margin: 20px;
+}
+
+form.new_question {
+  input#question_title {
+    width: 650px;
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+  }
+}
+
+#tips {
+  display: inline-block;
+  background: rgba(245, 226, 226, 0.31);
+  margin-left: 10px;
+  padding: 0 5px;
+  span {
+    line-height: 30px;
+    vertical-align: middle;
+    padding: 0 3px;
+  }
+}
+
+//People#show
 #person-info {
   margin: 10px 0;
 }
@@ -768,9 +851,60 @@ hr {
   }
 }
 
-//answer#show
+//Answers#show
 .more-answers {
 
+}
+
+//SettingsProfile#show
+.box-s {
+  margin: 20px;
+  height: 60px;
+  
+  h4 {
+    width: 60px;
+    font-weight: bold;
+    vertical-align: middle;
+    text-align: right;
+    margin-right: 10px;
+  }
+}
+
+.edit_user {
+  margin-left: 85px;
+}
+
+.box-s > img {
+  position: relative;
+  top: 8px;
+}
+
+#avatar-upload {
+  margin-left: 60px;
+}
+
+#user_avatar {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#user_description {
+  display: block;
+  font-size: 18px;
+  line-height: 26px;
+  height: 26px;
+  width: 480px;
+}
+
+//AvatarUploader#crop
+#box-o {
+  margin: 20px 30px;
+}
+
+#btn {
+  margin-left: -85px;
+  margin-top: 10px;
+  text-align: center;
 }
 //回答样式
 .answer-content {

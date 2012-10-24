@@ -1,12 +1,7 @@
 #main
   .container
     .row
-      .mainbar.span9.box
-        %ul.breadcrumbs
-          %li
-            = link_to 'Gooner.in', root_path
-            %span.divider -
-          %li.active 球员
+      #mainbar.span9.box
         .players-list
           %ul.unstyled
             - @players.each do |player|
@@ -14,9 +9,23 @@
                 .avatar-middle
                   = link_to image_tag("players/#{player.e_name}.jpg", alt: "#{player.name}"), player_path(id: player.e_name)
                 =link_to player.name, player_path(id: player.e_name)
-    
-      %aside.span3.box
-        .control
-          %h3 管理
-          = link_to '新球员', new_player_path
+      #sidebar.span3.box
+        - if logged_in?
+          = render 'shared/sidebar_profile'
+        - else
+          = render 'shared/sidebar_login'
+        .ask
+          %p 问题都没意思？那你问一个
+          - if logged_in?
+            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
+          - else
+            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
+        - if current_user.admin?
+          %hr
+          .control
+            %h4.title-small.font-white.background-dark-blue 管理
+            %ul.nav.nav-list
+              %li
+                = link_to '新球员', new_player_path
+          %br
     

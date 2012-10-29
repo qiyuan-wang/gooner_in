@@ -53,8 +53,8 @@
             = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
           - else
             = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
-        - if current_user.admin?
-          %hr
+        %hr
+        - if logged_in? && current_user.admin?
           .control
             %h4.title-small.font-white.background-dark-blue 管理
             %ul.nav.nav-list

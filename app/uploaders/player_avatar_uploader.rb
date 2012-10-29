@@ -36,10 +36,19 @@ class PlayerAvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
+  version :middle do
+    process :resize_to_limit => [100, 100]
+  end
+    
+  version :normal, :from_version => :middle do
+    process :resize_to_limit => [60, 60]
+  end
+  
+  version :thumb, :from_version => :thumb do
     process :resize_to_limit => [40, 40]
   end
-
+  
+  
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list

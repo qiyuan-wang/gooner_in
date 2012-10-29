@@ -5,6 +5,9 @@
   margin-left: 10px;
 }
 
+.span8 {
+  width: 610px;
+}
 .offset4 {
   margin-left: 350px;
 }
@@ -28,6 +31,12 @@
 }
 
 //自定义mixins--------------------------------------------------
+
+@mixin title($width){
+  max-width: $width;
+  padding: 5px 8px;
+  @include border-radius(2px);
+}
 
 //球员头像样式 $radius为头像图片半径
 @mixin avatar-image($radius) {
@@ -73,6 +82,18 @@
   @include bg-transition(.3s);
 }
 
+@mixin image-setting {
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 360px;
+  position: absolute;
+  z-index: -2;
+}
+
 //通用---------------------------------------------------------
 body {
   min-width: 960px;
@@ -96,10 +117,14 @@ hr {
 .u-avatar-small {
   @include border-radius(3px);
 }
+
 .avatar-small {
   @include avatar-image-with-hover(20px);
 }
 
+.avatar-normal {
+  @include avatar-image-with-hover(30px);
+}
 .avatar-middle {
   @include avatar-image-with-hover(50px);
 }
@@ -135,6 +160,10 @@ hr {
   background: #E47974;
 }
 
+.background-red {
+  background: #F13626;
+}
+
 .clear-element {
   clear: both;
   visibility: hidden;
@@ -142,28 +171,13 @@ hr {
 }
 
 .title-small {
+  @include title(40%);
   font-weight: normal;
-  max-width: 40%;
-  padding: 5px 8px;
-  @include border-radius(2px);
-}
-
-.leading-small {
-  @extend .title-small;
-  max-width: 30%;
-  margin-bottom: 10px;
-}
-
-.leading-tiny {
-  @extend .leading-small;
-  max-width: 10%;
 }
 
 .title-large {
+  @include title(60%);
   background: #43C248;
-  max-width: 60%;
-  padding: 5px 8px;
-  @include border-radius(2px);
   -webkit-transition-property: background;
   -moz-transition-property: background;
   -webkit-transition-duration: .3s;
@@ -172,6 +186,29 @@ hr {
   &:hover {
     background: #3AAC3F;
   };
+}
+
+.leading {
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.leading-small {
+  @include title(30%);
+  @extend .leading;
+}
+
+.leading-tiny {
+  @include title(10%);
+  @extend .leading;
+}
+
+.title-normal {
+  @include title(50%);
+}
+
+.title-tiny {
+  @include title(22%)
 }
 
 .title-text {
@@ -251,15 +288,6 @@ hr {
 .slogan {
   text-align: right;
   display: inline-block;
-}
-
-.breadcrumbs {
-  padding: 7px 14px;
-  margin: 0 0 10px;
-
-  li {
-    display: inline;
-  }
 }
 
 //字体
@@ -385,6 +413,7 @@ hr {
 
 #lower-wrapper {
   margin: 10px;
+  margin-bottom: 0px;
 }
 .h-divider {
   height: 5px;
@@ -406,22 +435,10 @@ hr {
   background-color: white;
 }
 
-
+//home
 #intro {
   width: 100%;
   height: 360px;
-}
-
-@mixin image-setting {
-  left: 0;
-  top: 0;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 360px;
-  position: absolute;
-  z-index: -2;
 }
 
 #img1 {
@@ -466,12 +483,44 @@ hr {
   }
 }
 
+
 #lower-wrapper {
   .span4 {
     padding: 15px;
   }
+  
+  .span8 {
+    padding-bottom: 8px;
+    
+    h3, h4 {
+      margin: 15px;
+    }
+    
+    h4 {
+      margin-left: 25px;
+      font-size: 18px;
+    }
+    
+    p {
+      margin: 0 15px;
+    }
+  }
+  
+  p {
+    margin: 10px 0px;
+    font-size: 14px;
+    line-height: 16px;
+  }
 }
 
+#hot-players {
+  margin-left: 25px;
+  margin-bottom: 8px;
+  li {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}
 //字体、颜色、样式
 #intro-txt {
   h2 {
@@ -651,10 +700,12 @@ hr {
   }
 }
 
-#ansser-list {
+#answer-list {
   margin-top: 5px;
 }
-#answer-list > article  > .title-line > h3 > a, #question-list > article > .upper-box > .title-line > h3 > a {
+
+#answer-list > article  > .title-line > h3 > a, #question-list > article > .upper-box > .title-line > h3 > a,
+#lower-wrapper > .container > .row > .span8 > h4 > a {
   color: white;
   &:hover {
     color: white;

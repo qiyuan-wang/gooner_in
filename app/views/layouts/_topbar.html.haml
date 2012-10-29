@@ -4,11 +4,11 @@
       .span12
         .logo-box
           .logo
-            %a(href='#') Gooner.in
+            = link_to "Gooner.in", root_path
           %span.slogan - In Arsenal we trust.
         %ul.nav.nav-pills.pull-right
           %li{:class => (controller_name == 'answers' && action_name == 'index' ? 'active' : nil)}
-            = link_to icon_tag_label("home", "首页"), answers_path 
+            = link_to icon_tag_label("home", "首页"), root_path 
           %li{:class => (controller_name == 'questions' && action_name == 'index' ? 'active' : nil)}
             = link_to icon_tag_label("th-large", "最新"), questions_path
           %li{:class => (controller_name == 'players' && action_name == 'index' ? 'active' : nil)}

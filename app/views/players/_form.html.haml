@@ -16,9 +16,11 @@
     = f.select :position, ["门将", "后卫", "中场", "前锋", "教练"]
   .field
     %h4.leading-tiny.font-white.background-light-red 在队时间:
-    = f.date_select :join, start_year: 1949, end_year: Time.now.year, discard_day: true, discard_month: true
-    %span -
-    = f.date_select :leave, start_year: 1949, end_year: Time.now.year, discard_day: true, discard_month: true
+    = f.date_select :join_year, start_year: 1949, end_year: Time.now.year, discard_day: true, discard_month: true
+    = f.date_select :leave_year, start_year: 1949, end_year: Time.now.year + 1, discard_day: true, discard_month: true
+    %span
+      = f.label :leaved, "已离队"
+      = f.check_box :leaved
   .field
     %h4.leading-tiny.font-white.background-light-red 头像:
     = f.file_field :avatar

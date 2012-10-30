@@ -682,6 +682,20 @@ hr {
 .sidebar-wrapper {
   margin: 10px;
 }
+
+#site-intro {
+  padding: 0 5px;
+  p:first-child {
+    margin-top: 10px;
+  }
+}
+
+#log-buttons {
+  margin: 0 50px;
+  a:first-child {
+    margin-right: 20px;
+  }
+}
 .user-profile {
   .user-avatar {
     margin: 10px 20px 30px;
@@ -693,10 +707,11 @@ hr {
   }
 }
 
-.ask {
+#ask {
   margin: 0 20px;
+  text-align: center;
   a {
-    text-align: center;
+    margin: 0 39px;
   }
 }
 

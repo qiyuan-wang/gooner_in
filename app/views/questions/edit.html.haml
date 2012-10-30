@@ -1,7 +1,8 @@
-%h1 Editing question
-
-= render 'form'
-
-= link_to 'Show', @question
-\|
-= link_to 'Back', questions_path
+- provide(:title, "编辑问题")
+#main
+  .container
+    .row
+      #mainbar-small.span9.box
+        = render 'form'
+      #sidebar.span3.box
+        = render 'shared/sidebar'

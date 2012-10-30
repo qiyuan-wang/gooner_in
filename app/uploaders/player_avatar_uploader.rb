@@ -44,7 +44,7 @@ class PlayerAvatarUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [60, 60]
   end
   
-  version :thumb, :from_version => :thumb do
+  version :thumb, :from_version => :normal do
     process :resize_to_limit => [40, 40]
   end
   

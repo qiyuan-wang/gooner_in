@@ -4,6 +4,8 @@ class StaticPagesController < ApplicationController
     if logged_in?
       redirect_to answers_path
     end
+    @question = Question.first
+    @players = Player.all
   end
 
 end

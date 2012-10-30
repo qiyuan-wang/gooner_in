@@ -1,6 +1,14 @@
-.sidebar-login.sidebar-wrapper
-%ul.nav.nav-list
-  %li
-    = link_to '注册'
-  %li
-    = link_to '登录'
+.sidebar-wrapper
+  %h4.title-small.font-white.background-red Gooner.in
+  #site-intro.font-gray
+    %p
+      这是一个关于阿森纳的网站。
+    %p
+      虽然采用了问答的形式，但它并不是定位于问答类型的社区。
+    %p
+      希望这里能帮你守住那份对阿森纳的情感。
+%hr
+  #log-buttons
+    = link_to "登录", :log_in, class: "btn"
+    = link_to "注册", :sign_up, class: "btn"
+%hr

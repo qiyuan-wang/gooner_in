@@ -1,5 +1,4 @@
 = form_for @question, validate: true do |f|
-  %h3.leading-small.font-white.background-light-green 你的新问题
   .field
     = f.text_field :title, :placeholder => "你想问的是？"
   %h3.leading-small.font-white.background-light-green 相关人物
@@ -8,5 +7,5 @@
   .field
     = select "question", "related_players", classified_players, { include_blank: false, selected: @question.related_players.collect{|p| p.id}}, { multiple: true, class: "chzn-select" }
   .field
-    = f.submit '提交', class: "btn btn-success"
+    = f.submit '保存', class: "btn btn-primary"
     = link_to '算了，等会儿再说的', questions_path

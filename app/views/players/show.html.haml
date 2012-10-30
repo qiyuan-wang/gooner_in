@@ -20,7 +20,7 @@
                     %tr
                       %td #{@player.nationality}
                       %td #{@player.day_of_birth}
-                      %td 1990 - 至今
+                      %td #{@player.join} - #{@player.leave}
         %section#questions
           .tabbable
             %ul.nav.nav-tabs
@@ -43,18 +43,8 @@
                       = link_to "#{short_question_title(q)}", question_path(q), class:"title-large font-white"
             = paginate @questions
       #sidebar.span3.box
-        - if logged_in?
-          = render 'shared/sidebar_profile'
-        - else
-          = render 'shared/sidebar_login'
-        .ask
-          %p 问题都没意思？那你问一个
-          - if logged_in?
-            = link_to "提问", new_question_path, class: "btn btn-primary btn-large"
-          - else
-            = link_to "提  问", :log_in, class: "btn btn-primary btn-large"
-        - if current_user.admin?
-          %hr
+        = render 'shared/sidebar'
+        - if logged_in? && current_user.admin?
           .control
             %h4.title-small.font-white.background-dark-blue 管理
             %ul.nav.nav-list
@@ -62,7 +52,7 @@
                 = link_to '编辑', edit_player_path(@player)
               %li
                 = link_to '删除', @player, method: :delete, confirm: "确定删除？"
-          %br
+          %hr
                 
           
           

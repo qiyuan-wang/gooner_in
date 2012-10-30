@@ -15,6 +15,11 @@
     %h4.leading-tiny.font-white.background-light-red 场上位置:
     = f.select :position, ["门将", "后卫", "中场", "前锋", "教练"]
   .field
+    %h4.leading-tiny.font-white.background-light-red 在队时间:
+    = f.date_select :join, start_year: 1949, end_year: Time.now.year, discard_day: true, discard_month: true
+    %span -
+    = f.date_select :leave, start_year: 1949, end_year: Time.now.year, discard_day: true, discard_month: true
+  .field
     %h4.leading-tiny.font-white.background-light-red 头像:
     = f.file_field :avatar
   .field

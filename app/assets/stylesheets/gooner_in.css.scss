@@ -802,7 +802,7 @@ hr {
   margin: 20px;
 }
 
-form.new_question {
+form.new_question, form.edit_question {
   input#question_title {
     width: 650px;
     font-size: 20px;
@@ -898,6 +898,9 @@ form.new_question {
   };
 }
 
+.get-more-link {
+  
+}
 //Person#questions_list
 #person-links {
   margin: 10px;

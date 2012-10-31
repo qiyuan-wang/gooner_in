@@ -1,13 +1,12 @@
 set :application, "gooner_in"
 set :repository,  "git://github.com/qiyuan-wang/gooner_in.git"
-set :domain, "192.168.1.2"
+set :domain, "106.186.19.201"
 set :user, "zisasign"
-set :password, "danniwang"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :use_sudo, false
-set :deploy_to, "/home/zisasign/app/gooner_in/"
+set :deploy_to, "/home/zisasign/gooner_in/"
 
 default_run_options[:pty] = true
 

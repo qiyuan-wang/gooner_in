@@ -8,6 +8,8 @@ set :scm, :git
 set :use_sudo, false
 set :deploy_to, "/home/zisasign/gooner_in/"
 
+set :shared_children, shared_children + %w{public/uploads}
+
 default_run_options[:pty] = true
 
 role :web, domain                         # Your HTTP server, Apache/etc
@@ -25,12 +27,7 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 namespace :deploy do
 #   task :start do ; end
 #   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-  task :symlink_uploads do
-    run "ln -nfs #{shared_path}/uploads  #{release_path}/public/uploads"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
-
-after 'deploy:update_code', 'deploy:symlink_uploads'

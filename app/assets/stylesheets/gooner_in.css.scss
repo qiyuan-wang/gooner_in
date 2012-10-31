@@ -9,7 +9,7 @@
   width: 610px;
 }
 .offset4 {
-  margin-left: 350px;
+  margin-left: 360px;
 }
 
 .offset3 {
@@ -191,6 +191,8 @@ hr {
 .leading {
   font-weight: normal;
   margin-bottom: 10px;
+  padding: 6px 8px;
+  @include border-radius(3px);
 }
 
 .leading-small {
@@ -599,14 +601,6 @@ hr {
     display: block;
     margin-top: 25px;
     color: gray;
-}
-
-.leading {
-  width: 20%;
-  padding: 6px 8px;
-  margin-bottom: 10px;
-  background-color: #09A8EB;
-  @include border-radius(3px);
 }
 
 .answers-field {

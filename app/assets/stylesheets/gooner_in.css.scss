@@ -98,7 +98,7 @@
 body {
   min-width: 960px;
   background-color: OldLace;
-  font: 13px/22px 'Helvetica Neue', Helvetica, Verdana, Tahoma, Arial, Sans-serif;
+  font: 13px/22px 'Helvetica Neue', Helvetica, "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, Arial, Sans-serif;
   color: #222;
 }
 
@@ -556,7 +556,7 @@ hr {
 .question-title {
   word-wrap: break-word;
   overflow: hidden;
-  background-color: #26CC26;
+  background-color: #43C248;
   @include border-radius(3px);
   margin: 5px 0;
   padding: 8px;

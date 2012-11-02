@@ -32,4 +32,4 @@ namespace :deploy do
   end
 end
 
-load 'deploy/assets'
+#load 'deploy/assets'

@@ -23,13 +23,14 @@
             - if current_user.admin?
               = link_to '删除', @question, :confirm => '确定要删除这个问题?', :method => :delete, :class => "btn btn-small btn-danger"
           %br
-          #actions
-            %span
-              - if logged_in? && !@question.answered_by?(current_user)
-                = link_to '回答这个问题', new_question_answer_path(question_id: @question.id), class: "btn btn-info btn-normal"
-              - else
-                你已经回答过这个问题了。
-            %hr
+          - if logged_in?
+            #actions
+              %span             
+                - if !@question.answered_by?(current_user)
+                  = link_to '回答这个问题', new_question_answer_path(question_id: @question.id), class: "btn btn-info btn-normal"
+                - else
+                  你已经回答过这个问题了。
+          %hr
         .answers-field
           %h3.leading.font-white
             = @answers.count

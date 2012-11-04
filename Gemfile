@@ -43,6 +43,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'capistrano', :require => false
+gem 'rvm-capistrano', :require => false
+
 group :test do
   gem 'rspec-rails', '2.9.0'
   gem 'capybara', '1.1.2'

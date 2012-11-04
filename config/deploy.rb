@@ -1,3 +1,5 @@
+require "rvm/capistrano"
+
 set :application, "gooner_in"
 set :repository,  "git://github.com/qiyuan-wang/gooner_in.git"
 set :domain, "106.186.19.201"

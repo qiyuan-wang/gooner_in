@@ -1,4 +1,4 @@
-require "rvm/capistrano"
+#require "rvm/capistrano"
 
 set :application, "gooner_in"
 set :repository,  "git://github.com/qiyuan-wang/gooner_in.git"
@@ -33,5 +33,3 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
-
-load 'deploy/assets'

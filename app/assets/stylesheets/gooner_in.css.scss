@@ -247,7 +247,10 @@ hr {
     
     .slogan {
       text-align: left;
-      margin: 0 3px 5px;
+      //margin: 0 3px 5px;
+      position: relative;
+      float: right;
+      top: 31px;
     }    
   }
 

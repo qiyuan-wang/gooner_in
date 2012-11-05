@@ -8,9 +8,9 @@
           %span.slogan - In Arsenal we trust.
         %ul.nav.nav-pills.pull-right
           %li{:class => (controller_name == 'answers' && action_name == 'index' ? 'active' : nil)}
-            = link_to icon_tag_label("home", "热答"), answers_path 
+            = link_to icon_tag_label("comment", "热答"), answers_path 
           %li{:class => (controller_name == 'questions' && action_name == 'index' ? 'active' : nil)}
-            = link_to icon_tag_label("th-large", "新问"), questions_path
+            = link_to icon_tag_label("question-sign", "新问"), questions_path
           %li{:class => (controller_name == 'players' && action_name == 'index' ? 'active' : nil)}
             = link_to icon_tag_label("list-alt", "阵容"), players_path
           - if logged_in?

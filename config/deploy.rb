@@ -8,6 +8,9 @@ set :scm, :git
 set :use_sudo, false
 set :deploy_to, "/home/zisasign/gooner_in/"
 
+set :normalize_asset_timestamps, false
+
+# keep uploads files
 set :shared_children, shared_children + %w{public/uploads}
 
 default_run_options[:pty] = true
@@ -32,4 +35,4 @@ namespace :deploy do
   end
 end
 
-load 'deploy/assets'
+#load 'deploy/assets'

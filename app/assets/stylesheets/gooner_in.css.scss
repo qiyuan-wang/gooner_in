@@ -98,7 +98,7 @@
 body {
   min-width: 960px;
   background-color: OldLace;
-  font: 13px/22px 'Helvetica Neue', Helvetica, "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, Arial, Sans-serif;
+  font: 13px/22px 'Helvetica Neue', Helvetica, Tahoma, Arial, Sans-serif;
   color: #222;
 }
 
@@ -241,7 +241,7 @@ hr {
     padding: 10px;
     display: inline-block;    
     .logo {
-      margin-top: 16px;
+      margin-top: 19px;
       margin-left: 5px;
       display: inline-block;
     }
@@ -251,7 +251,7 @@ hr {
       //margin: 0 3px 5px;
       position: relative;
       float: right;
-      top: 30px;
+      top: 33px;
       right: 10px;
     }    
   }

@@ -20,21 +20,24 @@
       .row
         .span4.box
           %h3.title-normal.font-white.background-red Gooner.in是什么
-          %p Gooner.in是个关于阿森纳的网站。
           %p
-            虽然采用了问答的形式，但它并不是定位于问答类型的社区。
+            这是一个属于阿森纳球迷的问答社区。
           %p
-            因为相对于答案，我们更希望能够帮助你记录、梳理阿森纳在你生命中泛起的点滴。
+            希望它能帮你记录，
           %p
-            希望年老时仍能细数那些我们热爱的球员。
+            在你生命中时时泛起的，
           %p
-            希望这里能帮你守住对阿森纳的那份情感。
+            关于阿森纳的点点滴滴。
+          %hr
+          #fo
+            %p
+              We do not buy superstars, we make them. Arsene Wenger
         .span8.box
           %h3.title-tiny.font-white.background-red Let it started...
           %p 你可以从下面这个问题开始
           %h4
             = link_to "#{short_question_title(@question)}", question_path(@question), class:"title-large font-white" 
-          %p 当然，也可以先来看看你关心的球员
+          %p 当然，也可以先看看你关心的球员...
           #hot-players
             %ul.unstyled
               - @players.each do |player|

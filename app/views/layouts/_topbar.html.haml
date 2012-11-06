@@ -10,7 +10,7 @@
           %li{:class => (controller_name == 'answers' && action_name == 'index' ? 'active' : nil)}
             = link_to icon_tag_label("comment", "热答"), answers_path 
           %li{:class => (controller_name == 'questions' && action_name == 'index' ? 'active' : nil)}
-            = link_to icon_tag_label("th-large", "新问"), questions_path
+            = link_to icon_tag_label("question-sign", "新问"), questions_path
           %li{:class => (controller_name == 'players' && action_name == 'index' ? 'active' : nil)}
             = link_to icon_tag_label("list-alt", "阵容"), players_path
           - if logged_in?
@@ -26,9 +26,9 @@
                 %li
                   = link_to "退出", :log_out
           - else
-            %li.pull-right
-              = link_to "注册", :sign_up
-            %li.pull-right
+            %li.pull-right{:class => (controller_name == 'users' ? 'active' : nil)}
+              = link_to "注册", :sign_up 
+            %li.pull-right{:class => (controller_name == 'sessions' ? 'active' : nil)}
               = link_to "登录", :log_in
 
         

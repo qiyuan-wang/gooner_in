@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
       redirect_to answers_path
     end
     @question = Question.first
-    @players = Player.all.limit(7)
+    @players = Player.all.limit(6)
   end
 
 end

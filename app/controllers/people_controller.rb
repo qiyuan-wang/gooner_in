@@ -3,10 +3,10 @@ class PeopleController < ApplicationController
   before_filter :find_person
   before_filter :require_login, only: [:liked_list]
   def show
-    @questions = @person.questions.recent[0..9] || []
-    @answers = @person.answers.recent[0..4] || []
+    @questions = @person.questions.recent.limit(10)
+    @answers = @person.answers.recent.limit(10)
     if current_user == @person
-      @liked_answers = Answer.liked_by(current_user).recent[0..4] || []
+      @liked_answers = Answer.liked_by(current_user).recent.limit(5)
     end
   end
   

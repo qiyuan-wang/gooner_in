@@ -45,17 +45,18 @@
                   .avatar-normal
                     = link_to image_tag(player.avatar_url, alt: "#{player.name}"), player_path(id: player.e_name)
           %br
-        .modal.hide.fade#login-modal
-          .modal-header
-            = button_tag "x", class: "close", data: {dismiss: "modal"}
-          .modal-body
-            = form_tag sessions_path, method: :post do
-              %h4.leading-small.font-white.background-light-red Email:
-              = text_field_tag :email
-              %h4.leading-small.font-white.background-light-red 密码:
-              = password_field_tag :password
-              .field
-                = submit_tag '登录', class: "btn btn-success"
-                = link_to '还没注册？点这里', sign_up_path
-          
+.modal.hide.fade#login-modal
+  .modal-header.background-red
+    = button_tag "x", class: "close", data: {dismiss: "modal"}
+    %h3.font-white 登录
+  .modal-body
+    = form_tag sessions_path, method: :post do
+      %h4.leading-small.font-white.background-light-red Email:
+      = text_field_tag :email
+      %h4.leading-small.font-white.background-light-red 密码:
+      = password_field_tag :password
+      .field
+        = submit_tag '登录', class: "btn btn-success"
+        = link_to '还没注册？点这里', sign_up_path
+  
           

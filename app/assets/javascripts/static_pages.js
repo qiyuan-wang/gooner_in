@@ -49,4 +49,6 @@ $().ready(function() {
         $(this).after('<label class="error" id="password-error">空着密码怎么行啊</label>');
       }
     });
+    
+    $('#login-modal ')
 })

@@ -11,9 +11,9 @@
           %a Gooner.in
         %span.slogan - In Arsenal we trust.
         #login-btn
-          =link_to '登  录', log_in_path, class: "btn btn-large btn-primary", style: "width: 139px;"
+          =link_to '登  录', "#login-modal", class: "btn btn-large btn-primary", style: "width: 139px;", data: { toggle: "modal"}
           %span 
-          =link_to '注  册', sign_up_path, class: "btn btn-large btn-success", style: "width: 139px;"
+          =link_to '注  册', "#signup-modal", class: "btn btn-large btn-success", style: "width: 139px;", data: { toggle: "modal"}
   .h-divider
   #lower-wrapper
     .container
@@ -25,7 +25,7 @@
           %p
             希望它能帮你记录，
           %p
-            在你生命中时时泛起的，
+            那些在你生命中时时泛起的，
           %p
             关于阿森纳的点点滴滴。
           %hr
@@ -45,5 +45,17 @@
                   .avatar-normal
                     = link_to image_tag(player.avatar_url, alt: "#{player.name}"), player_path(id: player.e_name)
           %br
+        .modal.hide.fade#login-modal
+          .modal-header
+            = button_tag "x", class: "close", data: {dismiss: "modal"}
+          .modal-body
+            = form_tag sessions_path, method: :post do
+              %h4.leading-small.font-white.background-light-red Email:
+              = text_field_tag :email
+              %h4.leading-small.font-white.background-light-red 密码:
+              = password_field_tag :password
+              .field
+                = submit_tag '登录', class: "btn btn-success"
+                = link_to '还没注册？点这里', sign_up_path
           
           

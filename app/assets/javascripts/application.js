@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap-tab
 //= require bootstrap-dropdown
+//= require bootstrap-modal
+//= require bootstrap-transition
 //= require rails.validations
 //= require chosen-jquery
 //= require editor/redactor

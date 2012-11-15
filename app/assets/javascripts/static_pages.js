@@ -25,4 +25,28 @@ $().ready(function() {
       index++;
       slideTo(index);
     }, 8000);
+      
+    $('#login-modal input#email').focusout(function()
+    {
+      $('.error').remove();
+      var email = $(this).val();
+      var EMAIL_REGEX = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/;
+      if(email == "")
+      {
+        $(this).after('<label class="error" id="email-error">不写email咋知道你是谁</label>');
+      } else if(!EMAIL_REGEX.test(email))
+      {
+        $(this).after('<label class="error" id="email-error">email可不长这样</label>');
+      }
+    });
+    
+    $('#login-modal input#password').focusout(function()
+    {
+      $('.error').remove();
+      var pwd = $(this).val();
+      if(pwd == "")
+      {
+        $(this).after('<label class="error" id="password-error">空着密码怎么行啊</label>');
+      }
+    });
 })

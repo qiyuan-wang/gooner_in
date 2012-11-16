@@ -19,7 +19,7 @@ $ ->
     SILDE
   
   SILDE = setInterval ( ->
-    index = 0 if index >= 0
+    index = 0 if index >= 3
     index++
     slideTo(index)), 8000
   #### slide part over

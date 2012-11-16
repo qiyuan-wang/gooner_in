@@ -17,4 +17,11 @@ class SessionsController < ApplicationController
     logout
     redirect_back_or_to root_path
   end
+  
+  def auth
+    raise request.env["omniauth.auth"].to_yaml
+  end
+  
+  def failure
+  end
 end

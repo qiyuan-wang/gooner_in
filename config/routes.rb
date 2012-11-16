@@ -4,6 +4,9 @@ GoonerIn::Application.routes.draw do
   match '/log_in' => "sessions#new", as: :log_in
   match '/log_out' => "sessions#destroy", as: :log_out
   
+  #auth login
+  match '/auth/:provider/callback' => "sessions#auth"
+  match '/auth/failure' => "sessions#failure"
   
   match "/people/:name" => "people#show", as: :person
   match "/people/:name/questions" => "people#questions_list", as: :person_questions

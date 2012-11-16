@@ -23,3 +23,6 @@ doc/
 
 # Ignore the avatar files
 /public/uploads/
+
+# Ignore the weibo key and secret
+config/initializers/omniauth.rb

@@ -586,6 +586,16 @@ hr {
   color: #E43B3B;
 }
 
+#login-form {
+  float: left;
+}
+
+#auth-link {
+  padding: 0 20px;
+  margin-left: 240px;
+  height: 200px;
+  border-left: 1px solid #CEB4B4;
+}
 //Question
 .question-title {
   word-wrap: break-word;

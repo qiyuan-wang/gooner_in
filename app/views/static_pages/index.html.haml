@@ -50,13 +50,17 @@
     = button_tag "x", class: "close", data: {dismiss: "modal"}
     %h3.font-white 登录
   .modal-body
-    = form_tag sessions_path, method: :post do
-      %h4.leading-small.font-white.background-light-red Email:
-      = text_field_tag :email
-      %h4.leading-small.font-white.background-light-red 密码:
-      = password_field_tag :password
-      .field
-        = submit_tag '登录', class: "btn btn-success"
-        = link_to '还没注册？点这里', sign_up_path
+    #login-form
+      = form_tag sessions_path, method: :post do
+        %h4.leading-small.font-white.background-light-red Email:
+        = text_field_tag :email
+        %h4.leading-small.font-white.background-light-red 密码:
+        = password_field_tag :password
+        .field
+          = submit_tag '登录', class: "btn btn-success"
+          = link_to '还没注册？点这里', sign_up_path
+    #auth-link
+      %h4.leading-small.font-white.background-light-red 还可以
+    
   
           

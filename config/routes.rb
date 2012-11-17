@@ -7,7 +7,7 @@ GoonerIn::Application.routes.draw do
   #auth login
   match '/auth/:provider/callback' => "sessions#auth"
   match '/auth/failure' => "sessions#failure"
-  match '/user/edit' => "users#edit"
+  match '/user/edit' => "users#edit", as: :info_edit
   
   match "/people/:name" => "people#show", as: :person
   match "/people/:name/questions" => "people#questions_list", as: :person_questions

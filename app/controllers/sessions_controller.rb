@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     if user.weibo
       redirect_to root_path
     else
-      redirect_to edit_user_path
+      redirect_to info_edit_path
     end
   end
   

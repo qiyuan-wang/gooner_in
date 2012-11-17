@@ -7,14 +7,16 @@ class User
   field :name,    type: String
   field :email,   type: String
   field :description, type: String, default: ""
-
+  field :weibo,   type: Boolean, default: false
+  field :provider, type: String
+  field :authid, type: String
   
   mount_uploader :avatar, AvatarUploader
   
   attr_accessible :name, :email, :password, :password_confirmation, :avatar, :avatar_cache, :crop_x, :crop_y, :crop_w, :crop_h
+  attr_protected :provider, :weibo, :authid
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :crop_avatar
-  #after_update :delete_original_file
   
   authenticates_with_sorcery!
 
@@ -32,6 +34,17 @@ class User
   has_many :questions
   has_many :answers
   
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth['provider']
+      user.authid = auth['uid']
+      if auth['info']
+        user.name = auth['info']['nickname']
+        user.description = auth['info']['description']
+      end
+    end
+  end
+  
   #统计获得喜欢数
   def total_likes
     total_likes = 0
@@ -47,9 +60,5 @@ class User
   
   def crop_avatar
     avatar.recreate_versions! if crop_x.present?
-  end
-  
-  def delete_original_file
-    File.delete self.original_file_path if File.exists? self.original_file_path
   end
 end

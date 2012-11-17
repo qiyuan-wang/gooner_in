@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.weibo = true
-    if @user.save
+    if @user.update_attributes(params[:user])
       redirect_to root_path
     end
   end

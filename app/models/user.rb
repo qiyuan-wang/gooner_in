@@ -35,7 +35,7 @@ class User
   has_many :answers
   
   def self.create_with_omniauth(auth)
-    create! do |user|
+    create!(:validate => false) do |user|
       user.provider = auth['provider']
       user.authid = auth['uid']
       if auth['info']

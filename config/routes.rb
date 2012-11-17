@@ -17,7 +17,7 @@ GoonerIn::Application.routes.draw do
   match "/people/:name/liked" => "people#liked_list", as: :person_liked
   match "/people/:name/liked/pages/:page" => "people#liked_list"
   
-  resources :users, :only => [:create]
+  resources :users, :only => [:create, :show]
   resources :sessions, :only => [:create]
   
   resources :players do

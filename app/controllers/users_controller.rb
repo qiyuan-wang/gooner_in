@@ -23,5 +23,6 @@ class UsersController < ApplicationController
     @user.weibo = true
     if @user.save
       redirect_to root_path
+    end
   end
 end

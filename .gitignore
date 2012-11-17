@@ -25,4 +25,4 @@ doc/
 /public/uploads/
 
 # Ignore the weibo key and secret
-config/initializers/omniauth.rb
+#config/initializers/omniauth.rb

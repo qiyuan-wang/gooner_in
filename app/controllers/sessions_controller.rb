@@ -20,11 +20,11 @@ class SessionsController < ApplicationController
   
   def auth
     auth = request.env["omniauth.auth"]
-    user = User.where(:provider => auth['provider'], :authid => auth['uid']).first || User.create_with_auth(auth)
+    user = User.where(:provider => auth['provider'], :authid => auth['uid']).first || User.create_with_omniauth(auth)
     reset_session
     auto_login user
     if user.weibo
-      redirect_to questions_path
+      redirect_to root_path
     else
       redirect_to edit_user_path
     end

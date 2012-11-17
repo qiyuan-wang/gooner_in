@@ -20,8 +20,8 @@ class UsersController < ApplicationController
   
   def update
     @user = current_user
-    @user.weibo = true
     if @user.update_attributes(params[:user])
+      @user.set(:weibo, true)
       redirect_to root_path
     end
   end

@@ -7,6 +7,7 @@ GoonerIn::Application.routes.draw do
   #auth login
   match '/auth/:provider/callback' => "sessions#auth"
   match '/auth/failure' => "sessions#failure"
+  match '/user/edit' => "users#edit"
   
   match "/people/:name" => "people#show", as: :person
   match "/people/:name/questions" => "people#questions_list", as: :person_questions
@@ -16,7 +17,7 @@ GoonerIn::Application.routes.draw do
   match "/people/:name/liked" => "people#liked_list", as: :person_liked
   match "/people/:name/liked/pages/:page" => "people#liked_list"
   
-  resources :users, :only => [:create, :edit, :update]
+  resources :users, :only => [:create]
   resources :sessions, :only => [:create]
   
   resources :players do

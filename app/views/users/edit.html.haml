@@ -1,0 +1,15 @@
+#main
+  .container
+    .row
+      #mainbar-small.span3.offset4.box
+        = form_for @user, html: {multipart: true}, validate: true do |f|
+          %h4.leading-small.font-white.background-dark-blue Email:
+          = f.text_field :email
+          %h4.leading-small.font-white.background-dark-blue 用户名:
+          = f.text_field :name
+          %h4.leading-small.font-white.background-dark-blue 密码:
+          = f.password_field :password , :validate => { :confirmation => false }
+          %h4.leading-small.font-white.background-dark-blue 确认密码:
+          = f.password_field :password_confirmation
+          = f.submit '保存', class: "btn btn-success"
+        

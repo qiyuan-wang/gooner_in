@@ -19,6 +19,11 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => "carrierwave/mongoid"
 gem 'mini_magick'
 
+#weibo oauth
+gem 'omniauth', '1.1.0'
+gem 'omniauth-weibo-oauth2'
+
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

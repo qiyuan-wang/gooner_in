@@ -17,4 +17,19 @@ class SessionsController < ApplicationController
     logout
     redirect_back_or_to root_path
   end
+  
+  def auth
+    auth = request.env["omniauth.auth"]
+    user = User.where(:provider => auth['provider'], :authid => auth['uid']).first || User.create_with_auth(auth)
+    reset_session
+    auto_login user
+    if user.weibo
+      redirect_to questions_path
+    else
+      redirect_to edit_user_path
+    end
+  end
+  
+  def failure
+  end
 end

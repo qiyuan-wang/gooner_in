@@ -43,6 +43,7 @@ class User
       user.description = auth['info']['description']
     end
     user.save!(validate: false)
+    user
   end
   
   #统计获得喜欢数

@@ -6,10 +6,8 @@ class Authentication
   field :url, type: String
   embedded_in :user
   
-  def create_and_initialize_with_auth(auth)
-    self.provider = auth['provider']
-    self.authid = auth['uid']
-    self.url = auth['info']['urls']['Weibo']
+  def create_with_auth(auth)
+    self.create(:provider => auth['provider'], :authid => auth['uid'], :url => auth['info']['urls']['Weibo'])
     self.save
   end
 end

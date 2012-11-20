@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   
   def bind
     @user = User.new
-    @user.name = auth[:name]
+    @user.name = session[:omniauth][:name]
     
     #raise @user.to_yaml
   end

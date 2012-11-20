@@ -1,5 +1,6 @@
 # encoding: utf-8
 class UsersController < ApplicationController
+  after_filter :clear_session, :only => [:create]
   def new
   end
   
@@ -9,11 +10,9 @@ class UsersController < ApplicationController
       auth = session[:omniauth]
       @user.authentications.build(:provider => auth[:provider], :authid => auth[:authid])
       @user.url = auth[:url]
-      @user.save(validate:false)
-    else 
-      @user.save
+      @user.weibo = 2
     end
-    if @user.valid?
+    if @user.save
       auto_login @user
       redirect_to root_path
     else
@@ -23,8 +22,7 @@ class UsersController < ApplicationController
   
   def bind
     @user = User.new
-    @user.name = session[:omniauth][:name]
-    
+    @user.name = session[:omniauth][:name]    
     #raise @user.to_yaml
   end
   
@@ -38,6 +36,12 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       flash.now.alert = "Email或密码错误"
+    end
+  end
+  
+  def clear_session
+    if session[:omniauth]
+      session[:omniauth] = nil
     end
   end
 end

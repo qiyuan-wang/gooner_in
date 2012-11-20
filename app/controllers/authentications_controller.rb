@@ -1,7 +1,4 @@
 class AuthenticationsController < ApplicationController
-  def index
-  end
-
   def create
     auth = request.env["omniauth.auth"]
     authentication = Authentication.where(:provider => auth['provider'], :authid => auth['uid']).first

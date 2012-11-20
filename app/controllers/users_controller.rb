@@ -15,10 +15,10 @@ class UsersController < ApplicationController
   
   def bind
     @user = User.new
-    raise session[:omniauth].to_yaml
-    @user.authentications.build(:provider => auth['provider'], :authid => auth['authid'])
-    @user.name = auth['name']
-    @user.url = auth['url']
+    auth = session[:omniauth]
+    @user.authentications.build(:provider => auth[:provider], :authid => auth[:authid])
+    @user.name = auth[:name]
+    @user.url = auth[:url]
     #raise params[:auth]
   end
   

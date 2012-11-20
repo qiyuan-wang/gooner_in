@@ -1,9 +1,4 @@
 GoonerIn::Application.routes.draw do
-  get "authentications/index"
-
-  get "authentications/create"
-
-  get "authentications/destroy"
 
   root :to => 'static_pages#index'
   match '/sign_up' => "users#new", as: :sign_up

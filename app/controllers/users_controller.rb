@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def bind
     @user = User.new
     auth = session[:omniauth]
-    @user.authentications.create_and_initialize_with_auth auth
+    @user.authentications.create_with_auth auth
     #raise params[:auth]
   end
   

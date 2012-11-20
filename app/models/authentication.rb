@@ -7,7 +7,7 @@ class Authentication
   embedded_in :user
   
   def create_with_auth(auth)
-    self.create(:provider => auth['provider'], :authid => auth['uid'], :url => auth['info']['urls']['Weibo'])
-    self.save
+    authentication = Authentication.create(:provider => auth['provider'], :authid => auth['uid'], :url => auth['info']['urls']['Weibo'])
+    authentication.save
   end
 end

@@ -5,7 +5,15 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    if @user.save
+    if session[:omniauth]
+      auth = session[:omniauth]
+      @user.authentications.build(:provider => auth[:provider], :authid => auth[:authid])
+      @user.url = auth[:url]
+      @user.save(validate:false)
+    else 
+      @user.save
+    end
+    if @user.valid?
       auto_login @user
       redirect_to root_path
     else
@@ -15,10 +23,8 @@ class UsersController < ApplicationController
   
   def bind
     @user = User.new
-    auth = session[:omniauth]
-    @user.authentications.build(:provider => auth[:provider], :authid => auth[:authid])
     @user.name = auth[:name]
-    @user.url = auth[:url]
+    
     #raise @user.to_yaml
   end
   

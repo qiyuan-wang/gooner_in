@@ -7,10 +7,7 @@ class User
   field :name,    type: String
   field :email,   type: String
   field :description, type: String, default: ""
-  field :weibo,   type: Boolean, default: false
-  field :provider, type: String
-  field :authid, type: String
-  
+    
   mount_uploader :avatar, AvatarUploader
   
   attr_accessible :name, :email, :password, :password_confirmation, :avatar, :avatar_cache, :crop_x, :crop_y, :crop_w, :crop_h
@@ -22,7 +19,7 @@ class User
 
   validates :name, :presence => { message: "别空着啊这儿" },
                    :uniqueness => { :case_sensitive => false, message: "下手晚了，此用户名已被注册了，换个吧"},
-                   :length => { maximum: 10, too_long: "用户名过长（最多支持8个字符）"},
+                   :length => { maximum: 10, too_long: "用户名过长（最多支持10个字符）"},
                    :format => { with: /\A[\w\u4e00-\u9fa5]+\z/, message: "用户名支持中英文字符和_(下划线)" }
   validates :email, :presence => { message: "这不能空着" },
                     :uniqueness => { :case_sensitive => false, message: "晚了，此Email已被注册了，换个吧"},
@@ -33,19 +30,26 @@ class User
 
   has_many :questions
   has_many :answers
+  embeds_many :authentications
   
-  def self.create_with_omniauth(auth)
+  def apply_omniauth(auth)
     user = User.new
     user.provider = auth['provider']
     user.authid = auth['uid']
     if auth['info']
-      user.name = auth['info']['nickname']
+      user.name = auth['info']['nickname'] + "from weibo"
       user.description = auth['info']['description']
     end
     user.save!(validate: false)
     user
   end
   
+  def bind_with_omniauth(auth)
+    self.update_attribute(:provider, auth['provider'])
+    self.update_attribute(:authid, auth['uid'])
+    self.set(:weibo, 1)
+  end
+    
   #统计获得喜欢数
   def total_likes
     total_likes = 0

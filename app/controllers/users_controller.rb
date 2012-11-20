@@ -1,11 +1,10 @@
+# encoding: utf-8
 class UsersController < ApplicationController
   def new
-    @user = User.new
   end
   
   def create
     @user = User.new(params[:user])
-    @user.avatar = params[:user][:avatar]
     if @user.save
       auto_login @user
       redirect_to root_path
@@ -14,8 +13,11 @@ class UsersController < ApplicationController
     end
   end
   
-  def edit
-    @user = current_user
+  def bind
+    @user = User.new
+    auth = session[:omniauth]
+    @user.authentications.create_and_initialize_with_auth auth
+    #raise params[:auth]
   end
   
   def show
@@ -24,8 +26,10 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
-      @user.set(:weibo, true)
+      @user.set(:weibo, 1)
       redirect_to root_path
+    else
+      flash.now.alert = "Email或密码错误"
     end
   end
 end

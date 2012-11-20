@@ -20,13 +20,7 @@ class SessionsController < ApplicationController
   
   def auth
     auth = request.env["omniauth.auth"]
-    user = User.where(:provider => auth['provider'], :authid => auth['uid']).first || User.create_with_omniauth(auth)
-    auto_login user
-    if user.email.nil?
-      redirect_to info_edit_path
-    else
-      redirect_to root_path
-    end
+    redirect_to bind_path
   end
   
   def failure

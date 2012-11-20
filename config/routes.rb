@@ -1,13 +1,19 @@
 GoonerIn::Application.routes.draw do
+  get "authentications/index"
+
+  get "authentications/create"
+
+  get "authentications/destroy"
+
   root :to => 'static_pages#index'
   match '/sign_up' => "users#new", as: :sign_up
   match '/log_in' => "sessions#new", as: :log_in
   match '/log_out' => "sessions#destroy", as: :log_out
   
   #auth login
-  match '/auth/:provider/callback' => "sessions#auth"
-  match '/auth/failure' => "sessions#failure"
-  match '/user/edit' => "users#edit", as: :info_edit
+  match '/auth/:provider/callback' => "authentications#create"
+  match '/auth/failure' => "authentications#failure"
+  match '/user/bind' => "users#bind", as: :bind
   
   match "/people/:name" => "people#show", as: :person
   match "/people/:name/questions" => "people#questions_list", as: :person_questions
@@ -17,7 +23,7 @@ GoonerIn::Application.routes.draw do
   match "/people/:name/liked" => "people#liked_list", as: :person_liked
   match "/people/:name/liked/pages/:page" => "people#liked_list"
   
-  resources :users, :only => [:create, :show]
+  resources :users, :only => [:create]
   resources :sessions, :only => [:create]
   
   resources :players do

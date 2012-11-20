@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user.authentications.build(:provider => auth[:provider], :authid => auth[:authid])
     @user.name = auth[:name]
     @user.url = auth[:url]
-    raise @user.to_yaml
+    #raise @user.to_yaml
   end
   
   def show

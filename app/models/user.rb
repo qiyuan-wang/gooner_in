@@ -31,24 +31,6 @@ class User
   has_many :questions
   has_many :answers
   embeds_many :authentications
-  
-  def apply_omniauth(auth)
-    user = User.new
-    user.provider = auth['provider']
-    user.authid = auth['uid']
-    if auth['info']
-      user.name = auth['info']['nickname'] + "from weibo"
-      user.description = auth['info']['description']
-    end
-    user.save!(validate: false)
-    user
-  end
-  
-  def bind_with_omniauth(auth)
-    self.update_attribute(:provider, auth['provider'])
-    self.update_attribute(:authid, auth['uid'])
-    self.set(:weibo, 1)
-  end
     
   #统计获得喜欢数
   def total_likes

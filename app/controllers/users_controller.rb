@@ -16,7 +16,9 @@ class UsersController < ApplicationController
   def bind
     @user = User.new
     auth = session[:omniauth]
-    @user.authentications.create_with_auth auth
+    @user.authentications.build(:provider => auth['provider'], :authid => auth['authid'])
+    @user.name = auth['name']
+    @user.url = auth['url']
     #raise params[:auth]
   end
   

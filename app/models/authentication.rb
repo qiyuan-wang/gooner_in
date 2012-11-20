@@ -1,7 +1,7 @@
 class Authentication
   include Mongoid::Document
   field :provider, type: String
-  field :authid, type: String
+  field :authid, type: Integer
   field :weibo,   type: Integer, default: 0 # 0:未绑定 1:已注册用户绑定, 2:通过微博注册
   field :url, type: String
   embedded_in :user

@@ -9,7 +9,7 @@ class AuthenticationsController < ApplicationController
       auto_login authentication.user
       redirect_to root_path
     elsif current_user
-      if current_user.authentications.create_with_auth auth
+      if current_user.authentications.create(:provider => auth['provider'], :authid => auth['uid'], :url => auth['info']['urls']['Weibo'])
         current_user.set(:weibo, 1)
         redirect_to settings_profile_path
       end

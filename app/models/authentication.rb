@@ -3,6 +3,7 @@ class Authentication
   field :provider, type: String
   field :authid, type: Integer
   embedded_in :user
+  scope :weibo, where(provider: "weibo")
   
   def self.trim_info_from_auth(auth)
     hash = {:provider => auth['provider'], 

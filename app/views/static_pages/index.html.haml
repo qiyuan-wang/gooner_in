@@ -60,7 +60,8 @@
           = submit_tag '登录', class: "btn btn-success"
           = link_to '还没注册？点这里', sign_up_path
     #auth-login
-      %h4.leading-small.font-white.background-light-green 还可以
+      %h4.leading-normal.font-white.background-light-red 第三方帐号登录
+      = render 'shared/auth_links'
     
   
           

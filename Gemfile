@@ -22,6 +22,7 @@ gem 'mini_magick'
 #weibo oauth
 gem 'omniauth', '1.1.0'
 gem 'omniauth-weibo-oauth2'
+gem 'omniauth-qq-connect'
 
 
 # Bundle edge Rails instead:

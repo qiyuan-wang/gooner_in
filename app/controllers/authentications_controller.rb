@@ -18,6 +18,9 @@ class AuthenticationsController < ApplicationController
   end
 
   def destroy
+    @authentication = current_user.authentications.find(params[:id])
+    @authentication.destroy
+    redirect_to settings_profile_path
   end
   
   def failure

@@ -1,16 +1,22 @@
 #main
   .container
     .row
-      #mainbar-small.span3.offset4.box
-        %h3 完善资料
-        = form_for @user, html: {multipart: true}, validate: true do |f|
-          %h4.leading-small.font-white.background-dark-blue Email:
-          = f.text_field :email
-          %h4.leading-small.font-white.background-dark-blue 用户名:
-          = f.text_field :name
-          %h4.leading-small.font-white.background-dark-blue 密码:
-          = f.password_field :password , :validate => { :confirmation => false }
-          %h4.leading-small.font-white.background-dark-blue 确认密码:
-          = f.password_field :password_confirmation
-          = f.submit '保存', class: "btn btn-success"
+      #mainbar-small.span8.offset2.box
+        #signup-form.pull-left
+          %h3.font-dark-blue 完善资料
+          = form_for @user, html: {multipart: true}, validate: true do |f|
+            %h4.leading-small.font-white.background-dark-blue Email:
+            = f.text_field :email
+            %h4.leading-small.font-white.background-dark-blue 用户名:
+            = f.text_field :name
+            %h4.leading-small.font-white.background-dark-blue 密码:
+            = f.password_field :password , :validate => { :confirmation => false }
+            %h4.leading-small.font-white.background-dark-blue 确认密码:
+            = f.password_field :password_confirmation
+            .field
+              = f.submit '保存', class: "btn btn-success"
+        #auth-login-link
+          %p.font-dark-blue 已经有gooner.in的帐号了？
+          = link_to "那直接登录绑定就好啦,点这里", settings_profile_path
+        
         

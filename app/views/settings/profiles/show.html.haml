@@ -7,16 +7,29 @@
         = flash[:success]
     .box-s.font-gray
       %h4.title-text 头像
-      = image_tag current_user.avatar_url(:normal), alt: "#{current_user.name}", class: "u-avatar-small pull-left"
+      = image_tag @user.avatar_url(:normal), alt: "#{current_user.name}", class: "u-avatar-small pull-left"
       #avatar-upload
-        = form_for current_user, :url => settings_avatar_path, :html => {:multipart => true} do |f|
+        = form_for @user, :url => settings_avatar_path, :html => {:multipart => true} do |f|
           = f.file_field :avatar
           = f.submit '上传', class: "btn btn-primary"
     %hr
     .box-s.font-gray
       %h4.title-text 个人介绍
-      = form_for @user, :url => settings_profile_path do |f|
-        = f.text_field :description
-        = f.submit "保存", class: "btn btn-primary"
-        #tips.font-red
-          %span 一句话就行啦，别写太多的，太多没人看的噢。
+      #desc-edit
+        = form_for @user, :url => settings_profile_path do |f|
+          = f.text_field :description
+          = f.submit "保存", class: "btn btn-primary"
+          #tips.font-red
+            %span 一句话就行啦，别写太多的，太多没人看的噢。
+    %hr
+    .box-s.font-gray
+      %h4.title-text 绑定帐号
+      %ul.unstyled
+        %li
+          新浪微博
+          - if @authentications.weibo.empty? 
+            %a(href="http://localhost:3000/auth/weibo")
+              绑定
+          - else
+            已绑定
+            = link_to "解除绑定", @authentication.weibo, :confirm => "不带新浪玩儿了?", :method => :delete

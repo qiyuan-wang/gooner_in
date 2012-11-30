@@ -6,6 +6,7 @@ class Settings::ProfilesController < ApplicationController
   before_filter :find_user
   
   def show
+    @authentications = @user.authentications
   end
 
   def update

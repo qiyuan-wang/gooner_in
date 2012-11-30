@@ -2,6 +2,7 @@
 class UsersController < ApplicationController
   after_filter :clear_session, :only => [:create]
   def new
+    @user = User.new
   end
   
   def create
@@ -22,21 +23,12 @@ class UsersController < ApplicationController
   
   def bind
     @user = User.new
-    @user.name = session[:omniauth][:name]    
-    #raise @user.to_yaml
+    if session[:omniauth]
+      @user.name = session[:omniauth][:name]
+    end
   end
   
   def show
-  end
-  
-  def update
-    @user = current_user
-    if @user.update_attributes(params[:user])
-      @user.set(:weibo, 1)
-      redirect_to root_path
-    else
-      flash.now.alert = "Email或密码错误"
-    end
   end
   
   def clear_session

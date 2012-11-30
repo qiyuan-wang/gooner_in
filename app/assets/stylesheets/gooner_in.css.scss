@@ -16,6 +16,10 @@
   margin-left: 240px;
 }
 
+.offset2 {
+  margin-left: 170px;
+}
+
 //强行解决dropdown-toggle的颜色问题
 .nav-pills .open .dropdown-toggle {
   color: white;
@@ -69,6 +73,7 @@
 @mixin u-avatar-image() {
 }
 
+//标题等背景变换 $last为变换持续时间
 @mixin bg-transition($last) {
   -webkit-transition-property: background;
   -moz-transition-property: background;
@@ -150,6 +155,10 @@ hr {
   color: #615A5A;
 }
 
+.font-dark-blue {
+  color: #1078A8;
+}
+
 //标题背景颜色类
 .background-dark-blue {
   background: #08C;
@@ -206,10 +215,14 @@ hr {
 }
 
 .leading-small {
-  @include title(30%);
+  @include title(85px);
   @extend .leading;
 }
 
+.leading-normal {
+  @include title(105px);
+  @extend .leading;
+}
 .leading-tiny {
   @include title(10%);
   @extend .leading;
@@ -229,6 +242,7 @@ hr {
   padding: 5px 8px;
   @include border-radius(2px);
 }
+
 .field {
   margin: 10px;
     
@@ -325,6 +339,58 @@ hr {
   font-family:"Trocchi", san-serif;
   font-size: 18px;
   color: white;
+}
+
+//User#new bind
+#signup-form {
+  margin: 10px;
+  width: 280px;
+  h3 {
+    font-size: 28px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+}
+
+#auth-login-link {
+  height: 200px;
+  margin-left: 280px;
+  margin-top: 70px;
+  border-left: 1px solid #DDEBEC;
+  padding-top: 100px;
+  padding-left: 45px;
+
+  p {
+    font-size: 20px;
+  }
+  
+  a {
+    font-size: 16px;
+    color: #C77979;
+    padding: 3px;
+    -webkit-transition-property: background color;
+    -webkit-transition-duration: .3s;
+    
+    &:hover {
+      background: #F36E6E;
+      color: white;
+      text-decoration:none;
+    }
+  }
+}
+
+#auth-login-links {
+  height: 280px;
+  margin-left: 280px;
+  margin-top: 40px;
+  border-left: 1px solid #DDEBEC;
+  padding-top: 60px;
+  padding-left: 30px;
+  
+  p {
+    font-size: 20px;
+  }
+
 }
 
 //Player#show
@@ -590,6 +656,18 @@ hr {
   float: left;
 }
 
+#auth-links {
+  li {
+    float: left;
+    margin-right: 20px;
+    margin-top: 10px;
+    &:hover {
+      -webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.75);
+      box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75); 
+    }
+  }
+}
 #auth-login {
   padding: 0 20px;
   margin-left: 240px;
@@ -967,7 +1045,6 @@ form.new_question, form.edit_question {
 //SettingsProfile#show
 .box-s {
   margin: 20px;
-  height: 60px;
   
   h4 {
     width: 60px;
@@ -987,8 +1064,13 @@ form.new_question, form.edit_question {
   top: 8px;
 }
 
+.box-s > #desc-edit {
+  margin-left: 85px;
+  height: 75px;
+}
 #avatar-upload {
   margin-left: 60px;
+  height: 60px;
 }
 
 #user_avatar {
@@ -1014,6 +1096,7 @@ form.new_question, form.edit_question {
   margin-top: 10px;
   text-align: center;
 }
+
 //回答样式
 .answer-content {
   font-size: 14px;

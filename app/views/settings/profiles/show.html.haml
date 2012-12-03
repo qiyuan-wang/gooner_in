@@ -34,7 +34,7 @@
                 绑定
             - else
               已绑定
-              = link_to "解除绑定", @authentications.weibo.first, :confirm => "不带新浪玩儿了?", :method => :delete
+              = link_to "解除绑定", id: @authentications.weibo.first.id, :confirm => "不带新浪玩儿了?", :method => :delete
           %li
             = image_tag image_path('qq_b_24.png'), title: "腾讯QQ"
             腾讯QQ
@@ -43,5 +43,5 @@
                 绑定
             - else
               已绑定
-              = link_to "解除绑定", @authentications.qq.first, :confirm => "不带QQ玩儿了?", :method => :delete
+              = link_to "解除绑定", id: @authentications.qq.first.id, :confirm => "不带QQ玩儿了?", :method => :delete
             

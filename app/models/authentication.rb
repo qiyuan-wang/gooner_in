@@ -7,10 +7,17 @@ class Authentication
   scope :qq, where(provider: "qq")
   
   def self.trim_info_from_auth(auth)
-    hash = {:provider => auth['provider'], 
-            :authid => auth['uid'], 
-            :name => auth['info']['nickname'], 
-            :url => auth['info']['urls']['Weibo']}
+    if auth['provider'] == "weibo"
+      hash = {:provider => auth['provider'], 
+              :authid => auth['uid'], 
+              :name => auth['info']['nickname'], 
+              :url => auth['info']['urls']['Weibo']}
+    elsif auth['provider'] == "douban"
+      hash = {:provider => auth['provider'], 
+              :authid => auth['uid'], 
+              :name => auth['name']
+              :url => auth['alt']}
+    end
   end
   
 end

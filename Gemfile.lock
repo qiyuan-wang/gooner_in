@@ -165,9 +165,6 @@ GEM
     omniauth-qq-connect (0.2.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
-    omniauth-weibo-oauth2 (0.2.0)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.0)
     origin (1.0.11)
     polyglot (0.3.3)
     pry (0.9.10)
@@ -274,7 +271,6 @@ DEPENDENCIES
   omniauth
   omniauth-douban-oauth2
   omniauth-qq-connect
-  omniauth-weibo-oauth2
   rack-livereload
   rails (= 3.2.6)
   rspec-rails (= 2.9.0)

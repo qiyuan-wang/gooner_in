@@ -21,7 +21,7 @@ gem 'mini_magick'
 
 #weibo oauth
 gem 'omniauth'
-gem 'omniauth-weibo-oauth2'
+#gem 'omniauth-weibo-oauth2'
 gem 'omniauth-qq-connect'
 gem 'omniauth-douban-oauth2'
 

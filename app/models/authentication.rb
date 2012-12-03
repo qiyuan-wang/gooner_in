@@ -2,7 +2,7 @@ class Authentication
   include Mongoid::Document
   field :provider, type: String
   field :authid, type: Integer
-  embedded_in :user
+  belong_to :user
   scope :weibo, where(provider: "weibo")
   scope :qq, where(provider: "qq")
   

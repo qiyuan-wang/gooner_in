@@ -32,7 +32,7 @@ class User
 
   has_many :questions
   has_many :answers
-  embeds_many :authentications
+  has_many :authentications
     
   #统计获得喜欢数
   def total_likes

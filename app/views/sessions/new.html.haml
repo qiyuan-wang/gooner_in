@@ -1,16 +1,20 @@
 #main
   .container
     .row
-      #mainbar-small.span3.offset4.box
-        - if flash[:alert]
-          .alert.alert-error(style="margin-top: 10px;")
-            %h4.alert-leading 登录失败
-            = flash[:alert]
-        = form_tag sessions_path, method: :post do
-          %h4.leading-small.font-white.background-light-red Email:
-          = text_field_tag :email
-          %h4.leading-small.font-white.background-light-red 密码:
-          = password_field_tag :password
-          .field
-            = submit_tag '登录', class: "btn btn-success"
-            = link_to '还没注册？点这里', sign_up_path
+      #mainbar-small.span8.offset2.box
+        #login-form.pull-left
+          - if flash[:alert]
+            .alert.alert-error(style="margin-top: 10px;")
+              %h4.alert-leading 登录失败
+              = flash[:alert]
+          = form_tag sessions_path, method: :post do
+            %h4.leading-small.font-white.background-light-red Email:
+            = text_field_tag :email
+            %h4.leading-small.font-white.background-light-red 密码:
+            = password_field_tag :password
+            .field
+              = submit_tag '登录', class: "btn btn-success"
+              = link_to '还没注册？点这里', sign_up_path
+        #auth-login-links-short
+          %p.font-dark-blue 还可以用第三方帐号登录的噢
+          = render 'shared/auth_links'

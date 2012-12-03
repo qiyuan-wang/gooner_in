@@ -342,7 +342,7 @@ hr {
 }
 
 //User#new bind
-#signup-form {
+#signup-form, #login-form {
   margin: 10px;
   width: 280px;
   h3 {
@@ -388,9 +388,23 @@ hr {
   padding-left: 30px;
   
   p {
+    margin-left: -5px;
     font-size: 20px;
   }
+}
 
+#auth-login-links-short {
+  height: 150px;
+  margin-left: 280px;
+  margin-top: 20px;
+  border-left: 1px solid #DDEBEC;
+  padding-top: 30px;
+  padding-left: 30px;
+  
+  p {
+    margin-left: -5px;
+    font-size: 20px;
+  }
 }
 
 //Player#show
@@ -657,6 +671,8 @@ hr {
 }
 
 #auth-links {
+  margin-left: 20px;
+  
   li {
     float: left;
     margin-right: 20px;

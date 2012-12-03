@@ -4,6 +4,7 @@ class Authentication
   field :authid, type: Integer
   embedded_in :user
   scope :weibo, where(provider: "weibo")
+  scope :qq, where(provider: "qq")
   
   def self.trim_info_from_auth(auth)
     hash = {:provider => auth['provider'], 

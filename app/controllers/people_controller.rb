@@ -5,6 +5,7 @@ class PeopleController < ApplicationController
   def show
     @questions = @person.questions.recent.limit(10)
     @answers = @person.answers.recent.limit(10)
+    @authentications = @person.authentications
     if current_user == @person
       @liked_answers = Answer.liked_by(current_user).recent.limit(5)
     end

@@ -24,12 +24,24 @@
     %hr
     .box-s.font-gray
       %h4.title-text 绑定帐号
-      %ul.unstyled
-        %li
-          新浪微博
-          - if @authentications.weibo.empty? 
-            %a(href="http://localhost:3000/auth/weibo")
-              绑定
-          - else
-            已绑定
-            = link_to "解除绑定", @authentication.weibo, :confirm => "不带新浪玩儿了?", :method => :delete
+      #auth-bind
+        %ul.unstyled
+          %li
+            = image_tag image_path('weibo_r_24.png'), title: "新浪微博"
+            新浪微博
+            - if @authentications.weibo.empty?
+              %a(href="/auth/weibo")
+                绑定
+            - else
+              已绑定
+              = link_to "解除绑定", @authentication.weibo, :confirm => "不带新浪玩儿了?", :method => :delete
+          %li
+            = image_tag image_path('qq_b_24.png'), title: "腾讯QQ"
+            腾讯QQ
+            - if @authentications.qq.empty?
+              %a(href="/auth/weibo")
+                绑定
+            - else
+              已绑定
+              = link_to "解除绑定", @authentication.qq, :confirm => "不带QQ玩儿了?", :method => :delete
+            

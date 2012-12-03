@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/qiyuan-wang/omniauth-douban-oauth2.git
+  revision: e1a44375d5584a384850f9726a73ce838ece9b78
+  specs:
+    omniauth-douban-oauth2 (0.0.5)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -269,6 +277,7 @@ DEPENDENCIES
   mini_magick
   mongoid (~> 3.0.0)
   omniauth
+  omniauth-douban-oauth2!
   omniauth-qq-connect
   omniauth-weibo-oauth2
   rack-livereload

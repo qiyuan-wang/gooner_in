@@ -23,7 +23,7 @@ gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-weibo-oauth2'
 gem 'omniauth-qq-connect'
-#gem 'omniauth-douban-oauth2'
+gem 'omniauth-douban-oauth2', :git => 'git://github.com/qiyuan-wang/omniauth-douban-oauth2.git'
 
 
 # Bundle edge Rails instead:

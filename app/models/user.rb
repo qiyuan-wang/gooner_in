@@ -8,7 +8,6 @@ class User
   field :email,   type: String
   field :description, type: String, default: ""
   field :weibo,   type: Integer, default: 0 # 0:未绑定 1:已注册用户绑定, 2:通过微博注册
-  field :url, type: String
 
   mount_uploader :avatar, AvatarUploader
   

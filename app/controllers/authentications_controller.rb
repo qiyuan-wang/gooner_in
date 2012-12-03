@@ -1,7 +1,7 @@
 class AuthenticationsController < ApplicationController
   def create
     auth = request.env["omniauth.auth"]
-    authentication = Authentication.where(:provider => auth['provider'], :authid => auth['uid']).first
+    authentication = Authentication.and({:provider => auth['provider']}, {:authid => auth['uid']}).first
     if authentication
       auto_login authentication.user
       redirect_to root_path

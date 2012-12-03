@@ -8,7 +8,7 @@ class Settings::ProfilesController < ApplicationController
   def show
     @authentications = @user.authentications
     unless @authentications.empty?
-      @weibo = @authenications.find(provider: "weibo")
+      @weibo = @authentications.find(provider: "weibo")
       @qq = @authentications.find(provider: "qq")
     end
   end

@@ -12,7 +12,7 @@ gem 'client_side_validations'
 gem 'chosen-rails'
 gem 'haml'
 gem 'haml-rails'
-gem 'sorcery'
+gem 'sorcery', '~> 0.7.13'
 
 #文件上传
 gem 'carrierwave'

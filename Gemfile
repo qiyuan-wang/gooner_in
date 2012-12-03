@@ -12,7 +12,7 @@ gem 'client_side_validations'
 gem 'chosen-rails'
 gem 'haml'
 gem 'haml-rails'
-gem 'sorcery', :git => "git://github.com/qiyuan-wang/sorcery.git"
+gem 'sorcery'
 
 #文件上传
 gem 'carrierwave'
@@ -23,7 +23,7 @@ gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-weibo-oauth2'
 gem 'omniauth-qq-connect'
-gem 'omniauth-douban-oauth2'
+#gem 'omniauth-douban-oauth2'
 
 
 # Bundle edge Rails instead:

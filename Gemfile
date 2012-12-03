@@ -20,9 +20,10 @@ gem 'carrierwave-mongoid', :require => "carrierwave/mongoid"
 gem 'mini_magick'
 
 #weibo oauth
-gem 'omniauth', '1.1.0'
+gem 'omniauth'
 gem 'omniauth-weibo-oauth2'
 gem 'omniauth-qq-connect'
+gem 'omniauth-douban-oauth2'
 
 
 # Bundle edge Rails instead:

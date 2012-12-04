@@ -5,7 +5,7 @@ class Authentication
   field :url, type: String, default: ""
   belongs_to :user
   scope :weibo, where(provider: "weibo")
-  scope :qq, where(provider: "qq")
+  scope :qq_connect, where(provider: "qq_connect")
   scope :douban, where(provider: "douban")
   
   def self.trim_info_from_auth(auth)

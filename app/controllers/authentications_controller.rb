@@ -8,9 +8,9 @@ class AuthenticationsController < ApplicationController
     elsif current_user
       if current_user.authentications.create(:provider => auth['provider'], :authid => auth['uid'])
         if auth['provider'] == "weibo"
-          current_user.authentications.weibo.set(:url, auth['info']['urls']['Weibo'])
+          current_user.authentications.weibo.first.set(:url, auth['info']['urls']['Weibo'])
         elsif auth['provider'] == "douban"
-          current_user.authentications.douban.set(:url, auth['info']['alt'])
+          current_user.authentications.douban.first.set(:url, auth['info']['alt'])
         end
         redirect_to settings_profile_path
       end

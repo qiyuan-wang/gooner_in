@@ -48,7 +48,7 @@
             = image_tag image_path('qq_b_24.png'), title: "腾讯QQ"
             腾讯QQ
             - if @authentications.qq.empty?
-              %a(href="/auth/weibo")
+              %a(href="/auth/qq_connect")
                 绑定
             - else
               已绑定

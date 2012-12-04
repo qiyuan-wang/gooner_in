@@ -22,7 +22,7 @@ class Authentication
     elsif auth['provider'] == "qq_connect"
       hash = {:provider => auth['provider'], 
               :authid => auth['uid'], 
-              :name => auth['nickname'],
+              :name => auth['info']['nickname'],
               :url => "" }
     end
   end

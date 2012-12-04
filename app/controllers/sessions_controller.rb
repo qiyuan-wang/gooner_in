@@ -1,5 +1,7 @@
 # encoding: utf-8
 class SessionsController < ApplicationController
+  before_filter :clear_redundant, only: [:new]
+  
   def new
   end
   
@@ -18,11 +20,12 @@ class SessionsController < ApplicationController
     redirect_back_or_to root_path
   end
   
-  def auth
-    auth = request.env["omniauth.auth"]
-    redirect_to bind_path
+  def failure
   end
   
-  def failure
+  def clear_redundant
+    if session[:omniauth]
+      session[:omniauth] = nil
+    end
   end
 end

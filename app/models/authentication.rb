@@ -2,7 +2,7 @@ class Authentication
   include Mongoid::Document
   field :provider, type: String
   field :authid, type: Integer
-  field :url, type: String
+  field :url, type: String, default: ""
   belongs_to :user
   scope :weibo, where(provider: "weibo")
   scope :qq, where(provider: "qq")
@@ -19,6 +19,11 @@ class Authentication
               :authid => auth['uid'], 
               :name => auth['info']['name'],
               :url => auth['info']['alt']}
+    elsif auth['provider'] == "qq_connect"
+      hash = {:provider => auth['provider'], 
+              :authid => auth['uid'], 
+              :name => auth['nickname'],
+              :url => "" }
     end
   end
 end

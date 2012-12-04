@@ -1,6 +1,6 @@
 class AuthenticationsController < ApplicationController
   def create
-    auth = request.env["omniauth.auth"]
+    raise request.env["omniauth.auth"].to_yaml
     authentication = Authentication.and({:provider => auth['provider']}, {:authid => auth['uid']}).first
     if authentication
       auto_login authentication.user

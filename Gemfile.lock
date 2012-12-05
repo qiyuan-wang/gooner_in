@@ -68,6 +68,9 @@ GEM
       railties (~> 3.0)
       sass-rails (~> 3.2)
     client_side_validations (3.2.1)
+    client_side_validations-mongoid (3.0.1)
+      client_side_validations (~> 3.2.0)
+      mongoid (~> 3.0.0)
     coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -265,6 +268,7 @@ DEPENDENCIES
   carrierwave-mongoid
   chosen-rails
   client_side_validations
+  client_side_validations-mongoid
   coffee-rails (~> 3.2.1)
   factory_girl_rails (= 1.4.0)
   faker (= 1.0.1)

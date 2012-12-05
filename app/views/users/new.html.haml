@@ -4,7 +4,7 @@
       #mainbar-small.span8.offset2.box
         #signup-form.pull-left
           %h3.font-dark-blue 你好, Gooner
-          = form_for @user, html: {multipart: true}, validate: true do |f|
+          = form_for @user, validate: true do |f|
             %h4.leading-small.font-white.background-dark-blue Email:
             = f.text_field :email
             %h4.leading-small.font-white.background-dark-blue 用户名:

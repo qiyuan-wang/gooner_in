@@ -1,6 +1,7 @@
 # encoding: utf-8
 class UsersController < ApplicationController
   after_filter :clear_session, :only => [:create]
+  
   def new
     @user = User.new
   end
@@ -10,8 +11,6 @@ class UsersController < ApplicationController
     if session[:omniauth]
       auth = session[:omniauth]
       @user.authentications.build(:provider => auth[:provider], :authid => auth[:authid])
-      @user.url = auth[:url]
-      @user.weibo = 2
     end
     if @user.save
       auto_login @user

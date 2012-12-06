@@ -45,7 +45,7 @@
               已绑定
               = link_to "解除绑定", @authentications.douban.first, :method => :delete, :confirm => "不带豆瓣玩儿了?"
           %li
-            = image_tag image_path('qq_24.png'), title: "腾讯QQ"
+            = image_tag image_path('qq_connect_24.png'), title: "腾讯QQ"
             腾讯QQ
             - if @authentications.qq_connect.empty?
               %a(href="/auth/qq_connect")

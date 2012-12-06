@@ -980,6 +980,17 @@ form.new_question, form.edit_question {
   font-size: 12px;
 }
 
+#sns {
+  height: 24px;
+  li {
+    margin-right: 5px;
+    &:hover {
+      -webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.75);
+      box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75); 
+    }
+  }
+}
 .box-c {
   color: #75867C;
   margin: 0 10px;
@@ -1014,7 +1025,7 @@ form.new_question, form.edit_question {
 }
 
 .box-q {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   min-height: 30px;
   vertical-align: middle;
   
@@ -1022,6 +1033,10 @@ form.new_question, form.edit_question {
     margin-bottom: 8px;
     line-height: 21px;
   }
+}
+
+.box-q > .answer-summary {
+  margin-left: 24px;
 }
 
 .box-q > h4 > a, .box-a > h4 > a {
@@ -1034,6 +1049,7 @@ form.new_question, form.edit_question {
 .get-more-link {
   
 }
+
 //Person#questions_list
 #person-links {
   margin: 10px;

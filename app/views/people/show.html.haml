@@ -12,7 +12,15 @@
             .box-c(style="min-height: 30px; font-size: 14px;")
               #{@person.description}
             .box-t
-              #{@name}的微博… <span>#{@name}还没有绑定咧</span>
+              #{@name}常出没的地儿…
+            .box-c
+              - if @authentications.empty?
+                %p #{@name}还没有绑定咧
+              - else
+                %ul.unstyled#sns.clearfix
+                  - for auth in @authentications
+                    %li.pull-left
+                      = link_to image_tag(image_path("#{auth.provider}_24.png"), title: provider_titlize(auth.provider)), auth.url, target: "_blank"
             .box-t
               #{@name}在Gooner.in…
             .box-c
@@ -51,7 +59,7 @@
                                 %em #{a.likes_count}
                                 人喜欢
                             %span
-                              = link_to '查看全文', question_answer_path(a.question, a)
+                              = link_to '查看', question_answer_path(a.question, a)
                     - if @person.answers.count > 5
                       = link_to '更多', person_answers_path(@person.name), class:"get-more-link"
               .tab-pane#tab2
@@ -83,7 +91,7 @@
                             %h4(style="margin-bottom: 10px;")
                               = link_to "#{short_question_title(a.question)}", question_answer_path(a.question, a), class:"title-large font-white" 
                             .user-avatar.pull-left
-                              = link_to image_tag(a.user.avatar_url(:normal), alt: "#{a.user.name}", class: "u-avatar-small"), person_path(a.user.name)
+                              = link_to image_tag(a.user.avatar_url(:thumb), alt: "#{a.user.name}", class: "u-avatar-small"), person_path(a.user.name)
                             .answer-summary
                               %p
                                 = a.summary
@@ -92,7 +100,7 @@
                                   %em #{a.likes_count}
                                   人喜欢
                               %span
-                                = link_to '查看全文', question_answer_path(a.question, a)
+                                = link_to '查看', question_answer_path(a.question, a)
                       - if @person.answers.count > 5
                         = link_to '更多', person_answers_path(@person.name), class:"get-more-link"
       #sidebar.span3.box

@@ -27,7 +27,7 @@
       #auth-bind
         %ul.unstyled
           %li
-            = image_tag image_path('weibo_r_24.png'), title: "新浪微博"
+            = image_tag image_path('weibo_24.png'), title: "新浪微博"
             新浪微博
             - if @authentications.weibo.empty?
               %a(href="/auth/weibo")
@@ -36,7 +36,7 @@
               已绑定
               = link_to "解除绑定", @authentications.weibo.first, :method => :delete, :confirm => "不带新浪玩儿了?"
           %li
-            = image_tag image_path('douban_g_24.png'), title: "豆瓣"
+            = image_tag image_path('douban_24.png'), title: "豆瓣"
             豆瓣
             - if @authentications.douban.empty?
               %a(href="/auth/douban")
@@ -45,7 +45,7 @@
               已绑定
               = link_to "解除绑定", @authentications.douban.first, :method => :delete, :confirm => "不带豆瓣玩儿了?"
           %li
-            = image_tag image_path('qq_b_24.png'), title: "腾讯QQ"
+            = image_tag image_path('qq_24.png'), title: "腾讯QQ"
             腾讯QQ
             - if @authentications.qq_connect.empty?
               %a(href="/auth/qq_connect")

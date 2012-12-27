@@ -91,18 +91,6 @@
   @include bg-transition(.3s);
 }
 
-@mixin image-setting {
-  left: 0;
-  top: 0;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 360px;
-  position: absolute;
-  z-index: -2;
-}
-
 //通用---------------------------------------------------------
 body {
   min-width: 1200px;
@@ -556,24 +544,9 @@ img.bg {
   position: relative;
 }
 
-#img1 {
-  @include image-setting;
-  background-image : url('gooner-large-1.jpg');
-}
-  
-#img2 {
-  @include image-setting;
-  background-image: url('gooner-large-2.jpg');
-}
-
-#img3 {
-  @include image-setting;
-  background-image: url('gooner-large-3.jpg');
-}
-
 #intro-txt {
   margin-left: 5%;
-  margin-top: 13%;
+  margin-top: 12%;
   padding: 10px 0;
   
   h2 {

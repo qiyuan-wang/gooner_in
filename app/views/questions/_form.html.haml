@@ -5,7 +5,7 @@
   #tips.font-red
     %span 问题是不是针对哪个球员或是教练的？把他标出来吧，可以多选的噢。
   .field
-    = select "question", "related_players", classified_players, { include_blank: false, selected: @question.related_players.collect{|p| p.id}}, { multiple: true, class: "chzn-select" }
+    = select "question", "related_players", classified_players, { include_blank: false, selected: @question.related_players.collect{|p| p.id}}, { multiple: true, class: "chzn-select", data: { placeholder: "选择相关人物"} }
   .field
-    = f.submit '保存', class: "btn btn-primary"
+    = f.submit '确认', class: "btn btn-primary"
     = link_to '算了，等会儿再说的', questions_path

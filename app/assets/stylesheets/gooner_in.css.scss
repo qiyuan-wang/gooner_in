@@ -146,7 +146,7 @@ hr {
 }
 
 .font-dark-blue {
-  color: #1078A8;
+  color: #1FA2DF;
 }
 
 //标题背景颜色类
@@ -700,6 +700,10 @@ img.bg {
         color: #6D8C9B;
         margin-bottom: 10px;
         font-size: 14px;
+        
+        span {
+          font-size: 12px;
+        }
       }
       
       .answer-content {
@@ -862,14 +866,23 @@ img.bg {
   color: #6D8C9B;
   position: relative;
   top: -6px;
+  
+  span {
+    font-size: 12px;
+  }
 }
 
 .responder-info > span > a {
-  color: #6D8C9B;
-  
+  color: #C77979;
+  padding: 3px;
+  -webkit-transition-property: background color;
+  -webkit-transition-duration: .3s;
+    
   &:hover {
-    color: #6D8C9B;
-  };
+    background: #F36E6E;
+    color: white;
+    text-decoration:none;
+  }
 }
 
 //Question#new

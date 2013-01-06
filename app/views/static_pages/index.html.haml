@@ -8,9 +8,8 @@
     #intro-txt.pull-left
       = image_tag image_path('intro-txt.png'), alt: "来吧 和我们说说 属于你的 枪手记忆"
     #login-box.pull-right
-      .logo
-        %a Gooner.in
-      %span.slogan - In Arsenal we trust.
+      #logo
+        = image_tag image_path('logo-v.png'), alt: "Gooner.in - In Arsenal we trust."
       #login-btn
         =link_to '登  录', "#login-modal", class: "btn btn-large btn-primary", style: "width: 139px;", data: { toggle: "modal"}
         %span 

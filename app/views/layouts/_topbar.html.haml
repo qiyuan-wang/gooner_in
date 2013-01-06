@@ -3,9 +3,8 @@
     .row
       .span12
         .logo-box
-          .logo
-            = link_to "Gooner.in", root_path
-          %span.slogan - In Arsenal we trust.
+          #logo
+            = image_tag(image_path('logo-h.png'), alt: "Gooner.in - In Arsenal we trust.")
         %ul.nav.nav-pills.pull-right
           %li{:class => (controller_name == 'answers' && action_name == 'index' ? 'active' : nil)}
             = link_to icon_tag_label("comment", "热答"), answers_path 

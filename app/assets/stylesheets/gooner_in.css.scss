@@ -100,14 +100,6 @@ body {
   color: #222;
 }
 
-//logo用的字体
-@font-face {
-    font-family:"Trocchi";
-    src:url("../font/Trocchi-Regular.eot?") format("eot"), url("../font/Trocchi-Regular.woff") format("woff"), url("../font/Trocchi-Regular.ttf") format("truetype"), url("../font/Trocchi-Regular.svg#Trocchi") format("svg");
-    font-weight:normal;
-    font-style:normal;
-}
-
 hr {
   margin: 14px;
 }
@@ -253,21 +245,7 @@ hr {
     height: 57px;
     margin: 10px 0;
     padding: 10px;
-    display: inline-block;    
-    .logo {
-      margin-top: 19px;
-      margin-left: 5px;
-      display: inline-block;
-    }
-    
-    .slogan {
-      text-align: left;
-      //margin: 0 3px 5px;
-      position: relative;
-      float: right;
-      top: 33px;
-      right: 10px;
-    }    
+    display: inline-block;
   }
 
   .nav {
@@ -563,7 +541,7 @@ img.bg {
   @include border-radius(20px);
   margin-right: 6%;
   margin-top: 18%;
-  padding: 45px 30px;
+  padding: 40px 30px;
   
   #login-btn {
     margin-top: 20px;
@@ -587,9 +565,6 @@ img.bg {
   
   #login-btn {
     text-align: center;
-    span {
-      color: white;
-    }
   }
 }
 

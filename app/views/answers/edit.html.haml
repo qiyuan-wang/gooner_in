@@ -2,17 +2,17 @@
   .container
     .row
       #mainbar.span9.box
-        %h2.question-title.font-white #{@question.title}
+        %h3.question-title.font-white #{@question.title}
         .related-players-wrapper.clearfix
           .related-players
             %span.font-white 相关球员
             - if !@question.related_players.empty?
               %ul.unstyled
                 = render :partial => 'shared/related_player', collection: @question.related_players.limit(2)
-        %h3.font-dark-blue.leading 你的回答
+        %h3.leading-normal.font-white.background-blue 你的回答
         = form_for @answer, :url => question_answer_path(question_id: @question) do |f|
           = render :partial => 'form', :object => f
-          .actions
+          .field
             = f.submit '更新', class: "btn btn-success", style: "margin-top: 10px;"
       #sidebar.span3.box
         = render 'shared/sidebar'

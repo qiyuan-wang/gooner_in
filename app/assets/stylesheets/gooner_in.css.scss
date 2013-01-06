@@ -155,7 +155,7 @@ hr {
 }
 
 .background-blue {
-  background: #08C;
+  background: rgb(53, 166, 241);
 }
 
 .background-light-green {
@@ -283,7 +283,7 @@ hr {
     
     li {       
       a {
-        vertical-align: top;
+        vertical-align: text-top;
         font-size: 14px;
         color: white;
         &:hover {
@@ -634,6 +634,7 @@ img.bg {
 .question-title {
   word-wrap: break-word;
   overflow: hidden;
+  font-weight: normal;
   background-color: #43C248;
   @include border-radius(3px);
   margin: 5px 0;
@@ -795,6 +796,7 @@ img.bg {
 #answer-list > article  > .title-line > h3 > a, #question-list > article > .upper-box > .title-line > h3 > a,
 #lower-wrapper > .container > .row > .span8 > h4 > a {
   color: white;
+  font-weight: normal;
   &:hover {
     color: white;
     text-decoration: none;
@@ -969,9 +971,13 @@ form.new_question, form.edit_question {
   min-height: 30px;
   vertical-align: middle;
   
-  h4{
+  h4 {
     margin-bottom: 8px;
     line-height: 21px;
+    
+    a {
+      font-weight: normal;
+    }
   }
 }
 
